@@ -13,7 +13,7 @@ import daten.Komponente;
 
 public class KomponentenZugriff {
 	
-public static void main(String[] args) {
+public static void loadKomponenten() {
 		
 		Connection connect = null;
 
@@ -55,7 +55,7 @@ public static void main(String[] args) {
 				Komponente k = new Komponente(artikelnummer, art, anzahl, name, beschreibung, preis);
 				LinkedList<Komponente> komponentenliste = new LinkedList<>();
 				komponentenliste.add(k);
-				System.out.println(komponentenliste);
+				//System.out.println(komponentenliste);
 			}
 			
 			connect.close();
