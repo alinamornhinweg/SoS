@@ -51,6 +51,7 @@ public static void loadMitarbeiter() {
 				String passwort = result.getString("passwort");
 				
 				Mitarbeiter ma = new Mitarbeiter(id, vorname, nachname, passwort);
+				System.out.println(ma);
 				MitarbeiterVerwaltung.addMitarbeiter(ma);
 			}
 			
