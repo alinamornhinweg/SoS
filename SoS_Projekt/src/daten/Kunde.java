@@ -113,7 +113,8 @@ public class Kunde {
 
 	
 	
-	public void kundenEdit(int auswahl, int Kundennummer) throws ClassNotFoundException, SQLException {	
+	public void kundenEdit(int kundenNr, String name, String email, int telefon, int bezahlmethode, String geburtstag,
+			Adresse adresse) throws ClassNotFoundException, SQLException {	
 		String url = "jdbc:mysql://3.69.96.96:3306/";
 		String dbName = "db3";
 		String userName = "db3";
