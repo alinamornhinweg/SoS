@@ -17,6 +17,12 @@ public class Kunde {
 	private String name, email, geburtstag;
 	private Adresse adresse;
 	private int bezahlmethode, kundennummer, telefon;
+	private final String url = "jdbc:mysql://3.69.96.96:3306/";
+	private final String dbName = "db3";
+	private final String userName = "db3";
+	private final String driver = "com.mysql.cj.jdbc.Driver";
+	private final String password = "!db3.winf22?";
+
 //	private static ArrayList<Kunde> kunden = new ArrayList<Kunde>();
 //	DB datenBank = new DB();
 //
@@ -48,20 +54,11 @@ public class Kunde {
 //	}
 
 	public void kundeloeschen(int kundenummer) throws SQLException, ClassNotFoundException {
-		
-		
-		String url = "jdbc:mysql://3.69.96.96:3306/";
-		String dbName = "db3";
-		String userName = "db3";
-		String driver = "com.mysql.cj.jdbc.Driver";
-		String password = "!db3.winf22?";
-
-		
-			Class.forName(driver);
-			Connection verbindung = null;
-			verbindung = DriverManager.getConnection(url + dbName, userName, password);
-			System.out.println("Connected to the database!\n");
-			Statement abfrageAnweisung =verbindung.createStatement();
+		Class.forName(driver);
+		Connection verbindung = null;
+		verbindung = DriverManager.getConnection(url + dbName, userName, password);
+		System.out.println("Connected to the database!\n");
+		Statement abfrageAnweisung = verbindung.createStatement();
 
 //		for (Kunde einzelnerKunde : kunden) {
 //			if (kundennummer == einzelnerKunde.kundennummer) {
@@ -77,24 +74,15 @@ public class Kunde {
 
 	public void kundeanlegen(int kundenNr, String name, String email, int telefon, int bezahlmethode, String geburtstag,
 			Adresse adresse) throws SQLException, ClassNotFoundException {
-		
-		
-		String url = "jdbc:mysql://3.69.96.96:3306/";
-		String dbName = "db3";
-		String userName = "db3";
-		String driver = "com.mysql.cj.jdbc.Driver";
-		String password = "!db3.winf22?";
 
-		
-			Class.forName(driver);
-			Connection verbindung = null;
-			verbindung = DriverManager.getConnection(url + dbName, userName, password);
-			System.out.println("Connected to the database!\n");
-			Statement abfrageAnweisung =verbindung.createStatement();
+		Class.forName(driver);
+		Connection verbindung = null;
+		verbindung = DriverManager.getConnection(url + dbName, userName, password);
+		System.out.println("Connected to the database!\n");
+		Statement abfrageAnweisung = verbindung.createStatement();
 
+		String bezahlmethodeString = null;
 
-			String bezahlmethodeString = null;
-			
 		if (bezahlmethode == 1) {
 			bezahlmethodeString = "Paypal";
 		} else if (bezahlmethode == 2) {
@@ -111,34 +99,38 @@ public class Kunde {
 		abfrageAnweisung.close();
 	}
 
-	
-	
 	public void kundenEdit(int kundenNr, String name, String email, int telefon, int bezahlmethode, String geburtstag,
-			Adresse adresse) throws ClassNotFoundException, SQLException {	
-		String url = "jdbc:mysql://3.69.96.96:3306/";
-		String dbName = "db3";
-		String userName = "db3";
-		String driver = "com.mysql.cj.jdbc.Driver";
-		String password = "!db3.winf22?";
+			Adresse adresse) throws ClassNotFoundException, SQLException {
 
-		
-			Class.forName(driver);
-			Connection verbindung = null;
-			verbindung = DriverManager.getConnection(url + dbName, userName, password);
-			System.out.println("Connected to the database!\n");
-			Statement abfrageAnweisung =verbindung.createStatement();
-		
-	
-			
-			
-			String update = "UPDATE kunden SET spalte1=wert1, spalte2=wert2 WHERE id=wert";
-			abfrageAnweisung.execute(update);
-			abfrageAnweisung.close();
-		
-		
+		String bezahlmethodeString = null;
+
+		if (bezahlmethode == 1) {
+			bezahlmethodeString = "Paypal";
+		} else if (bezahlmethode == 2) {
+			bezahlmethodeString = "Rechnung";
+		} else if (bezahlmethode == 3) {
+			bezahlmethodeString = "Lastschrift";
+
+		}
+
+		Class.forName(driver);
+		Connection verbindung = null;
+		verbindung = DriverManager.getConnection(url + dbName, userName, password);
+		System.out.println("Connected to the database!\n");
+		Statement abfrageAnweisung = verbindung.createStatement();
+
+		// (KundenNummer, Name, Email, Telefon, Strasse, Nr, Ort, Geburtstag,plz,
+		// BezahlOption)
+
+		String update = "UPDATE kunden SET Name='" + name + "' ,Email= '" + email + "' ,Telefon='" + telefon
+				+ "' ,Strasse='" + adresse.getStrasse() + "' ,Nr='" + adresse.getNr() + "' ,Ort='" + adresse.getOrt()
+				+ "' ,Geburtstag='" + geburtstag + "' ,plz='" + adresse.getPlz() + "' ,BezahlOption='" + bezahlmethodeString+"'" 
+				+ " WHERE KundenNummer=" + kundenNr;
+		abfrageAnweisung.execute(update);
+		abfrageAnweisung.close();
+
 	}
-	
-	
+
 	public String getname() {
 		return name;
 	}
