@@ -1,22 +1,37 @@
 package datenbankZugriff;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Properties;
 
 public class DBKunde {
 
-	public static void main(String[] args) {
-
-		String url = "jdbc:mysql://3.69.96.96:3306/";
-		String dbName = "db3";
-		String userName = "db3";
-		String driver = "com.mysql.cj.jdbc.Driver";
-		String password = "!db3.winf22?";
-
+	Connection connect = null;
+	
+	public static void loadKunden() {
+		
+		
 		try {
+			
+			//Properties-Datei einlesen
+			File propertiesFile = new File("props.properties");	
+			FileInputStream in = new FileInputStream(propertiesFile);
+			Properties properties = new Properties();
+			properties.load(in);
+			in.close();
+			
+			//Properties übertragen 
+			String url = properties.getProperty("db.url");
+			String dbName = properties.getProperty("db.dbName");
+			String userName = properties.getProperty("db.userName");
+			String driver = properties.getProperty("db.driver");
+			String password = properties.getProperty("db.password");
+			
 			Class.forName(driver);
 			Connection verbindung = null;
 			verbindung = DriverManager.getConnection(url + dbName, userName, password);
