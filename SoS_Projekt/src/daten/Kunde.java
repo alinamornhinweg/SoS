@@ -16,7 +16,7 @@ public class Kunde {
 
 	private String name, email, geburtstag;
 	private Adresse adresse;
-	private int bezahlmethode, kundennummer, telefon;
+	private String bezahlmethode, kundennummer, telefon;
 	private final String url = "jdbc:mysql://3.69.96.96:3306/";
 	private final String dbName = "db3";
 	private final String userName = "db3";
@@ -36,7 +36,6 @@ public class Kunde {
 //		this.kundennummer = kundennummer;
 //		this.geburtstag = geburtstag;
 //		kundenCheck(this);
-//
 //	}
 //
 //	public void kundenCheck(Kunde kunde) {
@@ -72,7 +71,7 @@ public class Kunde {
 
 	}
 
-	public void kundeanlegen(int kundenNr, String name, String email, int telefon, int bezahlmethode, String geburtstag,
+	public void kundeanlegen(int kundenNr, String name, String email, String telefon, String bezahlmethode, String geburtstag,
 			Adresse adresse) throws SQLException, ClassNotFoundException {
 
 		Class.forName(driver);
@@ -83,14 +82,8 @@ public class Kunde {
 
 		String bezahlmethodeString = null;
 
-		if (bezahlmethode == 1) {
-			bezahlmethodeString = "Paypal";
-		} else if (bezahlmethode == 2) {
-			bezahlmethodeString = "Rechnung";
-		} else if (bezahlmethode == 3) {
-			bezahlmethodeString = "Lastschrift";
-
-		}
+		this.bezahlmethode = bezahlmethode;
+		
 		String query = "INSERT INTO kunden (KundenNummer, Name, Email, Telefon, Strasse, Nr, Ort, Geburtstag,plz, BezahlOption) VALUES ('"
 				+ kundenNr + "','" + name + "','" + email + "','" + telefon + "','" + adresse.getStrasse() + "','"
 				+ adresse.getNr() + "','" + adresse.getOrt() + "','" + geburtstag + "','" + adresse.getPlz() + "','"
@@ -99,19 +92,8 @@ public class Kunde {
 		abfrageAnweisung.close();
 	}
 
-	public void kundenEdit(int kundenNr, String name, String email, int telefon, int bezahlmethode, String geburtstag,
+	public void kundenEdit(int kundenNr, String name, String email, String telefon, String bezahlmethode, String geburtstag,
 			Adresse adresse) throws ClassNotFoundException, SQLException {
-
-		String bezahlmethodeString = null;
-
-		if (bezahlmethode == 1) {
-			bezahlmethodeString = "Paypal";
-		} else if (bezahlmethode == 2) {
-			bezahlmethodeString = "Rechnung";
-		} else if (bezahlmethode == 3) {
-			bezahlmethodeString = "Lastschrift";
-
-		}
 
 		Class.forName(driver);
 		Connection verbindung = null;
@@ -124,7 +106,7 @@ public class Kunde {
 
 		String update = "UPDATE kunden SET Name='" + name + "' ,Email= '" + email + "' ,Telefon='" + telefon
 				+ "' ,Strasse='" + adresse.getStrasse() + "' ,Nr='" + adresse.getNr() + "' ,Ort='" + adresse.getOrt()
-				+ "' ,Geburtstag='" + geburtstag + "' ,plz='" + adresse.getPlz() + "' ,BezahlOption='" + bezahlmethodeString+"'" 
+				+ "' ,Geburtstag='" + geburtstag + "' ,plz='" + adresse.getPlz() + "' ,BezahlOption='" + bezahlmethode+"'" 
 				+ " WHERE KundenNummer=" + kundenNr;
 		abfrageAnweisung.execute(update);
 		abfrageAnweisung.close();
@@ -147,11 +129,11 @@ public class Kunde {
 		this.email = email;
 	}
 
-	public int getTelefon() {
+	public String getTelefon() {
 		return telefon;
 	}
 
-	public void setTelefon(int telefon) {
+	public void setTelefon(String telefon) {
 		this.telefon = telefon;
 	}
 
@@ -163,19 +145,19 @@ public class Kunde {
 		this.adresse = adresse;
 	}
 
-	public int getBezahlmethode() {
+	public String getBezahlmethode() {
 		return bezahlmethode;
 	}
 
-	public void setBezahlmethode(int bezahlmethode) {
+	public void setBezahlmethode(String bezahlmethode) {
 		this.bezahlmethode = bezahlmethode;
 	}
 
-	public int getKundennummer() {
+	public String getKundennummer() {
 		return kundennummer;
 	}
 
-	public void setKundennummer(int kundennummer) {
+	public void setKundennummer(String kundennummer) {
 		this.kundennummer = kundennummer;
 	}
 
