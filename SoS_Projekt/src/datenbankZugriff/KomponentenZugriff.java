@@ -42,22 +42,23 @@ public static void loadKomponenten() {
 			result = stm.executeQuery("SELECT artikelnummer, name, hersteller, preis, art, anzahl, beschreibung FROM komponenten");
 			
 			while(result.next()) {
-				int artikelnummer = result.getInt("artikelnummer");
+				String artikelnummer = result.getString("artikelnummer");
 				String name = result.getString("name");
 				String hersteller = result.getString("hersteller");
 				double preis = result.getDouble("preis");
 				String art = result.getString("art");
 				int anzahl = result.getInt("anzahl");
 				String beschreibung = result.getString("beschreibung");
-				//System.out.println(artikelnummer + " " + name + " " + hersteller + " " + art + " " + preis + " " + anzahl + " " + beschreibung);
-				//änderung
 				
-				Komponente k = new Komponente(artikelnummer, art, anzahl, name, beschreibung, preis);
+				Komponente k = new Komponente(artikelnummer, art, anzahl, name, hersteller, beschreibung, preis);
+				//Komponente.artikelnummerGenerate(k);
 				LinkedList<Komponente> komponentenliste = new LinkedList<>();
 				komponentenliste.add(k);
-				//System.out.println(komponentenliste);
+				System.out.println(komponentenliste);
+				
 			}
 			
+			//Static int nextNumber laden und in Komponente speichern
 			connect.close();
 			System.out.println("\nDisconnected from database");
 		}catch (Exception e) {
