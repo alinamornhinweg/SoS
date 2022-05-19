@@ -91,6 +91,7 @@ public static void uploadKomponteNextNumber(int nextNumber) {
 		connect = DriverManager.getConnection(url + dbName, userName, password);
 		System.out.println("Connected to the database\n");
 		
+		//Upload
 		/*
 		 * 		
 		Class.forName(driver);
