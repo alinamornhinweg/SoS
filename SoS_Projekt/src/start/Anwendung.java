@@ -15,6 +15,7 @@ public class Anwendung {
 		KomponentenZugriff.loadKomponenten();
 		DBKunde.loadKunden();
 		LogIn.startLogInScreen();
+		
 	}
 	
 }

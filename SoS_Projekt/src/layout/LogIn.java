@@ -27,6 +27,7 @@ public class LogIn extends JFrame {
 	private JLabel lblAnmeldung;
 	private JPasswordField passwortTextFeld;
 	private JLabel logo;
+	static LogIn frame = new LogIn();
 
 	/**
 	 * Launch the application.
@@ -35,7 +36,7 @@ public class LogIn extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					LogIn frame = new LogIn();
+					frame = new LogIn();
 					frame.setTitle("Anmeldung");
 					frame.setVisible(true);
 				} catch (Exception e) {
@@ -133,7 +134,10 @@ public class LogIn extends JFrame {
 				&& passwortTextFeld.getPassword().length != 0) {
 
 			if (daten.MitarbeiterVerwaltung.isLoginSuccesfull(Integer.parseInt(idTextFeld.getText()), String.valueOf(passwortTextFeld.getPassword()))) {
-				JOptionPane.showMessageDialog(null, "Anmeldung erfolgreich.", "Anmeldung", JOptionPane.INFORMATION_MESSAGE);
+				//JOptionPane.showMessageDialog(null, "Anmeldung erfolgreich.", "Anmeldung", JOptionPane.INFORMATION_MESSAGE);
+				Hauptmenu menu = new Hauptmenu();
+				menu.setVisible(true);
+				frame.dispose();
 				return;
 			}
 		}

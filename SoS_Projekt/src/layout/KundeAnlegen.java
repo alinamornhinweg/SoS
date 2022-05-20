@@ -58,9 +58,9 @@ public class KundeAnlegen extends JFrame {
 	 * Launch the application.
 	 */
 	
-	static KundeAnlegen frame;
+	static KundeAnlegen frame = new KundeAnlegen();
 	
-	public static void main(String[] args) {
+	public static void startKundeAnlegen() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -77,7 +77,7 @@ public class KundeAnlegen extends JFrame {
 	 * Create the frame.
 	 * @throws ParseException 
 	 */
-	public KundeAnlegen() throws ParseException {
+	public KundeAnlegen()  {
 		
 		setTitle("Kunde anlegen");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -92,8 +92,15 @@ public class KundeAnlegen extends JFrame {
 		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, Double.MIN_VALUE};
 		contentPane.setLayout(gbl_contentPane);
 		
-		MaskFormatter mfBuchstaben = new MaskFormatter("????????????");
-		mfBuchstaben.setPlaceholder(" ");
+		MaskFormatter mfBuchstaben;
+		try {
+			mfBuchstaben = new MaskFormatter("????????????");
+			mfBuchstaben.setPlaceholder(" ");
+		} catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
 		
 
 		
@@ -294,10 +301,10 @@ public class KundeAnlegen extends JFrame {
 		gbc_lblGeburtstag.gridy = 7;
 		contentPane.add(lblGeburtstag, gbc_lblGeburtstag);
 		
-		MaskFormatter mfGeburtstag = new MaskFormatter("##.##.####");
-		mfBuchstaben.setPlaceholder("0");
 		
-		textFieldGeburtstag = new JFormattedTextField(mfGeburtstag);
+		
+		
+		textFieldGeburtstag = new JFormattedTextField();
 		textFieldGeburtstag.setToolTipText("TT.MM.JJJJ");
 		GridBagConstraints gbc_textFieldGeburtstag = new GridBagConstraints();
 		gbc_textFieldGeburtstag.insets = new Insets(0, 0, 5, 5);
@@ -404,8 +411,9 @@ public class KundeAnlegen extends JFrame {
 	private void zumHauptmenu() {
 		
 		System.out.println("Schliesse das Fenster und starte Hauptmenu");
-		//Menu menu = new Menu();
-		//menu.Menu.setVisible(true);
+		Hauptmenu menu = new Hauptmenu();
+		menu.setVisible(true);
+		//frame.setVisible(false);
 		frame.dispose();
 	}
 	
