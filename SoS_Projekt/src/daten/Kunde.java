@@ -73,7 +73,7 @@ public class Kunde {
 
 	}
 
-	public void kundeanlegen(int kundenNr, String name, String email, String telefon, String bezahlmethode, String geburtstag,
+	public void kundeanlegen(String kundenNr, String name, String email, String telefon, String bezahlmethode, String geburtstag,
 			Adresse adresse) throws SQLException, ClassNotFoundException {
 
 		Class.forName(driver);
