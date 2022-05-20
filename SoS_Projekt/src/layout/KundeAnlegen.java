@@ -381,6 +381,9 @@ public class KundeAnlegen extends JFrame {
 			fehlerFeld = "Ort";
 			String ort = textFieldOrt.getText();
 			fehlerFeld = "Geburtstag";
+			
+			//Date richtig formatieren
+			
 			String geburtstag = textFieldGeburtstag.getText();
 			
 			fehlerFeld = "";
@@ -403,7 +406,7 @@ public class KundeAnlegen extends JFrame {
 		else if(rdbtnPaypal.isSelected()) {bezahloption = "Paypal";}
 		else {bezahloption = "Rechnung";}
 		
-		//daten.Kunde.kundeanlegen(vorname, nachname, mail, telefon, bezahlmethode, geburtstag, adresse);
+		//daten.Kunde.kundeanlegen(vorname + " " + nachname, mail, telefon, bezahlmethode, geburtstag, adresse);
 		
 		zumHauptmenu();
 	}
