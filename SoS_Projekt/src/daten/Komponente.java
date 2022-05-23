@@ -137,10 +137,7 @@ public class Komponente {
 		nextNum++;
 		return artikelnummer;
 		
-	}
-	
-
-	
+	}	
 	
 
 }
