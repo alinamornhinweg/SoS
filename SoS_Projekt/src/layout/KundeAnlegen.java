@@ -8,6 +8,9 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.text.MaskFormatter;
 
+import daten.Adresse;
+import daten.Kunde;
+
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -15,6 +18,8 @@ import javax.swing.JOptionPane;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.InputMismatchException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -346,10 +351,7 @@ public class KundeAnlegen extends JFrame {
 		String fehlerFeld = "";
 		//FhlerFeld wird nach jeder Zeile geändert damit bei einem fehler der letzte Stand gezeigt wird und der User sofort sehen kann in welchem feld es Probleme gab
 		
-		Pattern pattern_aZ = Pattern.compile("[a-zA-Z]+");
-		Pattern pattern_Mail = Pattern.compile("[^a-zA-Z||[-.@_]]");
-		Pattern pattern_Nummer = Pattern.compile("[^0-9]");
-		Matcher m, m2;
+		Kunde kunde;
 		
 		try {
 			fehlerFeld = "Vorname";
@@ -373,22 +375,37 @@ public class KundeAnlegen extends JFrame {
 			if(strasse.isEmpty() || !strasse.matches("[a-zA-Z -]+")) return;
 			
 			fehlerFeld = "Nr";
-			Integer nr =  Integer.valueOf(textFieldNr.getText());
+			String nr =  String.valueOf(textFieldNr.getText());
 			if(textFieldNr.getText().isEmpty() || !textFieldNr.getText().matches("[a-zA-Z -]+")) return;
 			
 			fehlerFeld = "Postleitzahl";
-			Integer plz =Integer.valueOf(textFieldPLZ.getText());
+			String plz =String.valueOf(textFieldPLZ.getText());
+			if(textFieldPLZ.getText().length() != 5) return;
+			
 			fehlerFeld = "Ort";
 			String ort = textFieldOrt.getText();
+			if(ort.isEmpty() || !ort.matches("[a-zA-Z -]+")) return;
+			
+			
 			fehlerFeld = "Geburtstag";
-			
-			//Date richtig formatieren
-			
-			String geburtstag = textFieldGeburtstag.getText();
+			SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.yyyy");
+			Date geburtstagDate = simpleDateFormat.parse(textFieldGeburtstag.getText());
+			String geburtstag = geburtstagDate.toString();
 			
 			fehlerFeld = "";
 			
-		}catch(InputMismatchException | NumberFormatException | PatternSyntaxException e) {
+			Adresse adresse = new Adresse(strasse, ort, plz, nr);
+			
+			String bezahloption = "";
+			if(rdbtnLastschrift.isSelected()) {bezahloption = "Lastschrift";}
+			else if(rdbtnPaypal.isSelected()) {bezahloption = "Paypal";}
+			else {bezahloption = "Rechnung";}
+			
+			kunde = new Kunde(vorname + " " + nachname, mail, telefon, bezahloption, geburtstag, adresse);
+			
+			//Kunde in entsprechender Klasse anlegen
+			
+		}catch(InputMismatchException | NumberFormatException | PatternSyntaxException | ParseException e) {
 			System.out.println("Wrong format with input");
 			//JOptionPane.showMessageDialog(null, "Das Feld " + fehlerFeld + " wurde nicht richtig befüllt.");
 			return;
@@ -398,16 +415,6 @@ public class KundeAnlegen extends JFrame {
 			//return;
 		}
 		}
-
-		//daten.Adresse adresse = new Adresse(strasse, ort, plz, nr);
-		
-		String bezahloption = "";
-		if(rdbtnLastschrift.isSelected()) {bezahloption = "Lastschrift";}
-		else if(rdbtnPaypal.isSelected()) {bezahloption = "Paypal";}
-		else {bezahloption = "Rechnung";}
-		
-		//daten.Kunde.kundeanlegen(vorname + " " + nachname, mail, telefon, bezahlmethode, geburtstag, adresse);
-		
 		zumHauptmenu();
 	}
 	

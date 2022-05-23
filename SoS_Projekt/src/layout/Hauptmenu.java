@@ -25,7 +25,6 @@ public class Hauptmenu extends JFrame {
 	private JPanel contentPane;
 	JLabel bild;
 	Icon icon1;
-	private JLabel logo;
 	static Hauptmenu frame = new Hauptmenu();
 	
 
@@ -70,28 +69,27 @@ public class Hauptmenu extends JFrame {
 		Kunden_panel.setBounds(0, 184, 271, 35);
 		contentPane.add(Kunden_panel);
 		
-		JButton btnKunden = new JButton("Kunden");
-		btnKunden.addActionListener(new ActionListener() {
+		JButton KundenButton = new JButton("Kunden");
+		KundenButton.setBackground(Color.ORANGE);
+		KundenButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				KundeAnlegen kA;
-				kA = new KundeAnlegen();
-				kA.setVisible(true);
-				frame.dispose();
+				KundeAnlegen kA= new KundeAnlegen();
+				kA.startKundeAnlegen();
+				setVisible(false);
 				
 			}
 		});
-		Kunden_panel.add(btnKunden);
+		Kunden_panel.add(KundenButton);
 		
-		JPanel Aufträge_panel = new JPanel();
-		Aufträge_panel.setBorder(new LineBorder(Color.WHITE));
-		Aufträge_panel.setBackground(new Color(204, 204, 153));
-		Aufträge_panel.setBounds(0, 219, 271, 35);
-		contentPane.add(Aufträge_panel);
+		JPanel AuftreagePanel = new JPanel();
+		AuftreagePanel.setBorder(new LineBorder(Color.WHITE));
+		AuftreagePanel.setBackground(new Color(204, 204, 153));
+		AuftreagePanel.setBounds(0, 219, 271, 35);
+		contentPane.add(AuftreagePanel);
 		
-		JLabel lblNewLabel_1 = new JLabel("Aufträge");
-		lblNewLabel_1.setForeground(Color.WHITE);
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 18));
-		Aufträge_panel.add(lblNewLabel_1);
+		JButton AuftreageButton = new JButton("Auftreage");
+		AuftreageButton.setBackground(Color.ORANGE);
+		AuftreagePanel.add(AuftreageButton);
 		
 		JPanel Komponenten_panel = new JPanel();
 		Komponenten_panel.setBorder(new LineBorder(Color.WHITE));
@@ -99,10 +97,9 @@ public class Hauptmenu extends JFrame {
 		Komponenten_panel.setBounds(0, 254, 271, 35);
 		contentPane.add(Komponenten_panel);
 		
-		JLabel lblNewLabel_2 = new JLabel("Komponenten");
-		lblNewLabel_2.setForeground(Color.WHITE);
-		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 18));
-		Komponenten_panel.add(lblNewLabel_2);
+		JButton KomponentenButton = new JButton("Komponenten");
+		KomponentenButton.setBackground(Color.ORANGE);
+		Komponenten_panel.add(KomponentenButton);
 		
 		JPanel Abmelden_panel = new JPanel();
 		Abmelden_panel.setBorder(new LineBorder(Color.WHITE));
@@ -110,35 +107,38 @@ public class Hauptmenu extends JFrame {
 		Abmelden_panel.setBounds(0, 289, 271, 35);
 		contentPane.add(Abmelden_panel);
 		
-		JButton btnAbmelden = new JButton("Abmelden");
-		btnAbmelden.addActionListener(new ActionListener() {
+		JButton AbmeldenButton = new JButton("Abmelden");
+		AbmeldenButton.setBackground(Color.ORANGE);
+		AbmeldenButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				LogIn login = new LogIn();
+				setVisible(false);
 				LogIn.startLogInScreen();
-				frame.setVisible(false);
+				
 
 			}
 		});
-		Abmelden_panel.add(btnAbmelden);
+		Abmelden_panel.add(AbmeldenButton);
 		
-		JLabel lblNewLabel_4 = new JLabel("Logo");
-		lblNewLabel_4.setIcon(new ImageIcon("\transparent.png"));
-		lblNewLabel_4.setBounds(37, 16, 199, 156);
-		contentPane.add(lblNewLabel_4);
-		
-		/*logo = new JLabel("");
 		Image img = new ImageIcon(this.getClass().getResource("/transparent.png")).getImage().getScaledInstance(140,140, Image.SCALE_AREA_AVERAGING);
-
-		logo.setIcon(new ImageIcon(img));
-		logo.setBounds(417, 6, 337, 435);*/
 		
-		JLabel lblNewLabel_5 = new JLabel("Eingeloggt: Mitarbeiter1");
+		JLabel lblNewLabel_5 = new JLabel("Eingeloggt:");
 		lblNewLabel_5.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblNewLabel_5.setForeground(Color.WHITE);
-		lblNewLabel_5.setBounds(6, 360, 165, 16);
+		lblNewLabel_5.setBounds(6, 360, 65, 16);
 		contentPane.add(lblNewLabel_5);
 		
-		//icon1= new ImageIcon(getClass().getResource("transparent.png"));
+		JLabel logoNew = new JLabel("");
+		logoNew.setBounds(10, 22, 249, 126);
+		logoNew.setIcon(new ImageIcon(img));
+		contentPane.add(logoNew);
+		
+		JLabel eingeloggtLabel = new JLabel("");
+		eingeloggtLabel.setForeground(Color.WHITE);
+		eingeloggtLabel.setBounds(81, 363, 105, 13);
+		contentPane.add(eingeloggtLabel);
+		
+		eingeloggtLabel.setText("----------");
 		
 		
 		
