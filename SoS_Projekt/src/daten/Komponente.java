@@ -1,16 +1,15 @@
 package daten;
 
 public class Komponente {
-	
-	private String artikelnummer; 
-	private String art; 
+
+	private String artikelnummer;
+	private String art;
 	private int anzahl;
 	private String name;
 	private String hersteller;
-	private String beschreibung; 
+	private String beschreibung;
 	private double preis;
-	
-	
+
 	public Komponente(String art, int anzahl, String name, String hersteller, String beschreibung, double preis) {
 		this.artikelnummer = artikelnummerGenerate(art);
 		this.art = art;
@@ -20,8 +19,9 @@ public class Komponente {
 		this.beschreibung = beschreibung;
 		this.preis = preis;
 	}
-	
-	public Komponente(String artikelnummer, String art, int anzahl, String name, String hersteller, String beschreibung, double preis) {
+
+	public Komponente(String artikelnummer, String art, int anzahl, String name, String hersteller, String beschreibung,
+			double preis) {
 		this.artikelnummer = artikelnummer;
 		this.art = art;
 		this.anzahl = anzahl;
@@ -31,7 +31,6 @@ public class Komponente {
 		this.preis = preis;
 	}
 
-	
 	public String getArtikelnummer() {
 		return artikelnummer;
 	}
@@ -63,11 +62,11 @@ public class Komponente {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	public String getHersteller() {
 		return hersteller;
 	}
-	
+
 	public void setHersteller(String hersteller) {
 		this.hersteller = hersteller;
 	}
@@ -93,9 +92,9 @@ public class Komponente {
 		return "Komponente [artikelnummer=" + artikelnummer + ", art=" + art + ", anzahl=" + anzahl + ", name=" + name
 				+ ", beschreibung=" + beschreibung + ", preis=" + preis + "]";
 	}
-	
-	
-	private static int nextNum = 1000;
+
+	private static int nextNum;
+
 	public static int getNextNum() {
 		return nextNum;
 	}
@@ -105,39 +104,39 @@ public class Komponente {
 	}
 
 	public static String artikelnummerGenerate(String art) {
-		
+
 		String artikelnummer = "";
 
 		if (art.equals("CPU")) {
 			artikelnummer = "10" + nextNum;
-			
-			
-		}else if (art.equals("RAM")) {
+
+		} else if (art.equals("RAM")) {
 			artikelnummer = "20" + nextNum;
-		}else if(art.equals("SSD")) {
+		} else if (art.equals("SSD")) {
 			artikelnummer = "30" + nextNum;
 
-		}else if(art.equals("HDD")) {
+		} else if (art.equals("HDD")) {
 			artikelnummer = "40" + nextNum;
 
-		}else if(art.equals("Grafikkarte")) {
+		} else if (art.equals("Grafikkarte")) {
 			artikelnummer = "50" + nextNum;
 
-		}else if(art.equals("Prozesslüfter")) {
+		} else if (art.equals("Prozesslüfter")) {
 			artikelnummer = "60" + nextNum;
 
-		}else if(art.equals("Netzteil")) {
+		} else if (art.equals("Netzteil")) {
 			artikelnummer = "70" + nextNum;
 
-		}else if(art.equals("Gehäuse")) {
+		} else if (art.equals("Gehäuse")) {
 			artikelnummer = "80" + nextNum;
-		}else {
+		} else {
 			artikelnummer = "90" + nextNum;
 		}
 		nextNum++;
 		return artikelnummer;
 		
-	}	
-	
+		
+
+	}
 
 }

@@ -52,7 +52,7 @@ public class KomponentenZugriff {
 				String beschreibung = result.getString("beschreibung");
 
 				Komponente k = new Komponente(artikelnummer, art, anzahl, name, hersteller, beschreibung, preis);
-				// Komponente.artikelnummerGenerate(k);
+				//Komponente.artikelnummerGenerate(k);
 				LinkedList<Komponente> komponentenliste = new LinkedList<>();
 				komponentenliste.add(k);
 				System.out.println(komponentenliste);
@@ -66,79 +66,4 @@ public class KomponentenZugriff {
 			e.printStackTrace();
 		}
 	}
-
-	public static void loadDBKomponentenProperties() {
-		Connection connect = null;
-
-		try {
-
-			// Properties-Datei einlesen
-			File propertiesFile = new File("props.properties");
-			FileInputStream in = new FileInputStream(propertiesFile);
-			Properties properties = new Properties();
-			properties.load(in);
-			in.close();
-
-			// Properties übertragen
-			String url = properties.getProperty("db.url");
-			String dbName = properties.getProperty("db.dbName");
-			String userName = properties.getProperty("db.userName");
-			String driver = properties.getProperty("db.driver");
-			String password = properties.getProperty("db.password");
-
-			Class.forName(driver);
-			connect = DriverManager.getConnection(url + dbName, userName, password);
-			System.out.println("Connected to the database\n");
-
-			Statement stm = connect.createStatement();
-			ResultSet result;
-			result = stm.executeQuery(
-					"SELECT * FROM metadaten");
-
-			while (result.next()) {
-				String key = result.getString("key");
-				String value = result.getString("pValue");
-				daten.Komponente.setNextNum(Integer.parseInt(value));
-			}
-		
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	
-	public static void saveDBKomponentenProperties() {
-		Connection connect = null;
-
-	
-		try {
-
-			// Properties-Datei einlesen
-			File propertiesFile = new File("props.properties");
-			FileInputStream in = new FileInputStream(propertiesFile);
-			Properties properties = new Properties();
-			properties.load(in);
-			in.close();
-
-			// Properties übertragen
-			String url = properties.getProperty("db.url");
-			String dbName = properties.getProperty("db.dbName");
-			String userName = properties.getProperty("db.userName");
-			String driver = properties.getProperty("db.driver");
-			String password = properties.getProperty("db.password");
-
-			Class.forName(driver);
-			connect = DriverManager.getConnection(url + dbName, userName, password);
-			System.out.println("Connected to the database\n");
-
-			Statement stm = connect.createStatement();
-			String update = "UPDATE metadaten SET pValue='" + daten.Komponente.getNextNum()+"'" 
-					+ " WHERE key=" + "KomponenteNextNumber";
-			stm.executeUpdate(update);
-
-		
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
 }
