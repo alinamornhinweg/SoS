@@ -19,7 +19,7 @@ public class Auftraege{
 
 	public Auftraege(ArrayList<Komponente> rechner, Kunde kunde, String auftragsNummer, String status) {
 		this.rechner=rechner;
-		this.kunde = kunde.getname();
+		this.kunde = kunde.getName();
 		this.auftragsNummer = auftragsNummer;
 		this.status = status;
 	}

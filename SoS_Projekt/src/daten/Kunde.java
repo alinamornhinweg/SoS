@@ -6,6 +6,9 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+
+import datenbankZugriff.DBKunde;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -24,8 +27,7 @@ public class Kunde {
 	private final String password = "!db3.winf22?";
 
 //	private static ArrayList<Kunde> kunden = new ArrayList<Kunde>();
-//	DB datenBank = new DB();
-//
+	
 	public Kunde(String kundennummer, String name, String email, String telefon, String bezahlmethode, String geburtstag,
 			Adresse adresse) {
 		this.name = name;
@@ -38,7 +40,7 @@ public class Kunde {
 //		kundenCheck(this);
 	}
 	
-	public Kunde( String name, String email, String telefon, String bezahlmethode, String geburtstag,
+	public Kunde(String name, String email, String telefon, String bezahlmethode, String geburtstag,
 			Adresse adresse) {
 		this.name = name;
 		this.email = email;
@@ -56,7 +58,7 @@ public class Kunde {
 //
 //		for (Kunde einzelnerKunde : kunden) {
 //			if (kunde.kundennummer == einzelnerKunde.kundennummer) {
-//				pr fen = false;
+//				pruefen = false;
 //			}
 //		}
 //		if (pruefen) {
@@ -66,68 +68,25 @@ public class Kunde {
 
 
 
-	public void kundeloeschen(String kundenummer) throws SQLException, ClassNotFoundException {
-		Class.forName(driver);
-		Connection verbindung = null;
-		verbindung = DriverManager.getConnection(url + dbName, userName, password);
-		System.out.println("Connected to the database!\n");
-		Statement abfrageAnweisung = verbindung.createStatement();
-
-//		for (Kunde einzelnerKunde : kunden) {
-//			if (kundennummer == einzelnerKunde.kundennummer) {
-//				kunden.remove(einzelnerKunde);
-//			}
-//		}
-
-		String loeschen = "DELETE FROM kunden WHERE KundenNummer=" + kundenummer;
-		abfrageAnweisung.execute(loeschen);
-		abfrageAnweisung.close();
+	public void kundeloeschen(String kundenummer) throws SQLException, ClassNotFoundException, IOException {
+		
+		DBKunde dbKunde = new DBKunde();
+		dbKunde.kundeloeschen(kundenummer);
 	}
 
 	public void kundeanlegen(String kundenNr, String name, String email, String telefon, String bezahlmethode, String geburtstag,
-			Adresse adresse) throws SQLException, ClassNotFoundException {
+			Adresse adresse) throws SQLException, ClassNotFoundException, IOException {
 
-		Class.forName(driver);
-		Connection verbindung = null;
-		verbindung = DriverManager.getConnection(url + dbName, userName, password);
-		System.out.println("Connected to the database!\n");
-		Statement abfrageAnweisung = verbindung.createStatement();
-
-		String bezahlmethodeString = null;
-
-		this.bezahlmethode = bezahlmethode;
+		DBKunde dbKunde = new DBKunde();
+		dbKunde.kundeanlegen(kundenNr, name, email, telefon, bezahlmethode, geburtstag, adresse);
 		
-		String query = "INSERT INTO kunden (KundenNummer, Name, Email, Telefon, Strasse, Nr, Ort, Geburtstag,plz, BezahlOption) VALUES ('"
-				+ kundenNr + "','" + name + "','" + email + "','" + telefon + "','" + adresse.getStrasse() + "','"
-				+ adresse.getNr() + "','" + adresse.getOrt() + "','" + geburtstag + "','" + adresse.getPlz() + "','"
-				+ bezahlmethodeString + "')";
-		abfrageAnweisung.execute(query);
-		abfrageAnweisung.close();
 	}
 
-	public void kundenEdit(Kunde kunde) throws ClassNotFoundException, SQLException {
+	public void kundenEdit(Kunde kunde) throws ClassNotFoundException, SQLException, IOException {
 
-		Class.forName(driver);
-		Connection verbindung = null;
-		verbindung = DriverManager.getConnection(url + dbName, userName, password);
-		System.out.println("Connected to the database!\n");
-		Statement abfrageAnweisung = verbindung.createStatement();
+		DBKunde dbKunde = new DBKunde();
+		dbKunde.kundenEdit(kunde);
 
-		String update = "UPDATE kunden SET Name='" + kunde.name + "' ,Email= '" + kunde.email + "' ,Telefon='" + telefon
-				+ "' ,Strasse='" + kunde.adresse.getStrasse() + "' ,Nr='" + kunde.adresse.getNr() + "' ,Ort='" + kunde.adresse.getOrt()
-				+ "' ,Geburtstag='" + kunde.geburtstag + "' ,plz='" + kunde.adresse.getPlz() + "' ,BezahlOption='" + kunde.bezahlmethode+"'" 
-				+ " WHERE KundenNummer=" + kunde.kundennummer;
-		abfrageAnweisung.execute(update);
-		abfrageAnweisung.close();
-
-	}
-
-	public String getname() {
-		return name;
-	}
-
-	public void setname(String name) {
-		this.name = name;
 	}
 
 	public String getEmail() {
@@ -169,6 +128,16 @@ public class Kunde {
 	public void setKundennummer(String kundennummer) {
 		this.kundennummer = kundennummer;
 	}
+
+	public String getName() {
+		return name;
+	}
+
+	public String getGeburtstag() {
+		return geburtstag;
+	}
+	
+	
 
 //	public static ArrayList<Kunde> getKunden() {
 //		return kunden;
