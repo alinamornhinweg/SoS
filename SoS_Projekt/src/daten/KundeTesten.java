@@ -11,7 +11,7 @@ public class KundeTesten {
 		kunde=new Kunde("500072", "TestPersonNeu", "Test@hft.com", "0123456", "2", "1999-08.08", new Adresse("Hausstr", "Stuttgart", "12340", "10"));
 		kunde.kundenEdit(kunde);
 		
-		kunde.kundeloeschen(kunde.getKundennummer());
+		kunde.kundeloeschen(Integer.toString(kunde.getNextKundenNummer()));
 	}
 
 }

@@ -19,8 +19,9 @@ public class Kunde {
 
 	private String name, email, geburtstag;
 	private Adresse adresse;
-	private String bezahlmethode, kundennummer, telefon;
+	private String bezahlmethode, telefon;
 	DBKunde dbKunde = new DBKunde();
+	private static int nextKundenNummer = 1000;
 
 //	private static ArrayList<Kunde> kunden = new ArrayList<Kunde>();
 
@@ -31,7 +32,7 @@ public class Kunde {
 		this.telefon = telefon;
 		this.adresse = adresse;
 		this.bezahlmethode = bezahlmethode;
-		this.kundennummer = kundennummer;
+		this.nextKundenNummer = Integer.parseInt(kundennummer);
 		this.geburtstag = geburtstag;
 //		kundenCheck(this);
 	}
@@ -80,7 +81,7 @@ public class Kunde {
 		String telefon = kunde.getTelefon();
 		Adresse adresse = kunde.getAdresse();
 		String bezahlmethode = kunde.getBezahlmethode();
-		String kundenNr = kunde.getKundennummer();
+		String kundenNr =  Integer.toString(kunde.getNextKundenNummer());
 		String geburtstag = kunde.getGeburtstag();
 
 		dbKunde.kundeanlegen(kundenNr, name, email, telefon, bezahlmethode, geburtstag, adresse);
@@ -125,20 +126,20 @@ public class Kunde {
 		this.bezahlmethode = bezahlmethode;
 	}
 
-	public String getKundennummer() {
-		return kundennummer;
-	}
-
-	public void setKundennummer(String kundennummer) {
-		this.kundennummer = kundennummer;
-	}
-
 	public String getName() {
 		return name;
 	}
 
 	public String getGeburtstag() {
 		return geburtstag;
+	}
+
+	public static int getNextKundenNummer() {
+		return nextKundenNummer;
+	}
+
+	public static void setNextKundenNummer(int nextKundenNummer) {
+		Kunde.nextKundenNummer = nextKundenNummer;
 	}
 
 //	public static ArrayList<Kunde> getKunden() {
