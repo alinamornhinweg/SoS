@@ -18,26 +18,25 @@ import daten.Kunde;
 public class DBKunde {
 
 	Connection connect = null;
-	
+
 	public static void loadKunden() {
-		
-		
+
 		try {
-			
-			//Properties-Datei einlesen
-			File propertiesFile = new File("props.properties");	
+
+			// Properties-Datei einlesen
+			File propertiesFile = new File("props.properties");
 			FileInputStream in = new FileInputStream(propertiesFile);
 			Properties properties = new Properties();
 			properties.load(in);
 			in.close();
-			
-			//Properties übertragen 
+
+			// Properties übertragen
 			String url = properties.getProperty("db.url");
 			String dbName = properties.getProperty("db.dbName");
 			String userName = properties.getProperty("db.userName");
 			String driver = properties.getProperty("db.driver");
 			String password = properties.getProperty("db.password");
-			
+
 			Class.forName(driver);
 			Connection verbindung = null;
 			verbindung = DriverManager.getConnection(url + dbName, userName, password);
@@ -63,8 +62,6 @@ public class DBKunde {
 				String plz = ergebnis.getString("plz");
 				String bezahlmethode = ergebnis.getString("BezahlOption");
 
-
-
 				// Kunde kunde = new Kunde(kundenNummer, name, e_Mail , telefon,
 				// bezahlmethodeInt, geburtstag,new Adresse(stra e, ort, plz, nr));
 
@@ -80,16 +77,17 @@ public class DBKunde {
 			System.out.println("Fehler bei der Verbindung!");
 		}
 	}
+
 	public void kundenEdit(Kunde kunde) throws ClassNotFoundException, SQLException, IOException {
-		
-		//Properties-Datei einlesen
-		File propertiesFile = new File("props.properties");	
+
+		// Properties-Datei einlesen
+		File propertiesFile = new File("props.properties");
 		FileInputStream in = new FileInputStream(propertiesFile);
 		Properties properties = new Properties();
 		properties.load(in);
 		in.close();
-		
-		//Properties übertragen 
+
+		// Properties übertragen
 		String url = properties.getProperty("db.url");
 		String dbName = properties.getProperty("db.dbName");
 		String userName = properties.getProperty("db.userName");
@@ -101,37 +99,38 @@ public class DBKunde {
 		System.out.println("Connected to the database!\n");
 		Statement abfrageAnweisung = verbindung.createStatement();
 
-		String update = "UPDATE kunden SET Name='" + kunde.getName() + "' ,Email= '" + kunde.getEmail() + "' ,Telefon='" + kunde.getTelefon()
-				+ "' ,Strasse='" + kunde.getAdresse().getStrasse() + "' ,Nr='" + kunde.getAdresse().getNr() + "' ,Ort='" + kunde.getAdresse().getOrt()
-				+ "' ,Geburtstag='" + kunde.getGeburtstag() + "' ,plz='" + kunde.getAdresse().getPlz() + "' ,BezahlOption='" + kunde.getBezahlmethode()+"'" 
-				+ " WHERE KundenNummer=" + kunde.getKundennummer();
+		String update = "UPDATE kunden SET Name='" + kunde.getName() + "' ,Email= '" + kunde.getEmail() + "' ,Telefon='"
+				+ kunde.getTelefon() + "' ,Strasse='" + kunde.getAdresse().getStrasse() + "' ,Nr='"
+				+ kunde.getAdresse().getNr() + "' ,Ort='" + kunde.getAdresse().getOrt() + "' ,Geburtstag='"
+				+ kunde.getGeburtstag() + "' ,plz='" + kunde.getAdresse().getPlz() + "' ,BezahlOption='"
+				+ kunde.getBezahlmethode() + "'" + " WHERE KundenNummer="
+				+ Integer.toString(kunde.getNextKundenNummer());
 		abfrageAnweisung.execute(update);
 		abfrageAnweisung.close();
 	}
-	
-	public void kundeanlegen(String kundenNr, String name, String email, String telefon, String bezahlmethode, String geburtstag,
-			Adresse adresse) throws SQLException, ClassNotFoundException, IOException {
 
-		//Properties-Datei einlesen
-				File propertiesFile = new File("props.properties");	
-				FileInputStream in = new FileInputStream(propertiesFile);
-				Properties properties = new Properties();
-				properties.load(in);
-				in.close();
-				
-				//Properties übertragen 
-				String url = properties.getProperty("db.url");
-				String dbName = properties.getProperty("db.dbName");
-				String userName = properties.getProperty("db.userName");
-				String driver = properties.getProperty("db.driver");
-				String password = properties.getProperty("db.password");
-				
+	public void kundeanlegen(String kundenNr, String name, String email, String telefon, String bezahlmethode,
+			String geburtstag, Adresse adresse) throws SQLException, ClassNotFoundException, IOException {
+
+		// Properties-Datei einlesen
+		File propertiesFile = new File("props.properties");
+		FileInputStream in = new FileInputStream(propertiesFile);
+		Properties properties = new Properties();
+		properties.load(in);
+		in.close();
+
+		// Properties übertragen
+		String url = properties.getProperty("db.url");
+		String dbName = properties.getProperty("db.dbName");
+		String userName = properties.getProperty("db.userName");
+		String driver = properties.getProperty("db.driver");
+		String password = properties.getProperty("db.password");
+
 		Class.forName(driver);
 		Connection verbindung = DriverManager.getConnection(url + dbName, userName, password);
 		System.out.println("Connected to the database!\n");
 		Statement abfrageAnweisung = verbindung.createStatement();
 
-		
 		String query = "INSERT INTO kunden (KundenNummer, Name, Email, Telefon, Strasse, Nr, Ort, Geburtstag,plz, BezahlOption) VALUES ('"
 				+ kundenNr + "','" + name + "','" + email + "','" + telefon + "','" + adresse.getStrasse() + "','"
 				+ adresse.getNr() + "','" + adresse.getOrt() + "','" + geburtstag + "','" + adresse.getPlz() + "','"
@@ -139,24 +138,23 @@ public class DBKunde {
 		abfrageAnweisung.execute(query);
 		abfrageAnweisung.close();
 	}
-	
+
 	public void kundeloeschen(String kundenummer) throws SQLException, ClassNotFoundException, IOException {
-		
-		//Properties-Datei einlesen
-		File propertiesFile = new File("props.properties");	
+
+		// Properties-Datei einlesen
+		File propertiesFile = new File("props.properties");
 		FileInputStream in = new FileInputStream(propertiesFile);
 		Properties properties = new Properties();
 		properties.load(in);
 		in.close();
-		
-		//Properties übertragen 
+
+		// Properties übertragen
 		String url = properties.getProperty("db.url");
 		String dbName = properties.getProperty("db.dbName");
 		String userName = properties.getProperty("db.userName");
 		String driver = properties.getProperty("db.driver");
 		String password = properties.getProperty("db.password");
-		
-		
+
 		Class.forName(driver);
 		Connection verbindung = DriverManager.getConnection(url + dbName, userName, password);
 		System.out.println("Connected to the database!\n");
