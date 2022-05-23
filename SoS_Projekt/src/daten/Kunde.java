@@ -25,11 +25,12 @@ public class Kunde {
 	private final String userName = "db3";
 	private final String driver = "com.mysql.cj.jdbc.Driver";
 	private final String password = "!db3.winf22?";
+	DBKunde dbKunde = new DBKunde();
 
 //	private static ArrayList<Kunde> kunden = new ArrayList<Kunde>();
-	
-	public Kunde(String kundennummer, String name, String email, String telefon, String bezahlmethode, String geburtstag,
-			Adresse adresse) {
+
+	public Kunde(String kundennummer, String name, String email, String telefon, String bezahlmethode,
+			String geburtstag, Adresse adresse) {
 		this.name = name;
 		this.email = email;
 		this.telefon = telefon;
@@ -39,15 +40,14 @@ public class Kunde {
 		this.geburtstag = geburtstag;
 //		kundenCheck(this);
 	}
-	
-	public Kunde(String name, String email, String telefon, String bezahlmethode, String geburtstag,
-			Adresse adresse) {
+
+	public Kunde(String name, String email, String telefon, String bezahlmethode, String geburtstag, Adresse adresse) {
 		this.name = name;
 		this.email = email;
 		this.telefon = telefon;
 		this.adresse = adresse;
 		this.bezahlmethode = bezahlmethode;
-		//this.kundennummer = kundennummer;
+		// this.kundennummer = kundennummer;
 		this.geburtstag = geburtstag;
 //		kundenCheck(this);
 	}
@@ -66,25 +66,34 @@ public class Kunde {
 //		}
 //	}
 
-
-
 	public void kundeloeschen(String kundenummer) throws SQLException, ClassNotFoundException, IOException {
-		
-		DBKunde dbKunde = new DBKunde();
+
 		dbKunde.kundeloeschen(kundenummer);
 	}
 
-	public void kundeanlegen(String kundenNr, String name, String email, String telefon, String bezahlmethode, String geburtstag,
-			Adresse adresse) throws SQLException, ClassNotFoundException, IOException {
+	public void kundeanlegen(String kundenNr, String name, String email, String telefon, String bezahlmethode,
+			String geburtstag, Adresse adresse) throws SQLException, ClassNotFoundException, IOException {
 
-		DBKunde dbKunde = new DBKunde();
 		dbKunde.kundeanlegen(kundenNr, name, email, telefon, bezahlmethode, geburtstag, adresse);
-		
+
+	}
+
+	public void kundeanlegen(Kunde kunde) throws SQLException, ClassNotFoundException, IOException {
+
+		String name = kunde.getName();
+		String email = kunde.getEmail();
+		String telefon = kunde.getTelefon();
+		Adresse adresse = kunde.getAdresse();
+		String bezahlmethode = kunde.getBezahlmethode();
+		String kundenNr = kunde.getKundennummer();
+		String geburtstag = kunde.getGeburtstag();
+
+		dbKunde.kundeanlegen(kundenNr, name, email, telefon, bezahlmethode, geburtstag, adresse);
+
 	}
 
 	public void kundenEdit(Kunde kunde) throws ClassNotFoundException, SQLException, IOException {
 
-		DBKunde dbKunde = new DBKunde();
 		dbKunde.kundenEdit(kunde);
 
 	}
@@ -136,8 +145,6 @@ public class Kunde {
 	public String getGeburtstag() {
 		return geburtstag;
 	}
-	
-	
 
 //	public static ArrayList<Kunde> getKunden() {
 //		return kunden;
