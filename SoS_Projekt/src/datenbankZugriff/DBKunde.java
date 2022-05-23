@@ -55,29 +55,22 @@ public class DBKunde {
 				int kundenNummer = ergebnis.getInt("KundenNummer");
 				String name = ergebnis.getString("Name");
 				String e_Mail = ergebnis.getString("Email");
-				int telefon = ergebnis.getInt("Telefon");
+				String telefon = ergebnis.getString("Telefon");
 				String strase = ergebnis.getString("Strasse");
-				int nr = ergebnis.getInt("Nr");
+				String nr = ergebnis.getString("Nr");
 				String ort = ergebnis.getString("Ort");
 				String geburtstag = ergebnis.getString("Geburtstag");
-				int plz = ergebnis.getInt("plz");
+				String plz = ergebnis.getString("plz");
 				String bezahlmethode = ergebnis.getString("BezahlOption");
-				int bezahlmethodeInt = 0;
 
-				if (bezahlmethode.equals("Paypal")) {
-					bezahlmethodeInt = 1;
-				} else if (bezahlmethode.equals("Rechnung")) {
-					bezahlmethodeInt = 2;
-				} else if (bezahlmethode.equals("Lastschrift")) {
-					bezahlmethodeInt = 3;
-				}
+
 
 				// Kunde kunde = new Kunde(kundenNummer, name, e_Mail , telefon,
 				// bezahlmethodeInt, geburtstag,new Adresse(stra e, ort, plz, nr));
 
 				System.out.println("KundenNummer." + kundenNummer + " Name: " + name + ", Email: " + e_Mail
 						+ ", Telefon" + telefon + ", strasse " + strase + " " + nr + ", plz" + plz + ", geburtstag : "
-						+ geburtstag + ", bezahlmethode " + bezahlmethodeInt);
+						+ geburtstag + ", bezahlmethode " + bezahlmethode);
 			}
 
 			verbindung.close();

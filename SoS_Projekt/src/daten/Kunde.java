@@ -20,11 +20,6 @@ public class Kunde {
 	private String name, email, geburtstag;
 	private Adresse adresse;
 	private String bezahlmethode, kundennummer, telefon;
-	private final String url = "jdbc:mysql://3.69.96.96:3306/";
-	private final String dbName = "db3";
-	private final String userName = "db3";
-	private final String driver = "com.mysql.cj.jdbc.Driver";
-	private final String password = "!db3.winf22?";
 	DBKunde dbKunde = new DBKunde();
 
 //	private static ArrayList<Kunde> kunden = new ArrayList<Kunde>();

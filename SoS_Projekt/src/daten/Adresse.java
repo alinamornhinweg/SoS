@@ -2,10 +2,9 @@ package daten;
 
 public class Adresse {
 
-	private String strasse, ort;
-	private int plz, nr;
+	private String strasse, ort,plz, nr;
 
-	public Adresse(String strasse, String ort, int plz, int nr) {
+	public Adresse(String strasse, String ort, String plz, String nr) {
 		this.strasse = strasse;
 		this.ort = ort;
 		this.plz = plz;
@@ -28,19 +27,19 @@ public class Adresse {
 		this.ort = ort;
 	}
 
-	public int getPlz() {
+	public String getPlz() {
 		return plz;
 	}
 
-	public void setPlz(int plz) {
+	public void setPlz(String plz) {
 		this.plz = plz;
 	}
 
-	public int getNr() {
+	public String getNr() {
 		return nr;
 	}
 
-	public void setNr(int nr) {
+	public void setNr(String nr) {
 		this.nr = nr;
 	}
 

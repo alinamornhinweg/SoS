@@ -375,11 +375,11 @@ public class KundeAnlegen extends JFrame {
 			if(strasse.isEmpty() || !strasse.matches("[a-zA-Z -]+")) return;
 			
 			fehlerFeld = "Nr";
-			Integer nr =  Integer.valueOf(textFieldNr.getText());
+			String nr =  String.valueOf(textFieldNr.getText());
 			if(textFieldNr.getText().isEmpty() || !textFieldNr.getText().matches("[a-zA-Z -]+")) return;
 			
 			fehlerFeld = "Postleitzahl";
-			Integer plz =Integer.valueOf(textFieldPLZ.getText());
+			String plz =String.valueOf(textFieldPLZ.getText());
 			if(textFieldPLZ.getText().length() != 5) return;
 			
 			fehlerFeld = "Ort";
