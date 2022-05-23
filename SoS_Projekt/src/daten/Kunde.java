@@ -37,6 +37,18 @@ public class Kunde {
 		this.geburtstag = geburtstag;
 //		kundenCheck(this);
 	}
+	
+	public Kunde( String name, String email, String telefon, String bezahlmethode, String geburtstag,
+			Adresse adresse) {
+		this.name = name;
+		this.email = email;
+		this.telefon = telefon;
+		this.adresse = adresse;
+		this.bezahlmethode = bezahlmethode;
+		//this.kundennummer = kundennummer;
+		this.geburtstag = geburtstag;
+//		kundenCheck(this);
+	}
 
 //	public void kundenCheck(Kunde kunde) {
 //
@@ -70,7 +82,6 @@ public class Kunde {
 		String loeschen = "DELETE FROM kunden WHERE KundenNummer=" + kundenummer;
 		abfrageAnweisung.execute(loeschen);
 		abfrageAnweisung.close();
-
 	}
 
 	public void kundeanlegen(String kundenNr, String name, String email, String telefon, String bezahlmethode, String geburtstag,
