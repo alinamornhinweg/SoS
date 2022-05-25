@@ -53,9 +53,9 @@ public class KomponentenZugriff {
 
 				Komponente k = new Komponente(artikelnummer, art, anzahl, name, hersteller, beschreibung, preis);
 				//Komponente.artikelnummerGenerate(k);
-				LinkedList<Komponente> komponentenliste = new LinkedList<>();
-				komponentenliste.add(k);
-				System.out.println(komponentenliste);
+				
+				daten.KomponentenListe.getKomponentenliste().add(k);
+				//LinkedList<Komponente> komponentenliste = new LinkedList<>();
 
 			}
 

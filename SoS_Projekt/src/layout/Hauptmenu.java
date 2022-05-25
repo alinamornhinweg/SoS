@@ -98,6 +98,13 @@ public class Hauptmenu extends JFrame {
 		contentPane.add(Komponenten_panel);
 		
 		JButton KomponentenButton = new JButton("Komponenten");
+		KomponentenButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				KomponenteAnlegen kA= new KomponenteAnlegen();
+				kA.startKomponenteAnlegen();
+				setVisible(false);
+			}
+		});
 		KomponentenButton.setBackground(Color.ORANGE);
 		Komponenten_panel.add(KomponentenButton);
 		

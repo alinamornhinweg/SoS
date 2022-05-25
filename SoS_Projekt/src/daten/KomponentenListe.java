@@ -4,7 +4,15 @@ import java.util.LinkedList;
 
 public class KomponentenListe {
 	
-		LinkedList<Komponente> komponentenliste = new LinkedList<>();
+		static LinkedList<Komponente> komponentenliste = new LinkedList<>();
+
+		public static LinkedList<Komponente> getKomponentenliste() {
+			return komponentenliste;
+		}
+
+		
+		
+		
 		
 		
 }
