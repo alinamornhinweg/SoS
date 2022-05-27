@@ -51,7 +51,7 @@ public class DBKunde {
 
 			while (ergebnis.next()) {
 
-				int kundenNummer = ergebnis.getInt("KundenNummer");
+				String kundenNummer = ergebnis.getString("KundenNummer");
 				String name = ergebnis.getString("Name");
 				String e_Mail = ergebnis.getString("Email");
 				String telefon = ergebnis.getString("Telefon");
@@ -104,7 +104,7 @@ public class DBKunde {
 				+ kunde.getAdresse().getNr() + "' ,Ort='" + kunde.getAdresse().getOrt() + "' ,Geburtstag='"
 				+ kunde.getGeburtstag() + "' ,plz='" + kunde.getAdresse().getPlz() + "' ,BezahlOption='"
 				+ kunde.getBezahlmethode() + "'" + " WHERE KundenNummer="
-				+ Integer.toString(kunde.getNextKundenNummer());
+				+ kunde.getNextKundenNummer();
 		abfrageAnweisung.execute(update);
 		abfrageAnweisung.close();
 	}

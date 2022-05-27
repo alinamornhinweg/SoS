@@ -53,7 +53,7 @@ public class DBMetaDaten {
 						daten.Komponente.setNextNum(Integer.valueOf(pValue));
 						break;
 					case "KundenNextNumber":
-						daten.Kunde.setNextKundenNummer(Integer.valueOf(pValue));
+						daten.Kunde.setNextKundenNummer(String.valueOf(pValue));
 						break;
 					}
 				} catch (InputMismatchException | NumberFormatException e) {

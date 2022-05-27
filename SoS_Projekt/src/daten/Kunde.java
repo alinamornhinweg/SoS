@@ -21,7 +21,7 @@ public class Kunde {
 	private Adresse adresse;
 	private String bezahlmethode, telefon;
 	DBKunde dbKunde = new DBKunde();
-	private static int nextKundenNummer = 1000;
+	private static String nextKundenNummer = "K1000";
 
 //	private static ArrayList<Kunde> kunden = new ArrayList<Kunde>();
 
@@ -32,18 +32,18 @@ public class Kunde {
 		this.telefon = telefon;
 		this.adresse = adresse;
 		this.bezahlmethode = bezahlmethode;
-		this.nextKundenNummer = Integer.parseInt(kundennummer);
+		this.nextKundenNummer = kundennummer;
 		this.geburtstag = geburtstag;
 //		kundenCheck(this);
 	}
 
 	public Kunde(String name, String email, String telefon, String bezahlmethode, String geburtstag, Adresse adresse) {
+		this.nextKundenNummer = kundenummer(this.nextKundenNummer);
 		this.name = name;
 		this.email = email;
 		this.telefon = telefon;
 		this.adresse = adresse;
 		this.bezahlmethode = bezahlmethode;
-		// this.kundennummer = kundennummer;
 		this.geburtstag = geburtstag;
 //		kundenCheck(this);
 	}
@@ -81,7 +81,7 @@ public class Kunde {
 		String telefon = kunde.getTelefon();
 		Adresse adresse = kunde.getAdresse();
 		String bezahlmethode = kunde.getBezahlmethode();
-		String kundenNr =  Integer.toString(kunde.getNextKundenNummer());
+		String kundenNr = kunde.getNextKundenNummer();
 		String geburtstag = kunde.getGeburtstag();
 
 		dbKunde.kundeanlegen(kundenNr, name, email, telefon, bezahlmethode, geburtstag, adresse);
@@ -134,16 +134,26 @@ public class Kunde {
 		return geburtstag;
 	}
 
-	public static int getNextKundenNummer() {
+	public static String getNextKundenNummer() {
 		return nextKundenNummer;
 	}
 
-	public static void setNextKundenNummer(int nextKundenNummer) {
+	public static void setNextKundenNummer(String nextKundenNummer) {
 		Kunde.nextKundenNummer = nextKundenNummer;
 	}
 
 //	public static ArrayList<Kunde> getKunden() {
 //		return kunden;
 //	}
+
+	public static String kundenummer(String kennzahl) {
+
+		String[] kennzahlenSplit = kennzahl.split("K");
+
+		int result = Integer.parseInt(kennzahlenSplit[1]) + 1;
+
+		return "K" + Integer.toString(result);
+
+	}
 
 }
