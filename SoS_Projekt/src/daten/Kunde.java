@@ -19,9 +19,10 @@ public class Kunde {
 
 	private String name, email, geburtstag;
 	private Adresse adresse;
-	private String bezahlmethode, telefon;
+	private String bezahlmethode, telefon,Kundennummmer;
 	DBKunde dbKunde = new DBKunde();
 	private static String nextKundenNummer = "K1000";
+	
 
 //	private static ArrayList<Kunde> kunden = new ArrayList<Kunde>();
 
@@ -38,13 +39,15 @@ public class Kunde {
 	}
 
 	public Kunde(String name, String email, String telefon, String bezahlmethode, String geburtstag, Adresse adresse) {
-		this.nextKundenNummer = kundenummer(this.nextKundenNummer);
+		
 		this.name = name;
 		this.email = email;
 		this.telefon = telefon;
 		this.adresse = adresse;
 		this.bezahlmethode = bezahlmethode;
 		this.geburtstag = geburtstag;
+		Kundennummmer=this.nextKundenNummer;
+		this.nextKundenNummer = kundenummer(this.nextKundenNummer);
 //		kundenCheck(this);
 	}
 
@@ -81,7 +84,7 @@ public class Kunde {
 		String telefon = kunde.getTelefon();
 		Adresse adresse = kunde.getAdresse();
 		String bezahlmethode = kunde.getBezahlmethode();
-		String kundenNr = kunde.getNextKundenNummer();
+		String kundenNr = kunde.Kundennummmer;
 		String geburtstag = kunde.getGeburtstag();
 
 		dbKunde.kundeanlegen(kundenNr, name, email, telefon, bezahlmethode, geburtstag, adresse);
@@ -134,12 +137,15 @@ public class Kunde {
 		return geburtstag;
 	}
 
-	public static String getNextKundenNummer() {
-		return nextKundenNummer;
+	public String getKundenNummer() {
+		return this.Kundennummmer ;
 	}
 
+	public void setKundenNummer(String KundenNummer) {
+		this.Kundennummmer = nextKundenNummer;
+	}
 	public static void setNextKundenNummer(String nextKundenNummer) {
-		Kunde.nextKundenNummer = nextKundenNummer;
+		Kunde.nextKundenNummer= nextKundenNummer;
 	}
 
 //	public static ArrayList<Kunde> getKunden() {
@@ -153,6 +159,19 @@ public class Kunde {
 		int result = Integer.parseInt(kennzahlenSplit[1]) + 1;
 
 		return "K" + Integer.toString(result);
+
+	}
+
+	public static void main(String[] args) {
+
+	
+
+		ArrayList<Kunde> kundeTest = new ArrayList<Kunde>();
+		kundeTest.add(new Kunde("Test2", "", "", "", "", new Adresse("strase", "", "", "")));
+		kundeTest.add(new Kunde("Test3", "", "", "", "", new Adresse("strase", "", "", "")));
+		kundeTest.add(new Kunde("Test4", "", "", "", "", new Adresse("strase", "", "", "")));
+
+		kundeTest.stream().forEach(s -> System.out.println(s.getKundenNummer()));
 
 	}
 

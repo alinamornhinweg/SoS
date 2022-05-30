@@ -104,7 +104,7 @@ public class DBKunde {
 				+ kunde.getAdresse().getNr() + "' ,Ort='" + kunde.getAdresse().getOrt() + "' ,Geburtstag='"
 				+ kunde.getGeburtstag() + "' ,plz='" + kunde.getAdresse().getPlz() + "' ,BezahlOption='"
 				+ kunde.getBezahlmethode() + "'" + " WHERE KundenNummer="
-				+ kunde.getNextKundenNummer();
+				+ kunde.getKundenNummer();
 		abfrageAnweisung.execute(update);
 		abfrageAnweisung.close();
 	}
