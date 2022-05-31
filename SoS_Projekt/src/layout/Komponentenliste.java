@@ -39,7 +39,7 @@ public class Komponentenliste extends JFrame {
 	private JPanel contentPane;
 	private JTable table;
 
-	public static void main(String[] args) {
+	public static void startKomponentenliste(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -116,7 +116,7 @@ public class Komponentenliste extends JFrame {
 		
 	
 		Komponente Komponente = new Komponente();
-		TableRowSorter myTableRowSorter2 = new TableRowSorter((TableModel) Komponente);
+		TableRowSorter myTableRowSorter2 = new TableRowSorter( Komponente);
 		table = new JTable();
 		table.setFont(new Font("ITF Devanagari", Font.PLAIN, 12));
 		table.setModel((TableModel) Komponente);
