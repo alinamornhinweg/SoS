@@ -1,6 +1,10 @@
 package daten;
 
-public class Komponente {
+import java.util.ArrayList;
+
+import javax.swing.table.AbstractTableModel;
+
+public class Komponente extends AbstractTableModel{
 
 	private String artikelnummer;
 	private String art;
@@ -142,6 +146,56 @@ public class Komponente {
 		
 
 	}
+	
+public ArrayList<Komponente> komponenten= new ArrayList<>();
+	
+
+//	void probeKomponenten() {
+//		probekomponenten.add(new Komponente("10002", "Rechner", 10, "TEST4", "Hans", "sehr gutes Produkt", 300));
+//		probekomponenten.add(new Komponente( "10003", "Rechner", 3, "TEST", "Peter", "macht was es soll", 400));
+//	
+//	}
+	
+	public String getColumnName (int column) {
+		if (column == 0) return "Arikel Nr.";
+		if (column == 1) return "Art";
+		if (column == 2) return "Anzahl";
+		if (column == 3) return "Name";
+		if (column == 4) return "Hersteller";
+		if (column == 5) return "Beschreibung";
+		if (column == 6) return "Preis";
+		throw new IllegalStateException();
+	}
+	
+
+	public int getColumnCount() {
+		return 6;
+	}
+	
+
+	public int getRowCount() {
+		return komponenten.size();
+	}
+	
+
+
+	public Object getValueAt(int row, int column) {
+		Komponente kom = komponenten.get(row);
+		if (column == 0) return kom.getArtikelnummer();
+		if (column == 1) return kom.getArt();
+		if (column == 2) return kom.getAnzahl();
+		if (column == 3) return kom.getName();
+		if (column == 4) return kom.getHersteller();
+		if (column == 5) return kom.getBeschreibung();
+		if (column == 6) return kom.getPreis();
+		throw new IllegalStateException();
+	}
+	
+	void addKomponente(Komponente kom) {
+		komponenten.add(kom);
+		fireTableDataChanged();
+	}
+
 	
 	
 
