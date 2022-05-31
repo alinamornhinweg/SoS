@@ -31,6 +31,10 @@ public class Komponente {
 		this.preis = preis;
 	}
 
+	public Komponente() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public String getArtikelnummer() {
 		return artikelnummer;
 	}
