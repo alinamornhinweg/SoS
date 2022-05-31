@@ -65,6 +65,14 @@ public class Komponentenliste extends JFrame {
 		JScrollPane scrollPane = new JScrollPane();
 		
 		JButton btn_zurueck = new JButton("zurück");
+		btn_zurueck.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Hauptmenu menu = new Hauptmenu();
+				menu.setVisible(true);
+				//frame.setVisible(false);
+				dispose();
+			}
+		});
 		
 		JButton btn_ansicht = new JButton("Ansicht");
 		

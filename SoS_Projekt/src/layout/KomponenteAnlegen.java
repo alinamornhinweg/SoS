@@ -276,7 +276,7 @@ public class KomponenteAnlegen extends JFrame {
 				Hauptmenu menu = new Hauptmenu();
 				menu.setVisible(true);
 				//frame.setVisible(false);
-				frame.dispose();
+				dispose();
 			}
 		});
 		GridBagConstraints gbc_btnBack = new GridBagConstraints();

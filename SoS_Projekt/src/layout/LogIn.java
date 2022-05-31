@@ -137,7 +137,7 @@ public class LogIn extends JFrame {
 				//JOptionPane.showMessageDialog(null, "Anmeldung erfolgreich.", "Anmeldung", JOptionPane.INFORMATION_MESSAGE);
 				Hauptmenu menu = new Hauptmenu();
 				menu.setVisible(true);
-				frame.dispose();
+				dispose();
 				return;
 			}
 		}

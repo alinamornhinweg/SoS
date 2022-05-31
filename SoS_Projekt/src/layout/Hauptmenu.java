@@ -90,6 +90,14 @@ public class Hauptmenu extends JFrame {
 		JButton AuftreageButton = new JButton("Auftreage");
 		AuftreageButton.setBackground(Color.ORANGE);
 		AuftreagePanel.add(AuftreageButton);
+		AuftreageButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Auftragsliste auftragsListe = new Auftragsliste();
+				auftragsListe.setVisible(true);
+				//frame.setVisible(false);
+				dispose();
+			}
+		});
 		
 		JPanel Komponenten_panel = new JPanel();
 		Komponenten_panel.setBorder(new LineBorder(Color.WHITE));
@@ -100,9 +108,10 @@ public class Hauptmenu extends JFrame {
 		JButton KomponentenButton = new JButton("Komponenten");
 		KomponentenButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				KomponenteAnlegen kA= new KomponenteAnlegen();
-				kA.startKomponenteAnlegen();
-				setVisible(false);
+				Komponentenliste komponentenListe = new Komponentenliste();
+				komponentenListe.setVisible(true);
+				//frame.setVisible(false);
+				dispose();
 			}
 		});
 		KomponentenButton.setBackground(Color.ORANGE);
