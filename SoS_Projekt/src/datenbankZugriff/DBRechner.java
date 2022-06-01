@@ -6,13 +6,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.LinkedList;
 import java.util.Properties;
 
-import daten.Komponente;
 
-public class KomponentenZugriff {
-
+public class DBRechner {
 	public static void loadKomponenten() {
 
 		Connection connect = null;
@@ -40,22 +37,11 @@ public class KomponentenZugriff {
 			Statement stm = connect.createStatement();
 			ResultSet result;
 			result = stm.executeQuery(
-					"SELECT artikelnummer, name, hersteller, preis, art, anzahl, beschreibung FROM komponenten");
+					"SELECT * FROM rechner");
 
 			while (result.next()) {
-				String artikelnummer = result.getString("artikelnummer");
-				String name = result.getString("name");
-				String hersteller = result.getString("hersteller");
-				double preis = result.getDouble("preis");
-				String art = result.getString("art");
-				int anzahl = result.getInt("anzahl");
-				String beschreibung = result.getString("beschreibung");
-
-				Komponente k = new Komponente(artikelnummer, art, anzahl, name, hersteller, beschreibung, preis);
-				//Komponente.artikelnummerGenerate(k);
+				String komponente = result.getString("komponente");
 				
-				daten.KomponentenListe.addKomponente(k);;
-				//LinkedList<Komponente> komponentenliste = new LinkedList<>();
 
 			}
 

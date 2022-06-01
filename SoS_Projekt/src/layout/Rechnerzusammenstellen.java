@@ -247,7 +247,7 @@ public class Rechnerzusammenstellen extends JFrame {
 		
 		JLabel CpuPreisLabel = new JLabel("");
 		
-		JLabel RechnungLabel = new JLabel("€");
+		JLabel RechnungLabel = new JLabel("ï¿½");
 		
 		
 
@@ -360,9 +360,9 @@ public class Rechnerzusammenstellen extends JFrame {
 //
 //		Komponente.getKomponentenliste().add(new Komponente("RAM", 12, "Apple 444", "12ram", "Gut", 32.2));
 
-		for (int i = 0, b = 0; i < KomponentenListe.getKomponentenliste().size(); i++) {
-			if (KomponentenListe.getKomponentenliste().get(i).getArt().equals("CPU")) {
-				cpuBox.insertItemAt(KomponentenListe.getKomponentenliste().get(i).getName(), b);
+		for (int i = 0, b = 0; i < KomponentenListe.getKomponentenListe().size(); i++) {
+			if (KomponentenListe.getKomponentenListe().get(i).getArt().equals("CPU")) {
+				cpuBox.insertItemAt(KomponentenListe.getKomponentenListe().get(i).getName(), b);
 				b++;
 				
 				cpuBox.addItemListener(new ItemListener() {
@@ -370,9 +370,9 @@ public class Rechnerzusammenstellen extends JFrame {
 						if (e.getStateChange() == ItemEvent.SELECTED) {
 							if(!cpuBox.getSelectedItem().toString().equals("")) {
 								CpuWahlLabel.setText(cpuBox.getSelectedItem().toString());
-								for (int i = 0, b = 0; i < KomponentenListe.getKomponentenliste().size(); i++) {
-									if(KomponentenListe.getKomponentenliste().get(i).getName().equals(cpuBox.getSelectedItem().toString())) {
-										CpuPreisLabel.setText( Double.toString(KomponentenListe.getKomponentenliste().get(i).getPreis()));
+								for (int i = 0, b = 0; i < KomponentenListe.getKomponentenListe().size(); i++) {
+									if(KomponentenListe.getKomponentenListe().get(i).getName().equals(cpuBox.getSelectedItem().toString())) {
+										CpuPreisLabel.setText( Double.toString(KomponentenListe.getKomponentenListe().get(i).getPreis()));
 									}
 								}
 								
@@ -386,9 +386,9 @@ public class Rechnerzusammenstellen extends JFrame {
 			}
 		}
 
-		for (int i = 0, b = 0; i < KomponentenListe.getKomponentenliste().size(); i++) {
-			if (KomponentenListe.getKomponentenliste().get(i).getArt().equals("RAM")) {
-				ramBox.insertItemAt(KomponentenListe.getKomponentenliste().get(i).getName(), b);
+		for (int i = 0, b = 0; i < KomponentenListe.getKomponentenListe().size(); i++) {
+			if (KomponentenListe.getKomponentenListe().get(i).getArt().equals("RAM")) {
+				ramBox.insertItemAt(KomponentenListe.getKomponentenListe().get(i).getName(), b);
 				b++;
 				
 				ramBox.addItemListener(new ItemListener() {
@@ -396,9 +396,9 @@ public class Rechnerzusammenstellen extends JFrame {
 						if (e.getStateChange() == ItemEvent.SELECTED) {
 							if(!ramBox.getSelectedItem().toString().equals("")) {
 								RamWahlLabel.setText(ramBox.getSelectedItem().toString());
-								for (int i = 0, b = 0; i < KomponentenListe.getKomponentenliste().size(); i++) {
-									if(KomponentenListe.getKomponentenliste().get(i).getName().equals(ramBox.getSelectedItem().toString())) {
-										RamPreisLabel.setText( Double.toString(KomponentenListe.getKomponentenliste().get(i).getPreis()));
+								for (int i = 0, b = 0; i < KomponentenListe.getKomponentenListe().size(); i++) {
+									if(KomponentenListe.getKomponentenListe().get(i).getName().equals(ramBox.getSelectedItem().toString())) {
+										RamPreisLabel.setText( Double.toString(KomponentenListe.getKomponentenListe().get(i).getPreis()));
 									}
 								}
 							}
@@ -408,9 +408,9 @@ public class Rechnerzusammenstellen extends JFrame {
 			}
 		}
 		
-		for (int i = 0 , b = 0; i < KomponentenListe.getKomponentenliste().size(); i++) {
-			if (KomponentenListe.getKomponentenliste().get(i).getArt().equals("SSD")) {
-				ssdBox.insertItemAt(KomponentenListe.getKomponentenliste().get(i).getName(), b);
+		for (int i = 0 , b = 0; i < KomponentenListe.getKomponentenListe().size(); i++) {
+			if (KomponentenListe.getKomponentenListe().get(i).getArt().equals("SSD")) {
+				ssdBox.insertItemAt(KomponentenListe.getKomponentenListe().get(i).getName(), b);
 				b++;
 				
 				ssdBox.addItemListener(new ItemListener() {
@@ -418,9 +418,9 @@ public class Rechnerzusammenstellen extends JFrame {
 						if (e.getStateChange() == ItemEvent.SELECTED) {
 							if(!ssdBox.getSelectedItem().toString().equals("")) {
 								SsdWahlLabel.setText(ssdBox.getSelectedItem().toString());
-								for (int i = 0, b = 0; i < KomponentenListe.getKomponentenliste().size(); i++) {
-									if(KomponentenListe.getKomponentenliste().get(i).getName().equals(ssdBox.getSelectedItem().toString())) {
-										SsdPreisLabel.setText( Double.toString(KomponentenListe.getKomponentenliste().get(i).getPreis()));
+								for (int i = 0, b = 0; i < KomponentenListe.getKomponentenListe().size(); i++) {
+									if(KomponentenListe.getKomponentenListe().get(i).getName().equals(ssdBox.getSelectedItem().toString())) {
+										SsdPreisLabel.setText( Double.toString(KomponentenListe.getKomponentenListe().get(i).getPreis()));
 									}
 								}
 							}
@@ -430,9 +430,9 @@ public class Rechnerzusammenstellen extends JFrame {
 			}
 		}
 		
-		for (int i = 0, b = 0; i < KomponentenListe.getKomponentenliste().size(); i++) {
-			if (KomponentenListe.getKomponentenliste().get(i).getArt().equals("HDD")) {
-				hddBox.insertItemAt(KomponentenListe.getKomponentenliste().get(i).getName(), b);
+		for (int i = 0, b = 0; i < KomponentenListe.getKomponentenListe().size(); i++) {
+			if (KomponentenListe.getKomponentenListe().get(i).getArt().equals("HDD")) {
+				hddBox.insertItemAt(KomponentenListe.getKomponentenListe().get(i).getName(), b);
 				b++;
 				
 				hddBox.addItemListener(new ItemListener() {
@@ -440,9 +440,9 @@ public class Rechnerzusammenstellen extends JFrame {
 						if (e.getStateChange() == ItemEvent.SELECTED) {
 							if(!hddBox.getSelectedItem().toString().equals("")) {
 								HddWahlLabel.setText(hddBox.getSelectedItem().toString());
-								for (int i = 0, b = 0; i < KomponentenListe.getKomponentenliste().size(); i++) {
-									if(KomponentenListe.getKomponentenliste().get(i).getName().equals(hddBox.getSelectedItem().toString())) {
-										HddPreisLabel.setText( Double.toString(KomponentenListe.getKomponentenliste().get(i).getPreis()));
+								for (int i = 0, b = 0; i < KomponentenListe.getKomponentenListe().size(); i++) {
+									if(KomponentenListe.getKomponentenListe().get(i).getName().equals(hddBox.getSelectedItem().toString())) {
+										HddPreisLabel.setText( Double.toString(KomponentenListe.getKomponentenListe().get(i).getPreis()));
 									}
 								}
 							}
@@ -452,9 +452,9 @@ public class Rechnerzusammenstellen extends JFrame {
 			}
 		}
 		
-		for (int i = 0, b = 0; i < KomponentenListe.getKomponentenliste().size(); i++) {
-			if (KomponentenListe.getKomponentenliste().get(i).getArt().equals("Grafikkarte")) {
-				grafikkarteBox.insertItemAt(KomponentenListe.getKomponentenliste().get(i).getName(), b);
+		for (int i = 0, b = 0; i < KomponentenListe.getKomponentenListe().size(); i++) {
+			if (KomponentenListe.getKomponentenListe().get(i).getArt().equals("Grafikkarte")) {
+				grafikkarteBox.insertItemAt(KomponentenListe.getKomponentenListe().get(i).getName(), b);
 				b++;
 				
 				grafikkarteBox.addItemListener(new ItemListener() {
@@ -462,9 +462,9 @@ public class Rechnerzusammenstellen extends JFrame {
 						if (e.getStateChange() == ItemEvent.SELECTED) {
 							if(!grafikkarteBox.getSelectedItem().toString().equals("")) {
 								GrafikkarteWahlLabel.setText(grafikkarteBox.getSelectedItem().toString());
-								for (int i = 0, b = 0; i < KomponentenListe.getKomponentenliste().size(); i++) {
-									if(KomponentenListe.getKomponentenliste().get(i).getName().equals(grafikkarteBox.getSelectedItem().toString())) {
-										GrafikkartePreisLabel.setText( Double.toString(KomponentenListe.getKomponentenliste().get(i).getPreis()));
+								for (int i = 0, b = 0; i < KomponentenListe.getKomponentenListe().size(); i++) {
+									if(KomponentenListe.getKomponentenListe().get(i).getName().equals(grafikkarteBox.getSelectedItem().toString())) {
+										GrafikkartePreisLabel.setText( Double.toString(KomponentenListe.getKomponentenListe().get(i).getPreis()));
 									}
 								}
 								
@@ -476,9 +476,9 @@ public class Rechnerzusammenstellen extends JFrame {
 			}
 		}
 		
-		for (int i = 0, b = 0; i < KomponentenListe.getKomponentenliste().size(); i++) {
-			if (KomponentenListe.getKomponentenliste().get(i).getArt().equals("Prozesslüfter")) {
-				prozesslufterBox.insertItemAt(KomponentenListe.getKomponentenliste().get(i).getName(), b);
+		for (int i = 0, b = 0; i < KomponentenListe.getKomponentenListe().size(); i++) {
+			if (KomponentenListe.getKomponentenListe().get(i).getArt().equals("Prozesslï¿½fter")) {
+				prozesslufterBox.insertItemAt(KomponentenListe.getKomponentenListe().get(i).getName(), b);
 				b++;
 				
 				prozesslufterBox.addItemListener(new ItemListener() {
@@ -486,9 +486,9 @@ public class Rechnerzusammenstellen extends JFrame {
 						if (e.getStateChange() == ItemEvent.SELECTED) {
 							if(!prozesslufterBox.getSelectedItem().toString().equals("")) {
 								ProzesslufterWahlLabel.setText(prozesslufterBox.getSelectedItem().toString());
-								for (int i = 0, b = 0; i < KomponentenListe.getKomponentenliste().size(); i++) {
-									if(KomponentenListe.getKomponentenliste().get(i).getName().equals(prozesslufterBox.getSelectedItem().toString())) {
-										ProzesslufterPreisLabel.setText( Double.toString(KomponentenListe.getKomponentenliste().get(i).getPreis()));
+								for (int i = 0, b = 0; i < KomponentenListe.getKomponentenListe().size(); i++) {
+									if(KomponentenListe.getKomponentenListe().get(i).getName().equals(prozesslufterBox.getSelectedItem().toString())) {
+										ProzesslufterPreisLabel.setText( Double.toString(KomponentenListe.getKomponentenListe().get(i).getPreis()));
 									}
 								}
 							}
@@ -498,9 +498,9 @@ public class Rechnerzusammenstellen extends JFrame {
 			}
 		}
 		
-		for (int i = 0, b = 0; i < KomponentenListe.getKomponentenliste().size(); i++) {
-			if (KomponentenListe.getKomponentenliste().get(i).getArt().equals("Netzteil")) {
-				netzteilBox.insertItemAt(KomponentenListe.getKomponentenliste().get(i).getName(), b);
+		for (int i = 0, b = 0; i < KomponentenListe.getKomponentenListe().size(); i++) {
+			if (KomponentenListe.getKomponentenListe().get(i).getArt().equals("Netzteil")) {
+				netzteilBox.insertItemAt(KomponentenListe.getKomponentenListe().get(i).getName(), b);
 				b++;
 				
 				netzteilBox.addItemListener(new ItemListener() {
@@ -508,9 +508,9 @@ public class Rechnerzusammenstellen extends JFrame {
 						if (e.getStateChange() == ItemEvent.SELECTED) {
 							if(!netzteilBox.getSelectedItem().toString().equals("")) {
 								NetzteilWahlLabel.setText(netzteilBox.getSelectedItem().toString());
-								for (int i = 0, b = 0; i < KomponentenListe.getKomponentenliste().size(); i++) {
-									if(KomponentenListe.getKomponentenliste().get(i).getName().equals(netzteilBox.getSelectedItem().toString())) {
-										NetzteilPreisLabel.setText( Double.toString(KomponentenListe.getKomponentenliste().get(i).getPreis()));
+								for (int i = 0, b = 0; i < KomponentenListe.getKomponentenListe().size(); i++) {
+									if(KomponentenListe.getKomponentenListe().get(i).getName().equals(netzteilBox.getSelectedItem().toString())) {
+										NetzteilPreisLabel.setText( Double.toString(KomponentenListe.getKomponentenListe().get(i).getPreis()));
 									}
 								}
 							}
@@ -520,9 +520,9 @@ public class Rechnerzusammenstellen extends JFrame {
 			}
 		}
 		
-		for (int i = 0, b = 0; i < KomponentenListe.getKomponentenliste().size(); i++) {
-			if (KomponentenListe.getKomponentenliste().get(i).getArt().equals("Gehäuse")) {
-				gehauseBox.insertItemAt(KomponentenListe.getKomponentenliste().get(i).getName(), b);
+		for (int i = 0, b = 0; i < KomponentenListe.getKomponentenListe().size(); i++) {
+			if (KomponentenListe.getKomponentenListe().get(i).getArt().equals("Gehï¿½use")) {
+				gehauseBox.insertItemAt(KomponentenListe.getKomponentenListe().get(i).getName(), b);
 				b++;
 				
 				gehauseBox.addItemListener(new ItemListener() {
@@ -530,9 +530,9 @@ public class Rechnerzusammenstellen extends JFrame {
 						if (e.getStateChange() == ItemEvent.SELECTED) {
 							if(!gehauseBox.getSelectedItem().toString().equals("")) {
 								GehauseWahlLabel.setText(gehauseBox.getSelectedItem().toString());
-								for (int i = 0, b = 0; i < KomponentenListe.getKomponentenliste().size(); i++) {
-									if(KomponentenListe.getKomponentenliste().get(i).getName().equals(gehauseBox.getSelectedItem().toString())) {
-										GehausePreisLabel.setText( Double.toString(KomponentenListe.getKomponentenliste().get(i).getPreis()));
+								for (int i = 0, b = 0; i < KomponentenListe.getKomponentenListe().size(); i++) {
+									if(KomponentenListe.getKomponentenListe().get(i).getName().equals(gehauseBox.getSelectedItem().toString())) {
+										GehausePreisLabel.setText( Double.toString(KomponentenListe.getKomponentenListe().get(i).getPreis()));
 									}
 								}
 							}

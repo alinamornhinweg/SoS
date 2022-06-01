@@ -64,7 +64,7 @@ public class Komponentenliste extends JFrame {
 		
 		JScrollPane scrollPane = new JScrollPane();
 		
-		JButton btn_zurueck = new JButton("zurück");
+		JButton btn_zurueck = new JButton("Zurück");
 		btn_zurueck.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Hauptmenu menu = new Hauptmenu();
@@ -74,9 +74,17 @@ public class Komponentenliste extends JFrame {
 			}
 		});
 		
-		JButton btn_ansicht = new JButton("Ansicht");
+		JButton btnLoeschen = new JButton("Löschen");
 		
-		JButton btn_bearbeiten = new JButton("Bearbeiten");
+		JButton btnHinzufuegen = new JButton("Hinzufügen");
+		btnHinzufuegen.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				KomponenteAnlegen komponenteAnlegen = new KomponenteAnlegen();
+				komponenteAnlegen.setVisible(true);
+				//frame.setVisible(false);
+				dispose();
+			}
+		});
 		
 		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
@@ -94,9 +102,9 @@ public class Komponentenliste extends JFrame {
 								.addGroup(gl_contentPane.createSequentialGroup()
 									.addComponent(btn_zurueck)
 									.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-									.addComponent(btn_bearbeiten)
+									.addComponent(btnHinzufuegen)
 									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(btn_ansicht)))))
+									.addComponent(btnLoeschen)))))
 					.addContainerGap(15, Short.MAX_VALUE))
 		);
 		gl_contentPane.setVerticalGroup(
@@ -109,8 +117,8 @@ public class Komponentenliste extends JFrame {
 					.addGap(18)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btn_zurueck)
-						.addComponent(btn_ansicht)
-						.addComponent(btn_bearbeiten))
+						.addComponent(btnLoeschen)
+						.addComponent(btnHinzufuegen))
 					.addGap(23))
 		);
 		

@@ -1,14 +1,20 @@
 package daten;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
 public class KomponentenListe {
 	
-		static LinkedList<Komponente> komponentenliste = new LinkedList<>();
+	private static List<Komponente> komponentenListe = new ArrayList<Komponente>();
 
-		public static LinkedList<Komponente> getKomponentenliste() {
-			return komponentenliste;
-		}
+	public static void addKomponente(Komponente komponente) {
+		komponentenListe.add(komponente);
+	}
+	
+	public static List<Komponente> getKomponentenListe() {
+		return komponentenListe;
+	}
 
 		
 		
