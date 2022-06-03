@@ -24,7 +24,7 @@ public class Kunde {
 	private static String nextKundenNummer = "K1000";
 	
 
-//	private static ArrayList<Kunde> kunden = new ArrayList<Kunde>();
+	private static ArrayList<Kunde> kunden = new ArrayList<Kunde>();
 
 	public Kunde(String kundennummer, String name, String email, String telefon, String bezahlmethode,
 			String geburtstag, Adresse adresse) {
@@ -35,7 +35,7 @@ public class Kunde {
 		this.bezahlmethode = bezahlmethode;
 		this.nextKundenNummer = kundennummer;
 		this.geburtstag = geburtstag;
-//		kundenCheck(this);
+		
 	}
 
 	public Kunde(String name, String email, String telefon, String bezahlmethode, String geburtstag, Adresse adresse) {
@@ -48,7 +48,7 @@ public class Kunde {
 		this.geburtstag = geburtstag;
 		Kundennummmer=this.nextKundenNummer;
 		this.nextKundenNummer = kundenummer(this.nextKundenNummer);
-//		kundenCheck(this);
+
 	}
 
 
@@ -59,6 +59,7 @@ public class Kunde {
 
 	public void kundeanlegen(String kundenNr, String name, String email, String telefon, String bezahlmethode,
 			String geburtstag, Adresse adresse) throws SQLException, ClassNotFoundException, IOException {
+		kunden.add(new Kunde(name, email, telefon, bezahlmethode, geburtstag, adresse));
 
 		dbKunde.kundeanlegen(kundenNr, name, email, telefon, bezahlmethode, geburtstag, adresse);
 
@@ -73,6 +74,7 @@ public class Kunde {
 		String bezahlmethode = kunde.getBezahlmethode();
 		String kundenNr = kunde.Kundennummmer;
 		String geburtstag = kunde.getGeburtstag();
+		kunden.add(new Kunde(name, email, telefon, bezahlmethode, geburtstag, adresse));
 
 		dbKunde.kundeanlegen(kundenNr, name, email, telefon, bezahlmethode, geburtstag, adresse);
 
