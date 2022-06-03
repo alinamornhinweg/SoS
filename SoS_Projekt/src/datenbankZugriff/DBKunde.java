@@ -62,8 +62,8 @@ public class DBKunde {
 				String plz = ergebnis.getString("plz");
 				String bezahlmethode = ergebnis.getString("BezahlOption");
 
-				// Kunde kunde = new Kunde(kundenNummer, name, e_Mail , telefon,
-				// bezahlmethodeInt, geburtstag,new Adresse(stra e, ort, plz, nr));
+				daten.Kunde.kundencheck(new Kunde(kundenNummer, name, e_Mail, telefon, bezahlmethode, geburtstag,
+						new Adresse(strase, ort, plz, nr)));
 
 				System.out.println("KundenNummer." + kundenNummer + " Name: " + name + ", Email: " + e_Mail
 						+ ", Telefon" + telefon + ", strasse " + strase + " " + nr + ", plz" + plz + ", geburtstag : "
@@ -103,8 +103,7 @@ public class DBKunde {
 				+ kunde.getTelefon() + "' ,Strasse='" + kunde.getAdresse().getStrasse() + "' ,Nr='"
 				+ kunde.getAdresse().getNr() + "' ,Ort='" + kunde.getAdresse().getOrt() + "' ,Geburtstag='"
 				+ kunde.getGeburtstag() + "' ,plz='" + kunde.getAdresse().getPlz() + "' ,BezahlOption='"
-				+ kunde.getBezahlmethode() + "'" + " WHERE KundenNummer="
-				+ kunde.getKundenNummer();
+				+ kunde.getBezahlmethode() + "'" + " WHERE KundenNummer=" + kunde.getKundenNummer();
 		abfrageAnweisung.execute(update);
 		abfrageAnweisung.close();
 	}

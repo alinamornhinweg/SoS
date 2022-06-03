@@ -19,10 +19,9 @@ public class Kunde {
 
 	private String name, email, geburtstag;
 	private Adresse adresse;
-	private String bezahlmethode, telefon,Kundennummmer;
+	private String bezahlmethode, telefon, kundennummmer;
 	DBKunde dbKunde = new DBKunde();
 	private static String nextKundenNummer = "K1000";
-	
 
 	private static ArrayList<Kunde> kunden = new ArrayList<Kunde>();
 
@@ -33,24 +32,41 @@ public class Kunde {
 		this.telefon = telefon;
 		this.adresse = adresse;
 		this.bezahlmethode = bezahlmethode;
-		this.nextKundenNummer = kundennummer;
+		this.kundennummmer = kundennummer;
 		this.geburtstag = geburtstag;
-		
+
 	}
 
 	public Kunde(String name, String email, String telefon, String bezahlmethode, String geburtstag, Adresse adresse) {
-		
+
 		this.name = name;
 		this.email = email;
 		this.telefon = telefon;
 		this.adresse = adresse;
 		this.bezahlmethode = bezahlmethode;
 		this.geburtstag = geburtstag;
-		Kundennummmer=this.nextKundenNummer;
+		kundennummmer = this.nextKundenNummer;
 		this.nextKundenNummer = kundenummer(this.nextKundenNummer);
-
 	}
 
+	public static void kundencheck(Kunde neuerKunde) {
+		boolean vorhanden = true;
+		if (kunden.size() != 0) {
+			for (Kunde kunde : kunden) {
+				if (kunde.getKundenNummer().equals(neuerKunde.getKundenNummer())) {
+					vorhanden = false;
+					System.out.println("Warnung: Doppelter Kunde angelegt!");
+				}
+
+			}
+			if (vorhanden) {
+				kunden.add(neuerKunde);
+			}
+		} else {
+			kunden.add(neuerKunde);
+		}
+
+	}
 
 	public void kundeloeschen(String kundenummer) throws SQLException, ClassNotFoundException, IOException {
 
@@ -72,7 +88,7 @@ public class Kunde {
 		String telefon = kunde.getTelefon();
 		Adresse adresse = kunde.getAdresse();
 		String bezahlmethode = kunde.getBezahlmethode();
-		String kundenNr = kunde.Kundennummmer;
+		String kundenNr = kunde.kundennummmer;
 		String geburtstag = kunde.getGeburtstag();
 		kunden.add(new Kunde(name, email, telefon, bezahlmethode, geburtstag, adresse));
 
@@ -127,25 +143,26 @@ public class Kunde {
 	}
 
 	public String getKundenNummer() {
-		return this.Kundennummmer ;
+		return this.kundennummmer;
 	}
 
 	public void setKundenNummer(String KundenNummer) {
-		this.Kundennummmer = nextKundenNummer;
+		this.kundennummmer = nextKundenNummer;
 	}
+
 	public static void setNextKundenNummer(String nextKundenNummer) {
-		Kunde.nextKundenNummer= nextKundenNummer;
+		Kunde.nextKundenNummer = nextKundenNummer;
 	}
 
 	public static Kunde getKunde(String kundenNummer) {
-		
-		for(int i = 0; i < kunden.size(); i++) {
-			if(kunden.get(i).getKundenNummer().equals(kundenNummer)) {
+
+		for (int i = 0; i < kunden.size(); i++) {
+			if (kunden.get(i).getKundenNummer().equals(kundenNummer)) {
 				return kunden.get(i);
 			}
 		}
 		return null;
-	}	
+	}
 
 	public static String kundenummer(String kennzahl) {
 
@@ -154,19 +171,6 @@ public class Kunde {
 		int result = Integer.parseInt(kennzahlenSplit[1]) + 1;
 
 		return "K" + Integer.toString(result);
-
-	}
-
-	public static void main(String[] args) {
-
-	
-
-		ArrayList<Kunde> kundeTest = new ArrayList<Kunde>();
-		kundeTest.add(new Kunde("Test2", "", "", "", "", new Adresse("strase", "", "", "")));
-		kundeTest.add(new Kunde("Test3", "", "", "", "", new Adresse("strase", "", "", "")));
-		kundeTest.add(new Kunde("Test4", "", "", "", "", new Adresse("strase", "", "", "")));
-
-		kundeTest.stream().forEach(s -> System.out.println(s.getKundenNummer()));
 
 	}
 
