@@ -66,7 +66,7 @@ public class Hauptmenu extends JFrame {
 		JPanel Kunden_panel = new JPanel();
 		Kunden_panel.setBorder(new LineBorder(Color.WHITE));
 		Kunden_panel.setBackground(new Color(204, 204, 153));
-		Kunden_panel.setBounds(0, 184, 271, 35);
+		Kunden_panel.setBounds(0, 143, 271, 35);
 		contentPane.add(Kunden_panel);
 		
 		JButton KundenButton = new JButton("Kunden");
@@ -84,7 +84,7 @@ public class Hauptmenu extends JFrame {
 		JPanel AuftreagePanel = new JPanel();
 		AuftreagePanel.setBorder(new LineBorder(Color.WHITE));
 		AuftreagePanel.setBackground(new Color(204, 204, 153));
-		AuftreagePanel.setBounds(0, 219, 271, 35);
+		AuftreagePanel.setBounds(0, 183, 271, 35);
 		contentPane.add(AuftreagePanel);
 		
 		JButton AuftreageButton = new JButton("Auftreage");
@@ -102,7 +102,7 @@ public class Hauptmenu extends JFrame {
 		JPanel Komponenten_panel = new JPanel();
 		Komponenten_panel.setBorder(new LineBorder(Color.WHITE));
 		Komponenten_panel.setBackground(new Color(204, 204, 153));
-		Komponenten_panel.setBounds(0, 254, 271, 35);
+		Komponenten_panel.setBounds(0, 262, 271, 35);
 		contentPane.add(Komponenten_panel);
 		
 		JButton KomponentenButton = new JButton("Komponenten");
@@ -117,10 +117,29 @@ public class Hauptmenu extends JFrame {
 		KomponentenButton.setBackground(Color.ORANGE);
 		Komponenten_panel.add(KomponentenButton);
 		
+		JPanel RechnerZusammenstellen_panel = new JPanel();
+		RechnerZusammenstellen_panel.setBorder(new LineBorder(Color.WHITE));
+		RechnerZusammenstellen_panel.setBackground(new Color(204, 204, 153));
+		RechnerZusammenstellen_panel.setBounds(0, 224, 271, 35);
+		contentPane.add(RechnerZusammenstellen_panel);
+		
+		JButton RechnerZusammenstellenButton = new JButton("Rechner Konfigurieren");
+		RechnerZusammenstellen_panel.add(RechnerZusammenstellenButton);
+		RechnerZusammenstellenButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Rechnerzusammenstellen rechnerzusammenstellen = new Rechnerzusammenstellen();
+				rechnerzusammenstellen.setVisible(true);
+				//frame.setVisible(false);
+				dispose();
+			}
+		});
+		KomponentenButton.setBackground(Color.ORANGE);
+		Komponenten_panel.add(KomponentenButton);
+		
 		JPanel Abmelden_panel = new JPanel();
 		Abmelden_panel.setBorder(new LineBorder(Color.WHITE));
 		Abmelden_panel.setBackground(new Color(204, 204, 153));
-		Abmelden_panel.setBounds(0, 289, 271, 35);
+		Abmelden_panel.setBounds(0, 299, 271, 35);
 		contentPane.add(Abmelden_panel);
 		
 		JButton AbmeldenButton = new JButton("Abmelden");

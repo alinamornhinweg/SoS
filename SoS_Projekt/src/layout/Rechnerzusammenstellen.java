@@ -47,7 +47,7 @@ public class Rechnerzusammenstellen extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void startRechnerzusammenstellen(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -65,7 +65,7 @@ public class Rechnerzusammenstellen extends JFrame {
 	 */
 	public Rechnerzusammenstellen() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 610, 393);
+		setBounds(100, 100, 610, 438);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -122,66 +122,92 @@ public class Rechnerzusammenstellen extends JFrame {
 		JButton ButtonSpeichern = new JButton("Speichern");
 
 		JComboBox cpuBox = new JComboBox();
+		
+		JButton btnZurueck = new JButton("Zurueck");
+		btnZurueck.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Hauptmenu menu = new Hauptmenu();
+				menu.setVisible(true);
+				//frame.setVisible(false);
+				dispose();
+			}
+		});
 
 		
 		
 		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
-		gl_panel_1.setHorizontalGroup(gl_panel_1.createParallelGroup(Alignment.TRAILING).addGroup(gl_panel_1
-				.createSequentialGroup().addContainerGap()
-				.addGroup(gl_panel_1.createParallelGroup(Alignment.TRAILING).addComponent(ButtonSpeichern)
+		gl_panel_1.setHorizontalGroup(
+			gl_panel_1.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_panel_1.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(gl_panel_1.createParallelGroup(Alignment.TRAILING)
 						.addGroup(gl_panel_1.createSequentialGroup()
-								.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING).addComponent(LabelCPU)
-										.addComponent(LabelRAM).addComponent(LabelSSD).addComponent(LabelHDD)
-										.addComponent(LabelGrafikkarte).addComponent(LabelProzessluefter)
-										.addComponent(LabelNetzteil).addComponent(LabelGeheuse))
-								.addGap(10)
-								.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
-										.addComponent(cpuBox, 0, 423, Short.MAX_VALUE)
-										.addComponent(hddBox, 0, 423, Short.MAX_VALUE)
-										.addComponent(ssdBox, 0, 423, Short.MAX_VALUE)
-										.addComponent(ramBox, 0, 423, Short.MAX_VALUE)
-										.addComponent(grafikkarteBox, 0, 423, Short.MAX_VALUE)
-										.addComponent(prozesslufterBox, 0, 423, Short.MAX_VALUE)
-										.addComponent(netzteilBox, 0, 423, Short.MAX_VALUE)
-										.addComponent(gehauseBox, 0, 423, Short.MAX_VALUE))))
-				.addGap(21)));
-		gl_panel_1.setVerticalGroup(gl_panel_1.createParallelGroup(Alignment.LEADING).addGroup(gl_panel_1
-				.createSequentialGroup().addGap(4)
-				.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE).addComponent(LabelCPU).addComponent(cpuBox,
-						GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-				.addPreferredGap(ComponentPlacement.RELATED)
-				.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE).addComponent(LabelRAM).addComponent(ramBox,
-						GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-				.addPreferredGap(ComponentPlacement.RELATED)
-				.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE).addComponent(LabelSSD).addComponent(ssdBox,
-						GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-				.addPreferredGap(ComponentPlacement.RELATED)
-				.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
-						.addComponent(hddBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-								GroupLayout.PREFERRED_SIZE)
+							.addComponent(btnZurueck)
+							.addPreferredGap(ComponentPlacement.RELATED, 330, Short.MAX_VALUE)
+							.addComponent(ButtonSpeichern))
+						.addGroup(gl_panel_1.createSequentialGroup()
+							.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
+								.addComponent(LabelCPU)
+								.addComponent(LabelRAM)
+								.addComponent(LabelSSD)
+								.addComponent(LabelHDD)
+								.addComponent(LabelGrafikkarte)
+								.addComponent(LabelProzessluefter)
+								.addComponent(LabelNetzteil)
+								.addComponent(LabelGeheuse))
+							.addGap(10)
+							.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
+								.addComponent(cpuBox, 0, 460, Short.MAX_VALUE)
+								.addComponent(hddBox, 0, 460, Short.MAX_VALUE)
+								.addComponent(ssdBox, 0, 460, Short.MAX_VALUE)
+								.addComponent(ramBox, 0, 460, Short.MAX_VALUE)
+								.addComponent(grafikkarteBox, 0, 460, Short.MAX_VALUE)
+								.addComponent(prozesslufterBox, 0, 460, Short.MAX_VALUE)
+								.addComponent(netzteilBox, 0, 460, Short.MAX_VALUE)
+								.addComponent(gehauseBox, 0, 460, Short.MAX_VALUE))))
+					.addGap(21))
+		);
+		gl_panel_1.setVerticalGroup(
+			gl_panel_1.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_1.createSequentialGroup()
+					.addGap(4)
+					.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
+						.addComponent(LabelCPU)
+						.addComponent(cpuBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
+						.addComponent(LabelRAM)
+						.addComponent(ramBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
+						.addComponent(LabelSSD)
+						.addComponent(ssdBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
+						.addComponent(hddBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(LabelHDD))
-				.addPreferredGap(ComponentPlacement.RELATED)
-				.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
-						.addComponent(grafikkarteBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-								GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
+						.addComponent(grafikkarteBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(LabelGrafikkarte))
-				.addPreferredGap(ComponentPlacement.RELATED)
-				.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
-						.addComponent(prozesslufterBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-								GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
+						.addComponent(prozesslufterBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(LabelProzessluefter))
-				.addPreferredGap(ComponentPlacement.RELATED)
-				.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
-						.addComponent(netzteilBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-								GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
+						.addComponent(netzteilBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(LabelNetzteil))
-				.addPreferredGap(ComponentPlacement.RELATED)
-				.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
-						.addComponent(gehauseBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-								GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
+						.addComponent(gehauseBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(LabelGeheuse))
-				.addPreferredGap(ComponentPlacement.RELATED, 7, Short.MAX_VALUE).addComponent(ButtonSpeichern)
-				.addContainerGap()));
+					.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
+						.addComponent(ButtonSpeichern)
+						.addComponent(btnZurueck))
+					.addContainerGap())
+		);
 
 
 //TEST
