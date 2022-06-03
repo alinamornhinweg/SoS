@@ -167,8 +167,14 @@ public class Kunde {
 	public static String kundenummer(String kennzahl) {
 
 		String[] kennzahlenSplit = kennzahl.split("K");
+		String regex = "\\d+";
+		int result = 0;
+		for (int i = 0; i < kennzahlenSplit.length; i++) {
+			if (kennzahlenSplit[i].matches(regex)) {
+				result = Integer.parseInt(kennzahlenSplit[i]) + 1;
+			}
 
-		int result = Integer.parseInt(kennzahlenSplit[1]) + 1;
+		}
 
 		return "K" + Integer.toString(result);
 
