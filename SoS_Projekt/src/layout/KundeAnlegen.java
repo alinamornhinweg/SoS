@@ -376,11 +376,11 @@ public class KundeAnlegen extends JFrame {
 			
 			fehlerFeld = "Nr";
 			String nr =  String.valueOf(textFieldNr.getText());
-			if(textFieldNr.getText().isEmpty() || !textFieldNr.getText().matches("[a-zA-Z -]+")) return;
+			if(textFieldNr.getText().isEmpty() || !textFieldNr.getText().matches("[0-9a-z/-]+")) return;
 			
 			fehlerFeld = "Postleitzahl";
 			String plz =String.valueOf(textFieldPLZ.getText());
-			if(textFieldPLZ.getText().length() != 5) return;
+			if(textFieldPLZ.getText().length() != 5 && !plz.matches("[0-9]+")) return;
 			
 			fehlerFeld = "Ort";
 			String ort = textFieldOrt.getText();
@@ -390,7 +390,7 @@ public class KundeAnlegen extends JFrame {
 			fehlerFeld = "Geburtstag";
 			SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.yyyy");
 			Date geburtstagDate = simpleDateFormat.parse(textFieldGeburtstag.getText());
-			String geburtstag = geburtstagDate.toString();
+			String geburtstag = textFieldGeburtstag.getText();//geburtstagDate.toString();
 			
 			fehlerFeld = "";
 			
