@@ -9,7 +9,11 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.TableRowSorter;
 
-import daten.Auftraege;
+import daten.Adresse;
+import daten.Auftrag;
+import daten.Komponente;
+import daten.Kunde;
+import daten.Rechner;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -21,6 +25,7 @@ import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class Auftragsliste extends JFrame {
 
@@ -107,9 +112,17 @@ public class Auftragsliste extends JFrame {
 						.addComponent(btn_bearbeiten))
 					.addGap(23))
 		);
+		/*
+		Rechner rechner = new Rechner();
+		rechner.getKomponenten().add(new Komponente("ARTNR", 1, "WINDOWS", "MICROSOFT", "", 99.99));
+		Adresse adr = new Adresse("strasse", "ort", "plz", "10");
+		Kunde kunde = new Kunde("K1000", "Hans", "Hans@mail.de", "+491761234", "Rechnung", "04011994", adr);
 		
-		Auftraege probeAuftraege = new Auftraege();
-		TableRowSorter myTableRowSorter = new TableRowSorter(probeAuftraege);
+		Auftrag test = new Auftrag(rechner, kunde ,"A100000", "Angefangen");
+		Auftrag.addAuftrag1(test);*/
+		
+		Auftrag probeAuftraege = new Auftrag();
+		TableRowSorter<Auftrag> myTableRowSorter = new TableRowSorter<Auftrag>(probeAuftraege);
 		table = new JTable();
 		table.setFont(new Font("ITF Devanagari", Font.PLAIN, 12));
 		table.setModel(probeAuftraege);

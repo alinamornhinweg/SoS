@@ -11,7 +11,7 @@ import java.util.Properties;
 
 import daten.Komponente;
 
-public class KomponentenZugriff {
+public class DBKomponente {
 
 	public static void loadKomponenten() {
 

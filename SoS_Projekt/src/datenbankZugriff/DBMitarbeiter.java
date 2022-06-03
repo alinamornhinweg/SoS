@@ -11,7 +11,7 @@ import java.util.Properties;
 import daten.Mitarbeiter;
 import daten.MitarbeiterVerwaltung;
 
-public class DBZugriff {
+public class DBMitarbeiter {
 	
 	
 public static void loadMitarbeiter() {

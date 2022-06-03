@@ -15,10 +15,14 @@ public class KomponentenListe {
 	public static List<Komponente> getKomponentenListe() {
 		return komponentenListe;
 	}
-
+	
+	public static Komponente getKomponente(String artikelNummer) {
 		
-		
-		
-		
-		
+		for(int i = 0; i < komponentenListe.size(); i++) {
+			if(komponentenListe.get(i).getArtikelnummer().equals(artikelNummer)) {
+				return komponentenListe.get(i);
+			}
+		}
+		return null;
+	}	
 }

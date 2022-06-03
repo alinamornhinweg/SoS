@@ -8,16 +8,19 @@ import javax.swing.table.AbstractTableModel;
 
 
 
-public class Auftraege extends AbstractTableModel{
+public class Auftrag extends AbstractTableModel{
 	
 	
-	private ArrayList<Komponente> rechner;
+	private Rechner rechner;
 	private String kunde;
 	private String auftragsNummer;
 	private String status;
 	
-	private ArrayList<Auftraege> auftraege = new ArrayList<Auftraege>();
+	private static ArrayList<Auftrag> auftraege = new ArrayList<Auftrag>();
 	
+	public static void addAuftrag1(Auftrag auftrag) {
+		auftraege.add(auftrag);
+	}
 	
 	public String getColumnName(int column) {
 		if (column == 0)
@@ -42,7 +45,7 @@ public class Auftraege extends AbstractTableModel{
 
 	@Override
 	public Object getValueAt(int row, int column) {
-		Auftraege auftrag = auftraege.get(row);
+		Auftrag auftrag = auftraege.get(row);
 		if (column == 0)
 			return auftrag.getAuftragsNummer();
 		if (column == 1)
@@ -54,22 +57,22 @@ public class Auftraege extends AbstractTableModel{
 		throw new IllegalStateException();
 	}
 
-	void addAuftrag(Auftraege auftrag) {
+	void addAuftrag(Auftrag auftrag) {
 		auftraege.add(auftrag);
 		fireTableDataChanged();
 	}
 
-	public Auftraege(ArrayList<Komponente> rechner, Kunde kunde, String auftragsNummer, String status) {
+	public Auftrag(Rechner rechner, Kunde kunde, String auftragsNummer, String status) {
 		this.rechner=rechner;
 		this.kunde = kunde.getName();
 		this.auftragsNummer = auftragsNummer;
 		this.status = status;
 	}
 
-	public Auftraege() {
+	public Auftrag() {
 	}
 
-	public ArrayList<Auftraege> getAuftrag() {
+	public ArrayList<Auftrag> getAuftrag() {
 		return auftraege;
 
 	}
@@ -93,11 +96,11 @@ public class Auftraege extends AbstractTableModel{
 		this.status = status;
 	}
 	
-	public ArrayList<Komponente> getRechner() {
+	public Rechner getRechner() {
 		return rechner;
 	}
 
-	public void setRechner(ArrayList<Komponente> rechner) {
+	public void setRechner(Rechner rechner) {
 		this.rechner = rechner;
 	}
 	

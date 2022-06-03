@@ -124,7 +124,7 @@ public class Komponentenliste extends JFrame {
 		
 	
 		Komponente Komponente = new Komponente();
-		TableRowSorter myTableRowSorter2 = new TableRowSorter( Komponente);
+		TableRowSorter myTableRowSorter2 = new TableRowSorter(Komponente);
 		table = new JTable();
 		table.setFont(new Font("ITF Devanagari", Font.PLAIN, 12));
 		table.setModel((TableModel) Komponente);

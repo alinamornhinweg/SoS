@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
 
 public class Komponente extends AbstractTableModel{
+	
+	//public ArrayList<Komponente> komponentenListe= new ArrayList<>();
 
 	private String artikelnummer;
 	private String art;
@@ -147,7 +149,7 @@ public class Komponente extends AbstractTableModel{
 
 	}
 	
-public ArrayList<Komponente> komponenten= new ArrayList<>();
+
 	
 
 //	void probeKomponenten() {
@@ -174,13 +176,13 @@ public ArrayList<Komponente> komponenten= new ArrayList<>();
 	
 
 	public int getRowCount() {
-		return komponenten.size();
+		return KomponentenListe.getKomponentenListe().size();
 	}
 	
 
 
 	public Object getValueAt(int row, int column) {
-		Komponente kom = komponenten.get(row);
+		Komponente kom = KomponentenListe.getKomponentenListe().get(row);
 		if (column == 0) return kom.getArtikelnummer();
 		if (column == 1) return kom.getArt();
 		if (column == 2) return kom.getAnzahl();
@@ -192,7 +194,7 @@ public ArrayList<Komponente> komponenten= new ArrayList<>();
 	}
 	
 	void addKomponente(Komponente kom) {
-		komponenten.add(kom);
+		KomponentenListe.getKomponentenListe().add(kom);
 		fireTableDataChanged();
 	}
 

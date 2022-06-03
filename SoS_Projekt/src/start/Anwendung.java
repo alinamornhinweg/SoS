@@ -1,9 +1,11 @@
 package start;
 
+import datenbankZugriff.DBAuftrag;
 import datenbankZugriff.DBKunde;
-import datenbankZugriff.DBMetaDaten;
-import datenbankZugriff.DBZugriff;
-import datenbankZugriff.KomponentenZugriff;
+import datenbankZugriff.DBProperties;
+import datenbankZugriff.DBRechner;
+import datenbankZugriff.DBMitarbeiter;
+import datenbankZugriff.DBKomponente;
 import layout.Hauptmenu;
 import layout.LogIn;
 
@@ -13,10 +15,12 @@ public class Anwendung {
 
 	public static void main(String[] args) {
 		
-		DBMetaDaten.loadMetaDaten();
-		DBZugriff.loadMitarbeiter();
-		KomponentenZugriff.loadKomponenten();
+		DBProperties.loadMetaDaten();
+		DBMitarbeiter.loadMitarbeiter();
 		DBKunde.loadKunden();
+		DBKomponente.loadKomponenten();
+		DBRechner.loadRechner();
+		DBAuftrag.loadAuftraege();
 		
 		if(skipLogin) {
 			Hauptmenu.startHauptmenu();

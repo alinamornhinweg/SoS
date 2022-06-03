@@ -51,19 +51,6 @@ public class Kunde {
 //		kundenCheck(this);
 	}
 
-//	public void kundenCheck(Kunde kunde) {
-//
-//		boolean pruefen = true;
-//
-//		for (Kunde einzelnerKunde : kunden) {
-//			if (kunde.kundennummer == einzelnerKunde.kundennummer) {
-//				pruefen = false;
-//			}
-//		}
-//		if (pruefen) {
-//			kunden.add(kunde);
-//		}
-//	}
 
 	public void kundeloeschen(String kundenummer) throws SQLException, ClassNotFoundException, IOException {
 
