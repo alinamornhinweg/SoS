@@ -48,12 +48,9 @@ public static void loadAuftraege() {
 			while(result.next()) {
 				
 				String auftragsNummer = result.getString("auftragsNummer");
-				//Kunde muss noch dringend eine getKunde Methode bekommen
-				Kunde kunde = new Kunde("Test2", "", "", "", "", new Adresse("strase", "", "", ""));//result.getString("kunde");
+				Kunde kunde = Kunde.getKunde(result.getString("kunde"));
 				Rechner rechner = Rechner.getRechner(result.getString("rechner"));
 				String status = result.getString("status");
-				
-				
 				
 				Auftrag auftrag = new Auftrag(rechner, kunde, auftragsNummer, status);
 				System.out.println("Auftrag: " + auftrag.getAuftragsNummer());

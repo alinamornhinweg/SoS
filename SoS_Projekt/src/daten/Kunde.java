@@ -137,9 +137,15 @@ public class Kunde {
 		Kunde.nextKundenNummer= nextKundenNummer;
 	}
 
-//	public static ArrayList<Kunde> getKunden() {
-//		return kunden;
-//	}
+	public static Kunde getKunde(String kundenNummer) {
+		
+		for(int i = 0; i < kunden.size(); i++) {
+			if(kunden.get(i).getKundenNummer().equals(kundenNummer)) {
+				return kunden.get(i);
+			}
+		}
+		return null;
+	}	
 
 	public static String kundenummer(String kennzahl) {
 
