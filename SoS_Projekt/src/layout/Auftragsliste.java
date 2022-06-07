@@ -76,6 +76,14 @@ public class Auftragsliste extends JFrame {
 		JButton btn_ansicht = new JButton("Ansicht");
 		
 		JButton btn_bearbeiten = new JButton("Bearbeiten");
+		btn_bearbeiten.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AuftragAnlegen auftraege = new AuftragAnlegen();
+				auftraege.setVisible(true);
+				//frame.setVisible(false);
+				dispose();
+			}
+		});
 		
 		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);

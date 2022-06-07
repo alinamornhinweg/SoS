@@ -5,6 +5,10 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import daten.KomponentenListe;
+import daten.Rechner;
+
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
 import java.awt.GridBagConstraints;
@@ -13,11 +17,16 @@ import java.awt.Insets;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 import java.awt.event.ActionEvent;
 
 public class AuftragAnlegen extends JFrame {
 
 	private JPanel contentPane;
+	private ArrayList kunden;
+	private List<Rechner> rechnerListe = daten.Rechner.getRechnerListe();
+	private JComboBox dropRechner;
 
 	/**
 	 * Launch the application.
@@ -115,6 +124,13 @@ public class AuftragAnlegen extends JFrame {
 		panel.setLayout(gbl_panel);
 		
 		JButton btnBack = new JButton("Zurück");
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Hauptmenu menu = new Hauptmenu();
+				menu.setVisible(true);
+				dispose();
+			}
+		});
 		GridBagConstraints gbc_btnBack = new GridBagConstraints();
 		gbc_btnBack.insets = new Insets(0, 0, 0, 5);
 		gbc_btnBack.gridx = 0;
@@ -130,6 +146,13 @@ public class AuftragAnlegen extends JFrame {
 		gbc_btnSpeichern.gridx = 10;
 		gbc_btnSpeichern.gridy = 1;
 		panel.add(btnSpeichern, gbc_btnSpeichern);
+		
+//		if(!rechnerListe.isEmpty()) {
+//			dropRechner.insertItemAt(rechnerListe.toString(), 0);
+//		}
 	}
+	
+	
+	
 
 }
