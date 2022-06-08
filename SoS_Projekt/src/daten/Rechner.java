@@ -76,6 +76,13 @@ public class Rechner {
 	
 	private static List<Rechner> rechnerListe = new ArrayList<Rechner>();
 	
+	
+	
+	/**
+	 * Gibt ein Rechnerobjekt mithilfe der id zurück
+	 * @param id RechnerId
+	 * @return Rechner mit entsprechender id
+	 */
 	public static Rechner getRechner(String id) {
 		
 		for(int i = 0; i < rechnerListe.size(); i++) {

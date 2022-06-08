@@ -147,9 +147,11 @@ public class AuftragAnlegen extends JFrame {
 		gbc_btnSpeichern.gridy = 1;
 		panel.add(btnSpeichern, gbc_btnSpeichern);
 		
-//		if(!rechnerListe.isEmpty()) {
-//			dropRechner.insertItemAt(rechnerListe.toString(), 0);
-//		}
+		if(!rechnerListe.isEmpty()) {
+			for(int i = 0; i < rechnerListe.size();i++ ) {
+				dropRechner.insertItemAt(rechnerListe.get(i).getId(), i);
+			}
+		}
 	}
 	
 	
