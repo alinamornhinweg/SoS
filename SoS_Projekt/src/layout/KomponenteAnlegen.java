@@ -25,6 +25,7 @@ import java.awt.Color;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JComboBox;
 
 public class KomponenteAnlegen extends JFrame {
 
@@ -37,20 +38,32 @@ public class KomponenteAnlegen extends JFrame {
 	private JLabel lblBeschreibung;
 	private JTextField txtName;
 	private JTextField txtHersteller;
-	private JTextField txtArt;
 	private JTextField txtPreis;
 	private JTextField txtAnzahl;
 	private JTextField txtBeschreibung;
 	
 	DefaultTableModel model;
 	
+	public final String ART_CPU = "CPU";
+	public final String ART_RAM = "RAM";
+	public final String ART_FESTPLATTE1 = "Festplatte 1";
+	public final String ART_FESTPLATTE2 = "Festplatte 2";
+	public final String ART_GRAFIKKARTE = "Grafikkarte";
+	public final String ART_KUEHLUNG = "Kühlung";
+	public final String ART_NETZTEIL = "Netzteil";
+	public final String ART_GEHAEUSE = "Gehäuse";
+	
+	String[] arten = {ART_CPU, ART_RAM, ART_FESTPLATTE1, ART_FESTPLATTE2, 
+			ART_GRAFIKKARTE, ART_KUEHLUNG, ART_NETZTEIL, ART_GEHAEUSE};
+
 	List<Komponente> komponentenliste = daten.KomponentenListe.getKomponentenListe();
 	
 	static KomponenteAnlegen frame = new KomponenteAnlegen();
 	private JPanel panel_1;
 	private JButton btnApply;
-	private JButton btnDelete;
 	private JButton btnBack;
+	private JComboBox dropArt;
+	private JLabel lblEUR;
 
 	/**
 	 * Launch the application.
@@ -60,6 +73,7 @@ public class KomponenteAnlegen extends JFrame {
 			public void run() {
 				try {
 					KomponenteAnlegen frame = new KomponenteAnlegen();
+					frame.setTitle("Komponenten hinzufügen");
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -134,6 +148,14 @@ public class KomponenteAnlegen extends JFrame {
 		panel_2.add(txtAnzahl, gbc_txtAnzahl);
 		txtAnzahl.setColumns(10);
 		
+		lblEUR = new JLabel("EUR");
+		GridBagConstraints gbc_lblEUR = new GridBagConstraints();
+		gbc_lblEUR.anchor = GridBagConstraints.WEST;
+		gbc_lblEUR.insets = new Insets(0, 0, 5, 0);
+		gbc_lblEUR.gridx = 6;
+		gbc_lblEUR.gridy = 1;
+		panel_2.add(lblEUR, gbc_lblEUR);
+		
 		lblHersteller = new JLabel("Hersteller:");
 		GridBagConstraints gbc_lblHersteller = new GridBagConstraints();
 		gbc_lblHersteller.anchor = GridBagConstraints.WEST;
@@ -177,15 +199,15 @@ public class KomponenteAnlegen extends JFrame {
 		gbc_lblArt.gridy = 3;
 		panel_2.add(lblArt, gbc_lblArt);
 		
-		txtArt = new JTextField();
-		GridBagConstraints gbc_txtArt = new GridBagConstraints();
-		gbc_txtArt.gridwidth = 2;
-		gbc_txtArt.insets = new Insets(0, 0, 5, 5);
-		gbc_txtArt.fill = GridBagConstraints.HORIZONTAL;
-		gbc_txtArt.gridx = 1;
-		gbc_txtArt.gridy = 3;
-		panel_2.add(txtArt, gbc_txtArt);
-		txtArt.setColumns(10);
+		dropArt = new JComboBox(arten);
+		GridBagConstraints gbc_dropArt = new GridBagConstraints();
+		gbc_dropArt.gridwidth = 2;
+		gbc_dropArt.insets = new Insets(0, 0, 5, 5);
+		gbc_dropArt.fill = GridBagConstraints.HORIZONTAL;
+		gbc_dropArt.gridx = 1;
+		gbc_dropArt.gridy = 3;
+		panel_2.add(dropArt, gbc_dropArt);
+		
 		
 		lblBeschreibung = new JLabel("Beschreibung:");
 		GridBagConstraints gbc_lblBeschreibung = new GridBagConstraints();
@@ -225,8 +247,8 @@ public class KomponenteAnlegen extends JFrame {
 		btnBack = new JButton("Zurück");
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Hauptmenu menu = new Hauptmenu();
-				menu.setVisible(true);
+				Komponentenliste kL = new Komponentenliste();
+				kL.setVisible(true);
 				//frame.setVisible(false);
 				dispose();
 			}
@@ -242,14 +264,16 @@ public class KomponenteAnlegen extends JFrame {
 		btnApply.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				row[0] = txtName.getText(); 
-				row[1] = txtName.getText();
-				row[2] = txtHersteller.getText();
-				row[3] = txtArt.getText();
-				row[4] = txtPreis.getText();
-				row[5] = txtAnzahl.getText();
-				row[6] = txtBeschreibung.getText();
-				model.addRow(row);
+				String name = txtName.getText();
+				String hersteller = txtHersteller.getText();
+				String art = (String) dropArt.getSelectedItem();
+				Double preis = Double.parseDouble(txtPreis.getText());
+				Integer anzahl = Integer.parseInt(txtAnzahl.getText());
+				String beschreibung = txtBeschreibung.getText();
+				
+				Komponente kom = new Komponente(art, anzahl, name, hersteller, beschreibung, preis);
+				kom.addKomponente(kom);
+				
 			}
 		});
 		GridBagConstraints gbc_btnApply = new GridBagConstraints();
@@ -258,14 +282,6 @@ public class KomponenteAnlegen extends JFrame {
 		gbc_btnApply.gridx = 9;
 		gbc_btnApply.gridy = 0;
 		panel_1.add(btnApply, gbc_btnApply);
-		
-		btnDelete = new JButton("Löschen");
-		GridBagConstraints gbc_btnDelete = new GridBagConstraints();
-		gbc_btnDelete.anchor = GridBagConstraints.EAST;
-		gbc_btnDelete.insets = new Insets(0, 0, 0, 5);
-		gbc_btnDelete.gridx = 10;
-		gbc_btnDelete.gridy = 0;
-		panel_1.add(btnDelete, gbc_btnDelete);
 		
 	}
 

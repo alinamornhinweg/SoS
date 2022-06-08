@@ -1,12 +1,17 @@
 package daten;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.swing.table.AbstractTableModel;
 
+import datenbankZugriff.DBKomponente;
+
 public class Komponente extends AbstractTableModel{
 	
-	//public ArrayList<Komponente> komponentenListe= new ArrayList<>();
+	ArrayList<Komponente> komponentenListe= (ArrayList<Komponente>) KomponentenListe.getKomponentenListe();
+	
 
 	private String artikelnummer;
 	private String art;
@@ -179,6 +184,9 @@ public class Komponente extends AbstractTableModel{
 		return KomponentenListe.getKomponentenListe().size();
 	}
 	
+	public static void removeRow(int row) {
+		KomponentenListe.getKomponentenListe().remove(row);
+	}
 
 
 	public Object getValueAt(int row, int column) {
@@ -193,9 +201,19 @@ public class Komponente extends AbstractTableModel{
 		throw new IllegalStateException();
 	}
 	
-	void addKomponente(Komponente kom) {
+	public void addKomponente(Komponente kom) {
 		KomponentenListe.getKomponentenListe().add(kom);
 		fireTableDataChanged();
+		DBKomponente.uploadKomponente(kom);
+	}
+	
+	public void removeKomponente(String artikelnummer) throws ClassNotFoundException, SQLException, IOException {
+		for(int i = 0; i < komponentenListe.size(); i++) {
+			if(komponentenListe.get(i).getArtikelnummer().equals(artikelnummer)) {
+				komponentenListe.remove(i);
+			}
+		}
+		DBKomponente.deleteKomponente(artikelnummer);
 	}
 
 	

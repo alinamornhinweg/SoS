@@ -24,10 +24,12 @@ import java.util.List;
 
 import java.awt.event.ActionEvent;
 import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
 import daten.Komponente;
+import datenbankZugriff.DBKomponente;
 
 import javax.swing.event.ListSelectionEvent;
 
@@ -75,6 +77,20 @@ public class Komponentenliste extends JFrame {
 		});
 		
 		JButton btnLoeschen = new JButton("Löschen");
+		btnLoeschen.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			
+				daten.Komponente.removeRow(table.getSelectedRow());
+				
+				String selectedArtikelnummer =
+				(String) table.getValueAt(table.getSelectedRow(), 0);
+				
+				
+				//removeKomponente(selectedArtikelnummer);
+				
+				
+			}
+		});
 		
 		JButton btnHinzufuegen = new JButton("Hinzufügen");
 		btnHinzufuegen.addActionListener(new ActionListener() {
