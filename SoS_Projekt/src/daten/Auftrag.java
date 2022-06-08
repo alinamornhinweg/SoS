@@ -12,11 +12,18 @@ public class Auftrag extends AbstractTableModel{
 	
 	
 	private Rechner rechner;
-	private String kunde;
+	private Kunde kunde;
 	private String auftragsNummer;
 	private String status;
 	
 	private static ArrayList<Auftrag> auftraege = new ArrayList<Auftrag>();
+	
+	
+	public final String STATUS_ANGELEGT = "Angelegt";
+	public final String STATUS_ZUSAMMENBAU = "Zusammenbau";
+	public final String STATUS_BEREITABHOLUNG = "Bereit zur Abholung";
+	public final String STATUS_ABGESCHLOSSEN = "Abgeschlossen";
+	public final String STATUS_UNBEKANNT = "Unbekannt";
 	
 	public static void addAuftrag1(Auftrag auftrag) {
 		auftraege.add(auftrag);
@@ -49,9 +56,9 @@ public class Auftrag extends AbstractTableModel{
 		if (column == 0)
 			return auftrag.getAuftragsNummer();
 		if (column == 1)
-			return auftrag.getKunde();
+			return auftrag.getKunde().getName();
 		if (column == 2)
-			return auftrag.getRechner();
+			return auftrag.getRechner().getId();
 		if (column == 3)
 			return auftrag.getStatus();
 		throw new IllegalStateException();
@@ -64,9 +71,9 @@ public class Auftrag extends AbstractTableModel{
 
 	public Auftrag(Rechner rechner, Kunde kunde, String auftragsNummer, String status) {
 		this.rechner=rechner;
-		this.kunde = kunde.getName();
+		this.kunde = kunde;
 		this.auftragsNummer = auftragsNummer;
-		this.status = status;
+		if(!setStatus(status)) this.status = STATUS_ANGELEGT;
 	}
 
 	public Auftrag() {
@@ -77,23 +84,39 @@ public class Auftrag extends AbstractTableModel{
 
 	}
 	
-	public String getKunde() {
+	public String getKundeName() {
+		return kunde.getName();
+	}
+	public void setKundeName(String name) {
+		this.kunde.setName(name);;
+	}
+	
+	public Kunde getKunde() {
 		return kunde;
 	}
-	public void setKunde(String kunde) {
+
+	public void setKunde(Kunde kunde) {
 		this.kunde = kunde;
 	}
+
 	public String getAuftragsNummer() {
 		return auftragsNummer;
 	}
 	public void setAuftragsNummer(String auftragsNummer) {
 		this.auftragsNummer = auftragsNummer;
 	}
+	
 	public String getStatus() {
 		return status;
 	}
-	public void setStatus(String status) {
-		this.status = status;
+	public boolean setStatus(String status) {
+		
+		if(status.equals(STATUS_ANGELEGT) || status.equals(STATUS_ZUSAMMENBAU) ||
+				status.equals(STATUS_BEREITABHOLUNG) || status.equals(STATUS_ABGESCHLOSSEN)) {
+			this.status = status;
+			return true;
+		}
+		return false;
 	}
 	
 	public Rechner getRechner() {

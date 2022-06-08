@@ -133,6 +133,10 @@ public class Kunde {
 	public void setBezahlmethode(String bezahlmethode) {
 		this.bezahlmethode = bezahlmethode;
 	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
 
 	public String getName() {
 		return name;
