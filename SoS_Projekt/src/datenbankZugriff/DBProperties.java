@@ -101,9 +101,16 @@ public class DBProperties {
 
 			// Upload
 			Statement stm = connect.createStatement();
+<<<<<<< HEAD
 			String update = "UPDATE properties SET pValue='" + daten.Komponente.getNextNum()+"'" 
 					+ " WHERE key=" + "KomponenteNextNumber";
 			stm.execute(update);
+=======
+			
+			String update = "UPDATE properties SET pValue=" + String.valueOf(daten.Komponente.getNextNum()) 
+					+ " WHERE key=\"KomponenteNextNumber\"";
+			stm.executeUpdate(update);
+>>>>>>> branch 'main' of https://github.com/alinamornhinweg/SoS.git
 
 			connect.close();
 			System.out.println("\nDisconnected from database");

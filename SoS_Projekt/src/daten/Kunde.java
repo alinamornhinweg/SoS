@@ -101,6 +101,12 @@ public class Kunde {
 		dbKunde.kundenEdit(kunde);
 
 	}
+	
+	
+
+	public static ArrayList<Kunde> getKunden() {
+		return kunden;
+	}
 
 	public String getEmail() {
 		return email;

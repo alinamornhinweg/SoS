@@ -109,6 +109,7 @@ public class Komponentenliste extends JFrame {
 					JOptionPane.showMessageDialog(null, "Die ausgewählte Komponente existiert nicht.");
 				}
 				
+				DBKomponente.loadKomponenten();
 				
 				
 			}
