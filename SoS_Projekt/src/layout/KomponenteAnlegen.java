@@ -10,20 +10,30 @@ import javax.swing.JTable;
 import java.awt.GridBagConstraints;
 import javax.swing.table.DefaultTableModel;
 
+import daten.Adresse;
 import daten.Komponente;
+import daten.Kunde;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import java.awt.Insets;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.InputMismatchException;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.regex.PatternSyntaxException;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import java.awt.Color;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 
@@ -249,7 +259,6 @@ public class KomponenteAnlegen extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				Komponentenliste kL = new Komponentenliste();
 				kL.setVisible(true);
-				//frame.setVisible(false);
 				dispose();
 			}
 		});
@@ -261,21 +270,8 @@ public class KomponenteAnlegen extends JFrame {
 		panel_1.add(btnBack, gbc_btnBack);
 		
 		btnApply = new JButton("Hinzufügen");
-		btnApply.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				String name = txtName.getText();
-				String hersteller = txtHersteller.getText();
-				String art = (String) dropArt.getSelectedItem();
-				Double preis = Double.parseDouble(txtPreis.getText());
-				Integer anzahl = Integer.parseInt(txtAnzahl.getText());
-				String beschreibung = txtBeschreibung.getText();
-				
-				Komponente kom = new Komponente(art, anzahl, name, hersteller, beschreibung, preis);
-				kom.addKomponente(kom);
-				
-			}
-		});
+		btnApply.addActionListener(e -> onButtonSpeichern());
+
 		GridBagConstraints gbc_btnApply = new GridBagConstraints();
 		gbc_btnApply.anchor = GridBagConstraints.EAST;
 		gbc_btnApply.insets = new Insets(0, 0, 0, 5);
@@ -283,6 +279,61 @@ public class KomponenteAnlegen extends JFrame {
 		gbc_btnApply.gridy = 0;
 		panel_1.add(btnApply, gbc_btnApply);
 		
-	}
 
 }
+
+	private void onButtonSpeichern() {
+		String fehlerFeld = "";
+		
+		try {
+			fehlerFeld = "Name";
+			String name = txtName.getText();
+			if(name.isEmpty() || !name.matches("[a-zA-Z -]+"))
+				return;
+			
+			fehlerFeld = "Hersteller";
+			String hersteller = txtHersteller.getText();
+			if(hersteller.isEmpty() || !hersteller.matches("[a-zA-Z -]+"))
+				return;
+			
+			fehlerFeld = "Art";
+			String art = (String) dropArt.getSelectedItem();
+			if(art.isEmpty())
+				return;
+			
+			fehlerFeld = "Preis";
+			Double preis = Double.parseDouble(txtPreis.getText());
+			if(txtPreis.getText().isEmpty())
+				return;
+			
+			fehlerFeld = "Anzahl";
+			Integer anzahl = Integer.parseInt(txtAnzahl.getText());
+			if(txtAnzahl.getText().isEmpty() || !txtAnzahl.getText().matches("[0-9]+"))
+				return;
+			
+			fehlerFeld = "Beschreibung";
+			String beschreibung = txtBeschreibung.getText();
+			if(beschreibung.isEmpty())
+				return;
+			
+			fehlerFeld = "";
+
+			Komponente kom = new Komponente(art, anzahl, name, hersteller, beschreibung, preis);
+			kom.addKomponente(kom);
+			
+
+			// Kunde in entsprechender Klasse anlegen
+
+		} catch (InputMismatchException | NumberFormatException | PatternSyntaxException e) {
+			System.err.println("Wrong format with input");
+
+			// JOptionPane.showMessageDialog(null, "Das Feld " + fehlerFeld + " wurde nicht
+			// richtig befüllt.");
+			return;
+		} finally {
+			if (!fehlerFeld.isEmpty()) {
+				JOptionPane.showMessageDialog(null, "Das Feld " + fehlerFeld + " wurde nicht richtig befüllt.");
+				// return;
+			}
+		}
+	}}

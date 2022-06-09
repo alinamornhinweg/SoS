@@ -137,7 +137,11 @@ public class DBKomponente {
 		Statement abfrageAnweisung = verbindung.createStatement();
 
 		String loeschen = "DELETE FROM komponenten WHERE artikelnummer=" + artikelnummer;
-		abfrageAnweisung.execute(loeschen);
+		System.out.println(abfrageAnweisung.executeUpdate(loeschen));
+		System.out.println(artikelnummer);
 		abfrageAnweisung.close();
+		
+		
+		
 	}
 }

@@ -7,10 +7,11 @@ import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
 
 import datenbankZugriff.DBKomponente;
+import datenbankZugriff.DBProperties;
 
 public class Komponente extends AbstractTableModel{
 	
-	ArrayList<Komponente> komponentenListe= (ArrayList<Komponente>) KomponentenListe.getKomponentenListe();
+	static ArrayList<Komponente> komponentenListe= (ArrayList<Komponente>) KomponentenListe.getKomponentenListe();
 	
 
 	private String artikelnummer;
@@ -148,9 +149,10 @@ public class Komponente extends AbstractTableModel{
 			artikelnummer = "90" + nextNum;
 		}
 		nextNum++;
+		DBProperties.uploadKomponteNextNumber();
 		return artikelnummer;
 		
-		
+	
 
 	}
 	
@@ -207,7 +209,7 @@ public class Komponente extends AbstractTableModel{
 		DBKomponente.uploadKomponente(kom);
 	}
 	
-	public void removeKomponente(String artikelnummer) throws ClassNotFoundException, SQLException, IOException {
+	public static void removeKomponente(String artikelnummer) throws ClassNotFoundException, SQLException, IOException {
 		for(int i = 0; i < komponentenListe.size(); i++) {
 			if(komponentenListe.get(i).getArtikelnummer().equals(artikelnummer)) {
 				komponentenListe.remove(i);
