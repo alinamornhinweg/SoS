@@ -67,6 +67,7 @@ public class DBRechner {
 				}
 				
 				Rechner.addRechner(rechner);
+				System.out.println(rechner);
 			}
 
 			// Static int nextNumber laden und in Komponente speichern

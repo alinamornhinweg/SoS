@@ -11,6 +11,7 @@ import javax.swing.border.EmptyBorder;
 import daten.Auftrag;
 import daten.Komponente;
 import daten.KomponentenListe;
+import daten.Kunde;
 import daten.Rechner;
 
 import javax.swing.JLabel;
@@ -620,8 +621,6 @@ public class Rechnerzusammenstellen extends JFrame {
 				tabbedPane.setSelectedIndex (1);
 			}
 		});
-
-		
 		panel_2.setLayout(gl_panel_2);
 	}
 	
@@ -636,11 +635,13 @@ public class Rechnerzusammenstellen extends JFrame {
 			rechner = new Rechner(cpu,ram, fp1, grafikkarte, kuehler, netzteil, gehaeuse);
 		}
 		
+		Kunde kunde = Kunde.getKunden().get(0);
 		
+		Auftrag auftrag = new Auftrag(rechner, kunde, Auftrag.STATUS_ANGELEGT);
 		
+		auftrag.addAuftragUpload(auftrag);
 		
-		
-		//Auftrag auftrag = new Auftrag();
+		//TODO: Popup Auftrag wurde angelegt und zurück
 	}
 	
 	private void resetKomponenten() {

@@ -6,6 +6,8 @@ import java.util.ArrayList;
 
 import javax.swing.table.AbstractTableModel;
 
+import datenbankZugriff.DBAuftrag;
+
 
 
 public class Auftrag extends AbstractTableModel{
@@ -15,6 +17,8 @@ public class Auftrag extends AbstractTableModel{
 	private Kunde kunde;
 	private String auftragsNummer;
 	private String status;
+	
+	private static int nextNumber = 10000;
 	
 	private static ArrayList<Auftrag> auftraege = new ArrayList<Auftrag>();
 	
@@ -51,8 +55,14 @@ public class Auftrag extends AbstractTableModel{
 
 
 
-	public static void addAuftrag1(Auftrag auftrag) {
+	public static void addAuftrag(Auftrag auftrag) {
 		auftraege.add(auftrag);
+	}
+	
+	public void addAuftragUpload(Auftrag auftrag) {
+		auftraege.add(auftrag);
+		fireTableDataChanged();
+		DBAuftrag.uploadAuftrag(auftrag);
 	}
 	
 	public String getColumnName(int column) {
@@ -94,10 +104,7 @@ public class Auftrag extends AbstractTableModel{
 		throw new IllegalStateException();
 	}
 
-	void addAuftrag(Auftrag auftrag) {
-		auftraege.add(auftrag);
-		fireTableDataChanged();
-	}
+
 	
 	public Auftrag() {};
 
@@ -111,7 +118,8 @@ public class Auftrag extends AbstractTableModel{
 	public Auftrag(Rechner rechner, Kunde kunde, String status) {
 		this.rechner=rechner;
 		this.kunde = kunde;
-		
+		this.auftragsNummer = "A" + nextNumber;
+		nextNumber++;
 		if(!setStatus(status)) this.status = STATUS_ANGELEGT;
 	}
 
@@ -138,6 +146,19 @@ public class Auftrag extends AbstractTableModel{
 	public String getAuftragsNummer() {
 		return auftragsNummer;
 	}
+	
+	
+	public static int getNextNumber() {
+		return nextNumber;
+	}
+
+	public static void setNextNumber(int nextNumber) {
+		Auftrag.nextNumber = nextNumber;
+	}
+
+
+
+
 	public void setAuftragsNummer(String auftragsNummer) {
 		this.auftragsNummer = auftragsNummer;
 	}

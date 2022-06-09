@@ -54,7 +54,7 @@ public static void loadAuftraege() {
 				
 				Auftrag auftrag = new Auftrag(rechner, kunde, auftragsNummer, status);
 				System.out.println("Auftrag: " + auftrag.getAuftragsNummer());
-				Auftrag.addAuftrag1(auftrag);
+				Auftrag.addAuftrag(auftrag);
 			}
 			
 			connect.close();
@@ -97,6 +97,7 @@ public static void uploadAuftrag(Auftrag auftrag) {
 		stm.execute(query);
 		stm.close();
 		connect.close();
+		DBProperties.uploadAuftragNextNumber();
 		System.out.println("\nDisconnected from database");
 	}catch (Exception e) {
 		e.printStackTrace();
