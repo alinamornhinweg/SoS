@@ -12,7 +12,8 @@ import datenbankZugriff.DBProperties;
 public class Komponente extends AbstractTableModel{
 	
 	static ArrayList<Komponente> komponentenListe= (ArrayList<Komponente>) KomponentenListe.getKomponentenListe();
-	
+
+	private static int nextNum;
 
 	private String artikelnummer;
 	private String art;
@@ -21,10 +22,20 @@ public class Komponente extends AbstractTableModel{
 	private String hersteller;
 	private String beschreibung;
 	private double preis;
+	
+	public final static String ART_CPU = "CPU";
+	public final static String ART_RAM = "RAM";
+	public final static String ART_SSD = "SSD";
+	public final static String ART_HDD = "HDD";
+	public final static String ART_GRAFIKKARTE = "Grafikkarte";
+	public final static String ART_KUEHLER = "Kuehler";
+	public final static String ART_NETZTEIL = "Netzteil";
+	public final static String ART_GEHAEUSE = "Gehäuse";
+	public final static String ART_SONSTIGES = "Sonstige";
 
 	public Komponente(String art, int anzahl, String name, String hersteller, String beschreibung, double preis) {
 		this.artikelnummer = artikelnummerGenerate(art);
-		this.art = art;
+		setArt(art);
 		this.anzahl = anzahl;
 		this.name = name;
 		this.hersteller = hersteller;
@@ -35,7 +46,7 @@ public class Komponente extends AbstractTableModel{
 	public Komponente(String artikelnummer, String art, int anzahl, String name, String hersteller, String beschreibung,
 			double preis) {
 		this.artikelnummer = artikelnummer;
-		this.art = art;
+		setArt(art);
 		this.anzahl = anzahl;
 		this.name = name;
 		this.hersteller = hersteller;
@@ -60,7 +71,14 @@ public class Komponente extends AbstractTableModel{
 	}
 
 	public void setArt(String art) {
-		this.art = art;
+		
+		if(art.equals(ART_CPU) || art.equals(ART_RAM) || art.equals(ART_SSD) || art.equals(ART_HDD) || art.equals(ART_GRAFIKKARTE) 
+				|| art.equals(ART_KUEHLER) || art.equals(ART_NETZTEIL) || art.equals(ART_GEHAEUSE) || art.equals(ART_SONSTIGES)) {
+			this.art = art;
+		}else {
+			System.out.println("Komponente.setArt: Die eingegebene Art existiert nicht. Objekt:" + this);
+			this.art = ART_SONSTIGES;
+		}
 	}
 
 	public int getAnzahl() {
@@ -109,8 +127,6 @@ public class Komponente extends AbstractTableModel{
 				+ ", beschreibung=" + beschreibung + ", preis=" + preis + "]";
 	}
 
-	private static int nextNum;
-
 	public static int getNextNum() {
 		return nextNum;
 	}
@@ -118,6 +134,8 @@ public class Komponente extends AbstractTableModel{
 	public static void setNextNum(int nextNum) {
 		Komponente.nextNum = nextNum;
 	}
+	
+	
 
 	public static String artikelnummerGenerate(String art) {
 

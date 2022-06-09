@@ -117,6 +117,7 @@ public class DBKunde {
 		Properties properties = new Properties();
 		properties.load(in);
 		in.close();
+		
 
 		// Properties übertragen
 		String url = properties.getProperty("db.url");

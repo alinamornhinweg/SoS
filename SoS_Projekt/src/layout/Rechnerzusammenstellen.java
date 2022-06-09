@@ -12,6 +12,7 @@ import daten.Komponente;
 import daten.KomponentenListe;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.GroupLayout;
@@ -43,6 +44,24 @@ public class Rechnerzusammenstellen extends JFrame {
 //	}
 
 	private JPanel contentPane;
+	
+	JLabel GehausePreisLabel;
+	
+	JLabel NetzteilPreisLabel;
+	
+	JLabel ProzesslufterPreisLabel;
+	
+	JLabel GrafikkartePreisLabel;
+	
+	JLabel HddPreisLabel;
+	
+	JLabel SsdPreisLabel;
+	
+	JLabel RamPreisLabel;
+	
+	JLabel CpuPreisLabel;
+	
+	JLabel RechnungLabel;
 
 	/**
 	 * Launch the application.
@@ -93,13 +112,13 @@ public class Rechnerzusammenstellen extends JFrame {
 
 		JLabel LabelRAM = new JLabel("RAM");
 
-		JLabel LabelSSD = new JLabel("SSD");
+		JLabel LabelSSD = new JLabel("Festplatte1");
 
-		JLabel LabelHDD = new JLabel("HDD");
+		JLabel LabelHDD = new JLabel("Festplatte 2");
 
 		JLabel LabelGrafikkarte = new JLabel("Grafikkarte");
 
-		JLabel LabelProzessluefter = new JLabel("Prozessl\u00FCfter");
+		JLabel LabelProzessluefter = new JLabel("Kühlung");
 
 		JLabel LabelNetzteil = new JLabel("Netzteil");
 
@@ -119,7 +138,7 @@ public class Rechnerzusammenstellen extends JFrame {
 
 		JComboBox gehauseBox = new JComboBox();
 
-		JButton ButtonSpeichern = new JButton("Speichern");
+		JButton buttonSpeichern = new JButton("Speichern");
 
 		JComboBox cpuBox = new JComboBox();
 		
@@ -144,7 +163,7 @@ public class Rechnerzusammenstellen extends JFrame {
 						.addGroup(gl_panel_1.createSequentialGroup()
 							.addComponent(btnZurueck)
 							.addPreferredGap(ComponentPlacement.RELATED, 330, Short.MAX_VALUE)
-							.addComponent(ButtonSpeichern))
+							.addComponent(buttonSpeichern))
 						.addGroup(gl_panel_1.createSequentialGroup()
 							.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
 								.addComponent(LabelCPU)
@@ -204,7 +223,7 @@ public class Rechnerzusammenstellen extends JFrame {
 						.addComponent(LabelGeheuse))
 					.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 					.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
-						.addComponent(ButtonSpeichern)
+						.addComponent(buttonSpeichern)
 						.addComponent(btnZurueck))
 					.addContainerGap())
 		);
@@ -228,13 +247,13 @@ public class Rechnerzusammenstellen extends JFrame {
 		
 		JLabel RAMLabel = new JLabel("RAM :");
 		
-		JLabel SSDLabel = new JLabel("SSD :");
+		JLabel SSDLabel = new JLabel("Festplatte 1:");
 		
-		JLabel HDDLabel = new JLabel("HDD :");
+		JLabel HDDLabel = new JLabel("Festplatte 2:");
 		
 		JLabel GrafikkarteLabel = new JLabel("Grafikkarte :");
 		
-		JLabel ProzesslufterLabel = new JLabel("Prozessl\u00FCfter :");
+		JLabel ProzesslufterLabel = new JLabel("K\u00FChlung :");
 		
 		JLabel NetzteilLabel = new JLabel("Netzteil :");
 		
@@ -257,28 +276,45 @@ public class Rechnerzusammenstellen extends JFrame {
 		JLabel CpuWahlLabel = new JLabel("");
 
 		
-		JLabel GehausePreisLabel = new JLabel("");
+		 GehausePreisLabel = new JLabel("");
 		
-		JLabel NetzteilPreisLabel = new JLabel("");
+		 NetzteilPreisLabel = new JLabel("");
 		
-		JLabel ProzesslufterPreisLabel = new JLabel("");
+		 ProzesslufterPreisLabel = new JLabel("");
 		
-		JLabel GrafikkartePreisLabel = new JLabel("");
+		 GrafikkartePreisLabel = new JLabel("");
 		
-		JLabel HddPreisLabel = new JLabel("");
+		 HddPreisLabel = new JLabel("");
 		
-		JLabel SsdPreisLabel = new JLabel("");
+		 SsdPreisLabel = new JLabel("");
 		
-		JLabel RamPreisLabel = new JLabel("");
+		 RamPreisLabel = new JLabel("");
 		
-		JLabel CpuPreisLabel = new JLabel("");
+		 CpuPreisLabel = new JLabel("");
 		
-		JLabel RechnungLabel = new JLabel("�");
+		 RechnungLabel = new JLabel("€");
 		
 		
 
 		
 		JLabel SummeLabel = new JLabel("Summe :");
+		
+		JButton btnAuftragAnlegen = new JButton("Auftrag anlegen");
+		btnAuftragAnlegen.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		
+		JButton btnZurueck2 = new JButton("Zurueck");
+		btnZurueck2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Hauptmenu menu = new Hauptmenu();
+				menu.setVisible(true);
+				//frame.setVisible(false);
+				dispose();
+			}
+		});
 		
 		
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
@@ -288,7 +324,7 @@ public class Rechnerzusammenstellen extends JFrame {
 					.addContainerGap()
 					.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_panel_2.createSequentialGroup()
-							.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
+							.addGroup(gl_panel_2.createParallelGroup(Alignment.TRAILING)
 								.addGroup(gl_panel_2.createSequentialGroup()
 									.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
 										.addComponent(ProzesslufterLabel)
@@ -309,8 +345,8 @@ public class Rechnerzusammenstellen extends JFrame {
 										.addComponent(GrafikkarteWahlLabel)
 										.addComponent(NetzteilWahlLabel)
 										.addComponent(ProzesslufterWahlLabel))
-									.addPreferredGap(ComponentPlacement.RELATED, 361, Short.MAX_VALUE))
-								.addGroup(Alignment.TRAILING, gl_panel_2.createSequentialGroup()
+									.addPreferredGap(ComponentPlacement.RELATED, 355, Short.MAX_VALUE))
+								.addGroup(gl_panel_2.createSequentialGroup()
 									.addComponent(SummeLabel)
 									.addGap(107)))
 							.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
@@ -323,10 +359,15 @@ public class Rechnerzusammenstellen extends JFrame {
 								.addComponent(RamPreisLabel)
 								.addComponent(CpuPreisLabel)
 								.addComponent(RechnungLabel))
-							.addContainerGap(104, Short.MAX_VALUE))
+							.addContainerGap(99, Short.MAX_VALUE))
 						.addGroup(gl_panel_2.createSequentialGroup()
 							.addComponent(LabelRechnung)
-							.addContainerGap(521, Short.MAX_VALUE))))
+							.addContainerGap(511, Short.MAX_VALUE))
+						.addGroup(Alignment.TRAILING, gl_panel_2.createSequentialGroup()
+							.addComponent(btnZurueck2)
+							.addPreferredGap(ComponentPlacement.RELATED, 333, Short.MAX_VALUE)
+							.addComponent(btnAuftragAnlegen)
+							.addContainerGap())))
 		);
 		gl_panel_2.setVerticalGroup(
 			gl_panel_2.createParallelGroup(Alignment.LEADING)
@@ -377,7 +418,11 @@ public class Rechnerzusammenstellen extends JFrame {
 					.addGroup(gl_panel_2.createParallelGroup(Alignment.BASELINE)
 						.addComponent(RechnungLabel)
 						.addComponent(SummeLabel))
-					.addContainerGap(74, Short.MAX_VALUE))
+					.addPreferredGap(ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+					.addGroup(gl_panel_2.createParallelGroup(Alignment.BASELINE)
+						.addComponent(btnAuftragAnlegen)
+						.addComponent(btnZurueck2))
+					.addContainerGap())
 		);
 		
 //		Komponente.getKomponentenliste().add(new Komponente("CPU", 12, "Ryzon 12", "12ram", "Gut", 12.2));
@@ -387,7 +432,7 @@ public class Rechnerzusammenstellen extends JFrame {
 //		Komponente.getKomponentenliste().add(new Komponente("RAM", 12, "Apple 444", "12ram", "Gut", 32.2));
 
 		for (int i = 0, b = 0; i < KomponentenListe.getKomponentenListe().size(); i++) {
-			if (KomponentenListe.getKomponentenListe().get(i).getArt().equals("CPU")) {
+			if (KomponentenListe.getKomponentenListe().get(i).getArt().equals(Komponente.ART_CPU)) {
 				cpuBox.insertItemAt(KomponentenListe.getKomponentenListe().get(i).getName(), b);
 				b++;
 				
@@ -413,7 +458,7 @@ public class Rechnerzusammenstellen extends JFrame {
 		}
 
 		for (int i = 0, b = 0; i < KomponentenListe.getKomponentenListe().size(); i++) {
-			if (KomponentenListe.getKomponentenListe().get(i).getArt().equals("RAM")) {
+			if (KomponentenListe.getKomponentenListe().get(i).getArt().equals(Komponente.ART_RAM)) {
 				ramBox.insertItemAt(KomponentenListe.getKomponentenListe().get(i).getName(), b);
 				b++;
 				
@@ -435,7 +480,7 @@ public class Rechnerzusammenstellen extends JFrame {
 		}
 		
 		for (int i = 0 , b = 0; i < KomponentenListe.getKomponentenListe().size(); i++) {
-			if (KomponentenListe.getKomponentenListe().get(i).getArt().equals("SSD")) {
+			if (KomponentenListe.getKomponentenListe().get(i).getArt().equals(Komponente.ART_SSD)) {
 				ssdBox.insertItemAt(KomponentenListe.getKomponentenListe().get(i).getName(), b);
 				b++;
 				
@@ -457,7 +502,7 @@ public class Rechnerzusammenstellen extends JFrame {
 		}
 		
 		for (int i = 0, b = 0; i < KomponentenListe.getKomponentenListe().size(); i++) {
-			if (KomponentenListe.getKomponentenListe().get(i).getArt().equals("HDD")) {
+			if (KomponentenListe.getKomponentenListe().get(i).getArt().equals(Komponente.ART_HDD)) {
 				hddBox.insertItemAt(KomponentenListe.getKomponentenListe().get(i).getName(), b);
 				b++;
 				
@@ -479,7 +524,7 @@ public class Rechnerzusammenstellen extends JFrame {
 		}
 		
 		for (int i = 0, b = 0; i < KomponentenListe.getKomponentenListe().size(); i++) {
-			if (KomponentenListe.getKomponentenListe().get(i).getArt().equals("Grafikkarte")) {
+			if (KomponentenListe.getKomponentenListe().get(i).getArt().equals(Komponente.ART_GRAFIKKARTE)) {
 				grafikkarteBox.insertItemAt(KomponentenListe.getKomponentenListe().get(i).getName(), b);
 				b++;
 				
@@ -503,7 +548,7 @@ public class Rechnerzusammenstellen extends JFrame {
 		}
 		
 		for (int i = 0, b = 0; i < KomponentenListe.getKomponentenListe().size(); i++) {
-			if (KomponentenListe.getKomponentenListe().get(i).getArt().equals("Prozessl�fter")) {
+			if (KomponentenListe.getKomponentenListe().get(i).getArt().equals(Komponente.ART_KUEHLER)) {
 				prozesslufterBox.insertItemAt(KomponentenListe.getKomponentenListe().get(i).getName(), b);
 				b++;
 				
@@ -525,7 +570,7 @@ public class Rechnerzusammenstellen extends JFrame {
 		}
 		
 		for (int i = 0, b = 0; i < KomponentenListe.getKomponentenListe().size(); i++) {
-			if (KomponentenListe.getKomponentenListe().get(i).getArt().equals("Netzteil")) {
+			if (KomponentenListe.getKomponentenListe().get(i).getArt().equals(Komponente.ART_NETZTEIL)) {
 				netzteilBox.insertItemAt(KomponentenListe.getKomponentenListe().get(i).getName(), b);
 				b++;
 				
@@ -547,7 +592,7 @@ public class Rechnerzusammenstellen extends JFrame {
 		}
 		
 		for (int i = 0, b = 0; i < KomponentenListe.getKomponentenListe().size(); i++) {
-			if (KomponentenListe.getKomponentenListe().get(i).getArt().equals("Geh�use")) {
+			if (KomponentenListe.getKomponentenListe().get(i).getArt().equals(Komponente.ART_GEHAEUSE)) {
 				gehauseBox.insertItemAt(KomponentenListe.getKomponentenListe().get(i).getName(), b);
 				b++;
 				
@@ -567,35 +612,50 @@ public class Rechnerzusammenstellen extends JFrame {
 				});
 			}
 		}
-		ButtonSpeichern.addActionListener(new ActionListener() {
+		buttonSpeichern.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
-				Komponente kom = new Komponente(cpuBox.getSelectedItem().toString(), ALLBITS, getName(),
-						getWarningString(), getName(), ABORT);
-
-				
-				
-					
-					double cpu = Double.parseDouble(CpuPreisLabel.getText());
-					double ram = Double.parseDouble(RamPreisLabel.getText());
-					double ssd = Double.parseDouble(SsdPreisLabel.getText());
-					double hdd = Double.parseDouble(HddPreisLabel.getText());
-					double grafikkarte = Double.parseDouble(GrafikkartePreisLabel.getText());
-					double prozesslufter = Double.parseDouble(ProzesslufterPreisLabel.getText());
-					double netzteil = Double.parseDouble(NetzteilPreisLabel.getText());
-					double gehause = Double.parseDouble(GehausePreisLabel.getText());
-					
-					double summe = cpu + ram + ssd + hdd + grafikkarte + prozesslufter + netzteil + gehause;
-					String s = String.valueOf(summe);
-					
-					RechnungLabel.setText(s);
-//				------------------------------------	
-
+				berechnePreis();
 			}
 		});
 
 		
 		panel_2.setLayout(gl_panel_2);
+	}
+	
+	private void berechnePreis() {
+		try {
+			//Komponente kom = new Komponente(cpuBox.getSelectedItem().toString(), ALLBITS, getName(), getWarningString(), getName(), ABORT);
+
+			
+				double cpu,ram, fp1, fp2, grafikkarte, kuehler, netzteil, gehaeuse; 
+				cpu = ram = fp1 = fp2 = grafikkarte = kuehler = netzteil = gehaeuse = 0.0;
+				
+				cpu = setPrice(CpuPreisLabel.getText());
+				ram = setPrice(RamPreisLabel.getText());
+				fp1 = setPrice(SsdPreisLabel.getText());
+				fp2 = setPrice(HddPreisLabel.getText());
+				grafikkarte = setPrice(GrafikkartePreisLabel.getText());
+				kuehler = setPrice(ProzesslufterPreisLabel.getText());
+				netzteil = setPrice(NetzteilPreisLabel.getText());
+				gehaeuse = setPrice(GehausePreisLabel.getText());
+				
+				double summe = cpu + ram + fp1 + fp2 + grafikkarte + kuehler + netzteil + gehaeuse;
+				String s = String.valueOf(summe);
+				
+				RechnungLabel.setText(s);
+//			------------------------------------	
+			
+		}catch(NullPointerException e1) {
+			JOptionPane.showMessageDialog(null, "Ein oder mehr Felder wurden nicht ausgewählt.\nBitte wählen Sie alle Felder aus.");
+		}
+	}
+	
+	private double setPrice(String textPrice) {
+		if(textPrice != null && !textPrice.isEmpty()) 
+		{return Double.parseDouble(textPrice);}
+		else {
+			return 0.0;
+		}
 	}
 }
 
