@@ -2,9 +2,11 @@ package datenbankZugriff;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.LinkedList;
 import java.util.Properties;
@@ -111,5 +113,35 @@ public class DBKomponente {
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public static void deleteKomponente(String artikelnummer ) throws SQLException, ClassNotFoundException, IOException {
+
+		// Properties-Datei einlesen
+		File propertiesFile = new File("props.properties");
+		FileInputStream in = new FileInputStream(propertiesFile);
+		Properties properties = new Properties();
+		properties.load(in);
+		in.close();
+
+		// Properties übertragen
+		String url = properties.getProperty("db.url");
+		String dbName = properties.getProperty("db.dbName");
+		String userName = properties.getProperty("db.userName");
+		String driver = properties.getProperty("db.driver");
+		String password = properties.getProperty("db.password");
+
+		Class.forName(driver);
+		Connection verbindung = DriverManager.getConnection(url + dbName, userName, password);
+		System.out.println("Connected to the database!\n");
+		Statement abfrageAnweisung = verbindung.createStatement();
+
+		String loeschen = "DELETE FROM komponenten WHERE artikelnummer=" + artikelnummer;
+		System.out.println(abfrageAnweisung.executeUpdate(loeschen));
+		System.out.println(artikelnummer);
+		abfrageAnweisung.close();
+		
+		
+		
 	}
 }

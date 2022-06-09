@@ -101,9 +101,10 @@ public class DBProperties {
 
 			// Upload
 			Statement stm = connect.createStatement();
-			String update = "UPDATE properties SET pValue='" + daten.Komponente.getNextNum()+"'" 
-					+ " WHERE key=" + "KomponenteNextNumber";
-			stm.execute(update);
+			
+			String update = "UPDATE properties SET pValue=" + String.valueOf(daten.Komponente.getNextNum()) 
+					+ " WHERE key=KomponenteNextNumber";
+			stm.executeUpdate(update);
 
 			connect.close();
 			System.out.println("\nDisconnected from database");

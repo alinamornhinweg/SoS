@@ -16,18 +16,24 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 import java.awt.event.ActionEvent;
 import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
 import daten.Komponente;
+import daten.KomponentenListe;
+import datenbankZugriff.DBKomponente;
 
 import javax.swing.event.ListSelectionEvent;
 
@@ -38,6 +44,8 @@ import java.awt.SystemColor;
 public class Komponentenliste extends JFrame {
 	private JPanel contentPane;
 	private JTable table;
+	
+	static ArrayList<Komponente> komponentenListe = (ArrayList<Komponente>) KomponentenListe.getKomponentenListe();
 
 	public static void startKomponentenliste(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -75,6 +83,36 @@ public class Komponentenliste extends JFrame {
 		});
 		
 		JButton btnLoeschen = new JButton("Löschen");
+		btnLoeschen.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			
+				
+				
+				String artikelnummer =
+				(String) table.getValueAt(table.getSelectedRow(), 0);
+				
+				if(!komponentenListe.isEmpty()) {
+						try {
+							daten.Komponente.removeKomponente(artikelnummer);
+							daten.Komponente.removeRow(table.getSelectedRow());
+						} catch (ClassNotFoundException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						} catch (SQLException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						} catch (IOException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+				}else {
+					JOptionPane.showMessageDialog(null, "Die ausgewählte Komponente existiert nicht.");
+				}
+				
+				
+				
+			}
+		});
 		
 		JButton btnHinzufuegen = new JButton("Hinzufügen");
 		btnHinzufuegen.addActionListener(new ActionListener() {
