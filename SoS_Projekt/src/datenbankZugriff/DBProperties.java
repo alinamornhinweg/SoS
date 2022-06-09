@@ -103,7 +103,7 @@ public class DBProperties {
 			Statement stm = connect.createStatement();
 			
 			String update = "UPDATE properties SET pValue=" + String.valueOf(daten.Komponente.getNextNum()) 
-					+ " WHERE key=KomponenteNextNumber";
+					+ " WHERE key=\"KomponenteNextNumber\"";
 			stm.executeUpdate(update);
 
 			connect.close();

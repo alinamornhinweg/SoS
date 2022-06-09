@@ -19,12 +19,38 @@ public class Auftrag extends AbstractTableModel{
 	private static ArrayList<Auftrag> auftraege = new ArrayList<Auftrag>();
 	
 	
-	public final String STATUS_ANGELEGT = "Angelegt";
-	public final String STATUS_ZUSAMMENBAU = "Zusammenbau";
-	public final String STATUS_BEREITABHOLUNG = "Bereit zur Abholung";
-	public final String STATUS_ABGESCHLOSSEN = "Abgeschlossen";
-	public final String STATUS_UNBEKANNT = "Unbekannt";
+	public static final String STATUS_ANGELEGT = "Angelegt";
+	public static final String STATUS_ZUSAMMENBAU = "Zusammenbau";
+	public static final String STATUS_BEREITABHOLUNG = "Bereit zur Abholung";
+	public static final String STATUS_ABGESCHLOSSEN = "Abgeschlossen";
+	public static final String STATUS_UNBEKANNT = "Unbekannt";
 	
+//	static String[] statusListe = {STATUS_ANGELEGT, STATUS_ZUSAMMENBAU, STATUS_BEREITABHOLUNG, 
+//			STATUS_ABGESCHLOSSEN, STATUS_UNBEKANNT};
+//	
+	private static ArrayList<String> statusListe = new ArrayList<String>();
+	public static void addStatus() {
+		statusListe.add(STATUS_ABGESCHLOSSEN);
+		statusListe.add(STATUS_ANGELEGT);
+		statusListe.add(STATUS_BEREITABHOLUNG);
+		statusListe.add(STATUS_UNBEKANNT);
+		statusListe.add(STATUS_ZUSAMMENBAU);
+	}
+	
+	
+	
+	
+//	public static String[] getStatusListe() {
+//		return statusListe;
+//	}
+
+	public static ArrayList<String> getStatusListe() {
+		return statusListe;
+	}
+
+
+
+
 	public static void addAuftrag1(Auftrag auftrag) {
 		auftraege.add(auftrag);
 	}
@@ -33,17 +59,19 @@ public class Auftrag extends AbstractTableModel{
 		if (column == 0)
 			return "Auftrags Nr.";
 		if (column == 1)
-			return "Kunde";
+			return "Kundennummer";
 		if (column == 2)
-			return "Rechner";
+			return "Kunde";
 		if (column == 3)
+			return "Rechner";
+		if (column == 4)
 			return "Status";
 		throw new IllegalStateException();
 	}
 
 	@Override
 	public int getColumnCount() {
-		return 4;
+		return 5;
 	}
 
 	public int getRowCount() {
@@ -56,10 +84,12 @@ public class Auftrag extends AbstractTableModel{
 		if (column == 0)
 			return auftrag.getAuftragsNummer();
 		if (column == 1)
-			return auftrag.getKunde().getName();
+			return auftrag.getKunde().getKundenNummer();
 		if (column == 2)
-			return auftrag.getRechner().getId();
+			return auftrag.getKunde().getName();
 		if (column == 3)
+			return auftrag.getRechner().getId();
+		if (column == 4)
 			return auftrag.getStatus();
 		throw new IllegalStateException();
 	}

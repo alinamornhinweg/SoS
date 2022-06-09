@@ -13,6 +13,7 @@ import javax.swing.table.DefaultTableModel;
 import daten.Adresse;
 import daten.Komponente;
 import daten.Kunde;
+import datenbankZugriff.DBKomponente;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
@@ -260,6 +261,8 @@ public class KomponenteAnlegen extends JFrame {
 				Komponentenliste kL = new Komponentenliste();
 				kL.setVisible(true);
 				dispose();
+				
+				DBKomponente.loadKomponenten();
 			}
 		});
 		GridBagConstraints gbc_btnBack = new GridBagConstraints();

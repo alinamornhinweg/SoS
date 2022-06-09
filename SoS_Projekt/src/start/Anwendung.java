@@ -20,6 +20,7 @@ public class Anwendung {
 		DBKunde.loadKunden();
 		DBKomponente.loadKomponenten();
 		DBRechner.loadRechner();
+		daten.Auftrag.addStatus();
 		DBAuftrag.loadAuftraege();
 		
 		if(skipLogin) {

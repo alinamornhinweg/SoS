@@ -30,7 +30,7 @@ import java.util.ArrayList;
 public class Auftragsliste extends JFrame {
 
 	private JPanel contentPane;
-	private JTable table;
+	private static JTable table;
 
 	/**
 	 * Launch the application.
@@ -63,7 +63,7 @@ public class Auftragsliste extends JFrame {
 		
 		JScrollPane scrollPane = new JScrollPane();
 		
-		JButton btn_zurueck = new JButton("zurück");
+		JButton btn_zurueck = new JButton("Zurück");
 		btn_zurueck.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Hauptmenu menu = new Hauptmenu();
@@ -80,8 +80,9 @@ public class Auftragsliste extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				AuftragAnlegen auftraege = new AuftragAnlegen();
 				auftraege.setVisible(true);
-				//frame.setVisible(false);
 				dispose();
+				
+				
 			}
 		});
 		
@@ -120,6 +121,10 @@ public class Auftragsliste extends JFrame {
 						.addComponent(btn_bearbeiten))
 					.addGap(23))
 		);
+		
+		
+		
+		
 		/*
 		Rechner rechner = new Rechner();
 		rechner.getKomponenten().add(new Komponente("ARTNR", 1, "WINDOWS", "MICROSOFT", "", 99.99));
@@ -138,6 +143,20 @@ public class Auftragsliste extends JFrame {
 		scrollPane.setViewportView(table);
 		contentPane.setLayout(gl_contentPane);
 		
+	}
+	
+	
+	public static String getSelectedKunde() {
+		String kundennummer = (String) table.getValueAt(table.getSelectedRow(), 1);
+		return kundennummer;
+	}
+	public static String getSelectedRechner() {
+		String rechnernummer = (String) table.getValueAt(table.getSelectedRow(), 3);
+		return rechnernummer;
+	}
+	public static String getSelectedStatus() {
+		String status = (String) table.getValueAt(table.getSelectedRow(), 4);
+		return status;
 	}
 }
 
