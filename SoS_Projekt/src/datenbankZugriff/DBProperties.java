@@ -101,9 +101,11 @@ public class DBProperties {
 
 			// Upload
 			Statement stm = connect.createStatement();
-			
+			/*
 			String update = "UPDATE properties SET pValue='" + daten.Komponente.getNextNum()+"'" 
 					+ " WHERE key=" + "KomponenteNextNumber";
+					*/
+			String update = "UPDATE `db3`.`properties` SET `pValue` = '" + daten.Komponente.getNextNum() +"' WHERE (`key` = 'KomponenteNextNumber')";
 			stm.execute(update);
 
 			connect.close();

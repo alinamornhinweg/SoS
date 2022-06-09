@@ -8,8 +8,10 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import daten.Auftrag;
 import daten.Komponente;
 import daten.KomponentenListe;
+import daten.Rechner;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -138,7 +140,7 @@ public class Rechnerzusammenstellen extends JFrame {
 
 		JComboBox gehauseBox = new JComboBox();
 
-		JButton buttonSpeichern = new JButton("Speichern");
+		JButton buttonWeiter = new JButton("Weiter");
 
 		JComboBox cpuBox = new JComboBox();
 		
@@ -163,7 +165,7 @@ public class Rechnerzusammenstellen extends JFrame {
 						.addGroup(gl_panel_1.createSequentialGroup()
 							.addComponent(btnZurueck)
 							.addPreferredGap(ComponentPlacement.RELATED, 330, Short.MAX_VALUE)
-							.addComponent(buttonSpeichern))
+							.addComponent(buttonWeiter))
 						.addGroup(gl_panel_1.createSequentialGroup()
 							.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
 								.addComponent(LabelCPU)
@@ -223,7 +225,7 @@ public class Rechnerzusammenstellen extends JFrame {
 						.addComponent(LabelGeheuse))
 					.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 					.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
-						.addComponent(buttonSpeichern)
+						.addComponent(buttonWeiter)
 						.addComponent(btnZurueck))
 					.addContainerGap())
 		);
@@ -302,17 +304,14 @@ public class Rechnerzusammenstellen extends JFrame {
 		JButton btnAuftragAnlegen = new JButton("Auftrag anlegen");
 		btnAuftragAnlegen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				auftragAnlegen();
 			}
 		});
 		
 		JButton btnZurueck2 = new JButton("Zurueck");
 		btnZurueck2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Hauptmenu menu = new Hauptmenu();
-				menu.setVisible(true);
-				//frame.setVisible(false);
-				dispose();
+				tabbedPane.setSelectedIndex (0);
 			}
 		});
 		
@@ -443,17 +442,14 @@ public class Rechnerzusammenstellen extends JFrame {
 								CpuWahlLabel.setText(cpuBox.getSelectedItem().toString());
 								for (int i = 0, b = 0; i < KomponentenListe.getKomponentenListe().size(); i++) {
 									if(KomponentenListe.getKomponentenListe().get(i).getName().equals(cpuBox.getSelectedItem().toString())) {
-										CpuPreisLabel.setText( Double.toString(KomponentenListe.getKomponentenListe().get(i).getPreis()));
+										CpuPreisLabel.setText(setPreisText(i));
+										cpu = KomponentenListe.getKomponentenListe().get(i);
 									}
 								}
-								
-								
-								
 							}
 						}
 					}
 				});
-				
 			}
 		}
 
@@ -469,7 +465,8 @@ public class Rechnerzusammenstellen extends JFrame {
 								RamWahlLabel.setText(ramBox.getSelectedItem().toString());
 								for (int i = 0, b = 0; i < KomponentenListe.getKomponentenListe().size(); i++) {
 									if(KomponentenListe.getKomponentenListe().get(i).getName().equals(ramBox.getSelectedItem().toString())) {
-										RamPreisLabel.setText( Double.toString(KomponentenListe.getKomponentenListe().get(i).getPreis()));
+										RamPreisLabel.setText(setPreisText(i));
+										ram = KomponentenListe.getKomponentenListe().get(i);
 									}
 								}
 							}
@@ -491,7 +488,8 @@ public class Rechnerzusammenstellen extends JFrame {
 								SsdWahlLabel.setText(ssdBox.getSelectedItem().toString());
 								for (int i = 0, b = 0; i < KomponentenListe.getKomponentenListe().size(); i++) {
 									if(KomponentenListe.getKomponentenListe().get(i).getName().equals(ssdBox.getSelectedItem().toString())) {
-										SsdPreisLabel.setText( Double.toString(KomponentenListe.getKomponentenListe().get(i).getPreis()));
+										SsdPreisLabel.setText(setPreisText(i));
+										fp1 = KomponentenListe.getKomponentenListe().get(i);
 									}
 								}
 							}
@@ -513,7 +511,8 @@ public class Rechnerzusammenstellen extends JFrame {
 								HddWahlLabel.setText(hddBox.getSelectedItem().toString());
 								for (int i = 0, b = 0; i < KomponentenListe.getKomponentenListe().size(); i++) {
 									if(KomponentenListe.getKomponentenListe().get(i).getName().equals(hddBox.getSelectedItem().toString())) {
-										HddPreisLabel.setText( Double.toString(KomponentenListe.getKomponentenListe().get(i).getPreis()));
+										HddPreisLabel.setText(setPreisText(i));
+										fp2 = KomponentenListe.getKomponentenListe().get(i);
 									}
 								}
 							}
@@ -535,7 +534,8 @@ public class Rechnerzusammenstellen extends JFrame {
 								GrafikkarteWahlLabel.setText(grafikkarteBox.getSelectedItem().toString());
 								for (int i = 0, b = 0; i < KomponentenListe.getKomponentenListe().size(); i++) {
 									if(KomponentenListe.getKomponentenListe().get(i).getName().equals(grafikkarteBox.getSelectedItem().toString())) {
-										GrafikkartePreisLabel.setText( Double.toString(KomponentenListe.getKomponentenListe().get(i).getPreis()));
+										GrafikkartePreisLabel.setText(setPreisText(i));
+										grafikkarte = KomponentenListe.getKomponentenListe().get(i);
 									}
 								}
 								
@@ -559,7 +559,8 @@ public class Rechnerzusammenstellen extends JFrame {
 								ProzesslufterWahlLabel.setText(prozesslufterBox.getSelectedItem().toString());
 								for (int i = 0, b = 0; i < KomponentenListe.getKomponentenListe().size(); i++) {
 									if(KomponentenListe.getKomponentenListe().get(i).getName().equals(prozesslufterBox.getSelectedItem().toString())) {
-										ProzesslufterPreisLabel.setText( Double.toString(KomponentenListe.getKomponentenListe().get(i).getPreis()));
+										ProzesslufterPreisLabel.setText(setPreisText(i));
+										kuehler = KomponentenListe.getKomponentenListe().get(i);
 									}
 								}
 							}
@@ -581,7 +582,8 @@ public class Rechnerzusammenstellen extends JFrame {
 								NetzteilWahlLabel.setText(netzteilBox.getSelectedItem().toString());
 								for (int i = 0, b = 0; i < KomponentenListe.getKomponentenListe().size(); i++) {
 									if(KomponentenListe.getKomponentenListe().get(i).getName().equals(netzteilBox.getSelectedItem().toString())) {
-										NetzteilPreisLabel.setText( Double.toString(KomponentenListe.getKomponentenListe().get(i).getPreis()));
+										NetzteilPreisLabel.setText(setPreisText(i));
+										netzteil = KomponentenListe.getKomponentenListe().get(i);
 									}
 								}
 							}
@@ -603,7 +605,8 @@ public class Rechnerzusammenstellen extends JFrame {
 								GehauseWahlLabel.setText(gehauseBox.getSelectedItem().toString());
 								for (int i = 0, b = 0; i < KomponentenListe.getKomponentenListe().size(); i++) {
 									if(KomponentenListe.getKomponentenListe().get(i).getName().equals(gehauseBox.getSelectedItem().toString())) {
-										GehausePreisLabel.setText( Double.toString(KomponentenListe.getKomponentenListe().get(i).getPreis()));
+										GehausePreisLabel.setText(setPreisText(i));
+										gehaeuse = KomponentenListe.getKomponentenListe().get(i);
 									}
 								}
 							}
@@ -612,14 +615,36 @@ public class Rechnerzusammenstellen extends JFrame {
 				});
 			}
 		}
-		buttonSpeichern.addActionListener(new ActionListener() {
+		buttonWeiter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				berechnePreis();
+				tabbedPane.setSelectedIndex (1);
 			}
 		});
 
 		
 		panel_2.setLayout(gl_panel_2);
+	}
+	
+	Komponente cpu,ram, fp1, fp2, grafikkarte, kuehler, netzteil, gehaeuse; 
+	
+	private void auftragAnlegen() {
+		
+		Rechner rechner;
+		if(fp2 != null) {
+			rechner = new Rechner(cpu,ram, fp1, fp2, grafikkarte, kuehler, netzteil, gehaeuse);
+		}else {
+			rechner = new Rechner(cpu,ram, fp1, grafikkarte, kuehler, netzteil, gehaeuse);
+		}
+		
+		
+		
+		
+		
+		//Auftrag auftrag = new Auftrag();
+	}
+	
+	private void resetKomponenten() {
+		cpu = ram = fp1 = fp2 = grafikkarte = kuehler = netzteil = gehaeuse = null;
 	}
 	
 	private void berechnePreis() {
@@ -647,7 +672,14 @@ public class Rechnerzusammenstellen extends JFrame {
 			
 		}catch(NullPointerException e1) {
 			JOptionPane.showMessageDialog(null, "Ein oder mehr Felder wurden nicht ausgewählt.\nBitte wählen Sie alle Felder aus.");
+			
 		}
+	}
+	
+	private String setPreisText(int i) {
+		String s = Double.toString(KomponentenListe.getKomponentenListe().get(i).getPreis());
+		berechnePreis();
+		return s;
 	}
 	
 	private double setPrice(String textPrice) {

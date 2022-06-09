@@ -98,6 +98,8 @@ public class Auftrag extends AbstractTableModel{
 		auftraege.add(auftrag);
 		fireTableDataChanged();
 	}
+	
+	public Auftrag() {};
 
 	public Auftrag(Rechner rechner, Kunde kunde, String auftragsNummer, String status) {
 		this.rechner=rechner;
@@ -105,8 +107,12 @@ public class Auftrag extends AbstractTableModel{
 		this.auftragsNummer = auftragsNummer;
 		if(!setStatus(status)) this.status = STATUS_ANGELEGT;
 	}
-
-	public Auftrag() {
+	
+	public Auftrag(Rechner rechner, Kunde kunde, String status) {
+		this.rechner=rechner;
+		this.kunde = kunde;
+		
+		if(!setStatus(status)) this.status = STATUS_ANGELEGT;
 	}
 
 	public ArrayList<Auftrag> getAuftrag() {
