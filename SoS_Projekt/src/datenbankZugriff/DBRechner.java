@@ -105,20 +105,38 @@ public class DBRechner {
 			System.out.println("Connected to the database\n");
 			
 			Statement stm = connect.createStatement();
-			
-			String festplatten = rechner.getFestplatte1() + "','";
+			String query;
+			/*
 			if(rechner.getFestplatte2() != null) {
-				festplatten += rechner.getFestplatte2() + "','";
-			}else {festplatten += "" + "','";}
-
-			String query = "INSERT INTO rechner (id, cpu, ram, festplatte1, festplatte2, grafikkarte, kuehlung, netzteil, gehaeuse) VALUES ('"
+				query = "INSERT INTO `db3`.`rechner` (`id`, `cpu`, `ram`, `festplatte1`, `festplatte2`, `grafikkarte`, `kuehlung`, `netzteil`, `gehaeuse`) VALUES ('"
+						+ rechner.getId() + "','" 
+						+ rechner.getCpu() + "','" 
+						+ rechner.getRam() + "','" 
+						+ rechner.getFestplatte1() + "','"
+						+ rechner.getFestplatte2() + "','"
+						+ rechner.getKuehlung() + "','" 
+						+ rechner.getNetzteil() + "','" 
+						+ rechner.getGehaeuse() + "')";
+			}else {query = "INSERT INTO `db3`.`rechner` (`id`, `cpu`, `ram`, `festplatte1`, `grafikkarte`, `kuehlung`, `netzteil`, `gehaeuse`) VALUES ('"
 					+ rechner.getId() + "','" 
 					+ rechner.getCpu() + "','" 
 					+ rechner.getRam() + "','" 
-					+ festplatten
+					+ rechner.getFestplatte1() + "','"
 					+ rechner.getKuehlung() + "','" 
 					+ rechner.getNetzteil() + "','" 
-					+ rechner.getGehaeuse() + "')";
+					+ rechner.getGehaeuse() + "')";}*/
+			
+			query = "INSERT INTO `db3`.`rechner` (`id`, `cpu`, `ram`, `festplatte1`, `festplatte2`, `grafikkarte`, `kuehlung`, `netzteil`, `gehaeuse`) VALUES ('"
+					+ rechner.getId() + "','" 
+					+ rechner.getCpu().getArtikelnummer() + "','" 
+					+ rechner.getRam().getArtikelnummer() + "','" 
+					+ rechner.getFestplatte1().getArtikelnummer() + "','"
+					+ rechner.getFestplatte2().getArtikelnummer() + "','"
+					+ rechner.getGrafikkarte().getArtikelnummer() + "','"
+					+ rechner.getKuehlung().getArtikelnummer() + "','" 
+					+ rechner.getNetzteil().getArtikelnummer() + "','" 
+					+ rechner.getGehaeuse().getArtikelnummer() + "')";
+
 			
 			stm.execute(query);
 			stm.close();

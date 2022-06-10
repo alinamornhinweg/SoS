@@ -50,6 +50,7 @@ public static void loadAuftraege() {
 				String auftragsNummer = result.getString("auftragsNummer");
 				Kunde kunde = Kunde.getKunde(result.getString("kunde"));
 				Rechner rechner = Rechner.getRechner(result.getString("rechner"));
+				//System.out.println("Rechner im Auftrag:" + rechner);
 				String status = result.getString("status");
 				
 				Auftrag auftrag = new Auftrag(rechner, kunde, auftragsNummer, status);

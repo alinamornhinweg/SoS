@@ -84,8 +84,10 @@ public class Rechner {
 	 * @return Rechner mit entsprechender id
 	 */
 	public static Rechner getRechner(String id) {
+		System.out.println("gesuchte Rechner ID: " + id);
 		
 		for(int i = 0; i < rechnerListe.size(); i++) {
+			System.out.println("vergleichende Rechner ID: " + rechnerListe.get(i).getId());
 			if(rechnerListe.get(i).getId().equals(id)) {
 				return rechnerListe.get(i);
 			}
@@ -93,6 +95,15 @@ public class Rechner {
 		return null;
 	}	
 	
+	
+	
+	@Override
+	public String toString() {
+		return "Rechner [id=" + id + ", cpu=" + cpu + ", ram=" + ram + ", festplatte1=" + festplatte1 + ", festplatte2="
+				+ festplatte2 + ", grafikkarte=" + grafikkarte + ", kuehlung=" + kuehlung + ", netzteil=" + netzteil
+				+ ", gehaeuse=" + gehaeuse + "]";
+	}
+
 	public static int getRechnerNextNumber() {
 		return rechnerNextNumber;
 	}

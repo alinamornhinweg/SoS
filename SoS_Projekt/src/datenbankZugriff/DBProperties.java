@@ -57,8 +57,10 @@ public class DBProperties {
 						break;
 					case "rechnerNextNumber":
 						daten.Rechner.setRechnerNextNumber(Integer.valueOf(pValue));
+						break;
 					case "AuftragNextNumber":
 						daten.Auftrag.setNextNumber(Integer.valueOf(pValue));
+						break;
 					}
 				} catch (InputMismatchException | NumberFormatException e) {
 					System.out.println(e);

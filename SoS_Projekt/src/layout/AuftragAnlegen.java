@@ -161,7 +161,7 @@ public class AuftragAnlegen extends JFrame {
 		
 		if(!kunden.isEmpty()) {
 			for(int i = 0; i < kunden.size(); i++) {
-				dropKunde.insertItemAt(kunden.get(i).getKundenNummer(), i);
+				dropKunde.insertItemAt(kunden.get(i).toString(), i);
 			}
 		}
 		if(!statusListe.isEmpty()) {

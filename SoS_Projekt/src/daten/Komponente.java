@@ -32,6 +32,7 @@ public class Komponente extends AbstractTableModel{
 	public final static String ART_NETZTEIL = "Netzteil";
 	public final static String ART_GEHAEUSE = "Gehäuse";
 	public final static String ART_SONSTIGES = "Sonstige";
+	public final static String ART_KEINEAUSWAHL = "Leer";
 
 	public Komponente(String art, int anzahl, String name, String hersteller, String beschreibung, double preis) {
 		this.artikelnummer = artikelnummerGenerate(art);
@@ -73,7 +74,7 @@ public class Komponente extends AbstractTableModel{
 	public void setArt(String art) {
 		
 		if(art.equals(ART_CPU) || art.equals(ART_RAM) || art.equals(ART_SSD) || art.equals(ART_HDD) || art.equals(ART_GRAFIKKARTE) 
-				|| art.equals(ART_KUEHLER) || art.equals(ART_NETZTEIL) || art.equals(ART_GEHAEUSE) || art.equals(ART_SONSTIGES)) {
+				|| art.equals(ART_KUEHLER) || art.equals(ART_NETZTEIL) || art.equals(ART_GEHAEUSE) || art.equals(ART_SONSTIGES) || art.equals(ART_KEINEAUSWAHL)) {
 			this.art = art;
 		}else {
 			System.out.println("Komponente.setArt: Die eingegebene Art existiert nicht. Objekt:" + this);

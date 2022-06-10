@@ -33,6 +33,7 @@ public class Auftrag extends AbstractTableModel{
 //			STATUS_ABGESCHLOSSEN, STATUS_UNBEKANNT};
 //	
 	private static ArrayList<String> statusListe = new ArrayList<String>();
+	
 	public static void addStatus() {
 		statusListe.add(STATUS_ABGESCHLOSSEN);
 		statusListe.add(STATUS_ANGELEGT);
@@ -106,7 +107,7 @@ public class Auftrag extends AbstractTableModel{
 
 
 	
-	public Auftrag() {};
+	//public Auftrag() {};
 
 	public Auftrag(Rechner rechner, Kunde kunde, String auftragsNummer, String status) {
 		this.rechner=rechner;
@@ -123,9 +124,17 @@ public class Auftrag extends AbstractTableModel{
 		if(!setStatus(status)) this.status = STATUS_ANGELEGT;
 	}
 
-	public ArrayList<Auftrag> getAuftrag() {
+	public static ArrayList<Auftrag> getAuftraege() {
 		return auftraege;
-
+	}
+	
+	public static Auftrag getAuftrag(String auftragsNummer) {
+		for(int i = 0; i < auftraege.size(); i++) {
+			if(auftraege.get(i).getAuftragsNummer().equals(auftragsNummer)) {
+				return auftraege.get(i);
+			}
+		}
+		return null;
 	}
 	
 	public String getKundeName() {
@@ -154,6 +163,7 @@ public class Auftrag extends AbstractTableModel{
 
 	public static void setNextNumber(int nextNumber) {
 		Auftrag.nextNumber = nextNumber;
+		System.out.println("Auftrag NextNumber geändert zu: " + Auftrag.nextNumber);
 	}
 
 

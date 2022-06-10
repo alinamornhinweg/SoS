@@ -134,7 +134,7 @@ public class Auftragsliste extends JFrame {
 		Auftrag test = new Auftrag(rechner, kunde ,"A100000", "Angefangen");
 		Auftrag.addAuftrag1(test);*/
 		
-		Auftrag probeAuftraege = new Auftrag();
+		Auftrag probeAuftraege = Auftrag.getAuftraege().get(0) ;
 		TableRowSorter<Auftrag> myTableRowSorter = new TableRowSorter<Auftrag>(probeAuftraege);
 		table = new JTable();
 		table.setFont(new Font("ITF Devanagari", Font.PLAIN, 12));

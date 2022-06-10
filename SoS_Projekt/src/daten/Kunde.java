@@ -104,6 +104,11 @@ public class Kunde {
 	
 	
 
+	@Override
+	public String toString() {
+		return kundennummmer + ", " + name;
+	}
+
 	public static ArrayList<Kunde> getKunden() {
 		return kunden;
 	}

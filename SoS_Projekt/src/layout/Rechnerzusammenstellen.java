@@ -1,6 +1,7 @@
 package layout;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -13,6 +14,7 @@ import daten.Komponente;
 import daten.KomponentenListe;
 import daten.Kunde;
 import daten.Rechner;
+import datenbankZugriff.DBRechner;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -46,6 +48,7 @@ public class Rechnerzusammenstellen extends JFrame {
 //
 //	}
 
+	private List<Kunde> kunden = daten.Kunde.getKunden();
 	private JPanel contentPane;
 	
 	JLabel GehausePreisLabel;
@@ -65,6 +68,8 @@ public class Rechnerzusammenstellen extends JFrame {
 	JLabel CpuPreisLabel;
 	
 	JLabel RechnungLabel;
+	
+	JComboBox<String> kundeBox;
 
 	/**
 	 * Launch the application.
@@ -129,13 +134,13 @@ public class Rechnerzusammenstellen extends JFrame {
 
 		JComboBox ramBox = new JComboBox();
 
-		JComboBox ssdBox = new JComboBox();
+		JComboBox fp1Box = new JComboBox();
 
-		JComboBox hddBox = new JComboBox();
+		JComboBox fp2Box = new JComboBox();
 
 		JComboBox grafikkarteBox = new JComboBox();
 
-		JComboBox prozesslufterBox = new JComboBox();
+		JComboBox kuehlerBox = new JComboBox();
 
 		JComboBox netzteilBox = new JComboBox();
 
@@ -144,6 +149,10 @@ public class Rechnerzusammenstellen extends JFrame {
 		JButton buttonWeiter = new JButton("Weiter");
 
 		JComboBox cpuBox = new JComboBox();
+		
+		kundeBox = new JComboBox();
+		
+		JLabel lblKunde = new JLabel("Kunde:");
 		
 		JButton btnZurueck = new JButton("Zurueck");
 		btnZurueck.addActionListener(new ActionListener() {
@@ -180,11 +189,11 @@ public class Rechnerzusammenstellen extends JFrame {
 							.addGap(10)
 							.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
 								.addComponent(cpuBox, 0, 460, Short.MAX_VALUE)
-								.addComponent(hddBox, 0, 460, Short.MAX_VALUE)
-								.addComponent(ssdBox, 0, 460, Short.MAX_VALUE)
+								.addComponent(fp2Box, 0, 460, Short.MAX_VALUE)
+								.addComponent(fp1Box, 0, 460, Short.MAX_VALUE)
 								.addComponent(ramBox, 0, 460, Short.MAX_VALUE)
 								.addComponent(grafikkarteBox, 0, 460, Short.MAX_VALUE)
-								.addComponent(prozesslufterBox, 0, 460, Short.MAX_VALUE)
+								.addComponent(kuehlerBox, 0, 460, Short.MAX_VALUE)
 								.addComponent(netzteilBox, 0, 460, Short.MAX_VALUE)
 								.addComponent(gehauseBox, 0, 460, Short.MAX_VALUE))))
 					.addGap(21))
@@ -203,10 +212,10 @@ public class Rechnerzusammenstellen extends JFrame {
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
 						.addComponent(LabelSSD)
-						.addComponent(ssdBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(fp1Box, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
-						.addComponent(hddBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(fp2Box, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(LabelHDD))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
@@ -214,7 +223,7 @@ public class Rechnerzusammenstellen extends JFrame {
 						.addComponent(LabelGrafikkarte))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
-						.addComponent(prozesslufterBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(kuehlerBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(LabelProzessluefter))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
@@ -316,36 +325,44 @@ public class Rechnerzusammenstellen extends JFrame {
 			}
 		});
 		
+
+		
 		
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
 		gl_panel_2.setHorizontalGroup(
 			gl_panel_2.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_2.createSequentialGroup()
 					.addContainerGap()
-					.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
+					.addGroup(gl_panel_2.createParallelGroup(Alignment.TRAILING)
 						.addGroup(gl_panel_2.createSequentialGroup()
 							.addGroup(gl_panel_2.createParallelGroup(Alignment.TRAILING)
 								.addGroup(gl_panel_2.createSequentialGroup()
 									.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
-										.addComponent(ProzesslufterLabel)
-										.addComponent(NetzteilLabel)
-										.addComponent(GehauseLabel)
-										.addComponent(GrafikkarteLabel)
-										.addComponent(HDDLabel)
-										.addComponent(SSDLabel)
-										.addComponent(RAMLabel)
-										.addComponent(CPULabel))
-									.addGap(28)
-									.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
-										.addComponent(GehauseWahlLabel)
-										.addComponent(CpuWahlLabel)
-										.addComponent(RamWahlLabel)
-										.addComponent(SsdWahlLabel)
-										.addComponent(HddWahlLabel)
-										.addComponent(GrafikkarteWahlLabel)
-										.addComponent(NetzteilWahlLabel)
-										.addComponent(ProzesslufterWahlLabel))
-									.addPreferredGap(ComponentPlacement.RELATED, 355, Short.MAX_VALUE))
+										.addGroup(gl_panel_2.createSequentialGroup()
+											.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
+												.addComponent(ProzesslufterLabel)
+												.addComponent(NetzteilLabel)
+												.addComponent(GehauseLabel)
+												.addComponent(GrafikkarteLabel)
+												.addComponent(HDDLabel)
+												.addComponent(SSDLabel)
+												.addComponent(RAMLabel)
+												.addComponent(CPULabel))
+											.addGap(28)
+											.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
+												.addComponent(GehauseWahlLabel)
+												.addComponent(CpuWahlLabel)
+												.addComponent(RamWahlLabel)
+												.addComponent(SsdWahlLabel)
+												.addComponent(HddWahlLabel)
+												.addComponent(GrafikkarteWahlLabel)
+												.addComponent(NetzteilWahlLabel)
+												.addComponent(ProzesslufterWahlLabel)))
+										.addGroup(gl_panel_2.createSequentialGroup()
+											.addComponent(lblKunde)
+											.addGap(18)
+											.addComponent(kundeBox, GroupLayout.PREFERRED_SIZE, 229, GroupLayout.PREFERRED_SIZE)))
+									.addPreferredGap(ComponentPlacement.RELATED, 173, Short.MAX_VALUE))
 								.addGroup(gl_panel_2.createSequentialGroup()
 									.addComponent(SummeLabel)
 									.addGap(107)))
@@ -359,13 +376,13 @@ public class Rechnerzusammenstellen extends JFrame {
 								.addComponent(RamPreisLabel)
 								.addComponent(CpuPreisLabel)
 								.addComponent(RechnungLabel))
-							.addContainerGap(99, Short.MAX_VALUE))
+							.addContainerGap(102, Short.MAX_VALUE))
 						.addGroup(gl_panel_2.createSequentialGroup()
 							.addComponent(LabelRechnung)
 							.addContainerGap(511, Short.MAX_VALUE))
-						.addGroup(Alignment.TRAILING, gl_panel_2.createSequentialGroup()
+						.addGroup(gl_panel_2.createSequentialGroup()
 							.addComponent(btnZurueck2)
-							.addPreferredGap(ComponentPlacement.RELATED, 333, Short.MAX_VALUE)
+							.addPreferredGap(ComponentPlacement.RELATED, 328, Short.MAX_VALUE)
 							.addComponent(btnAuftragAnlegen)
 							.addContainerGap())))
 		);
@@ -418,18 +435,16 @@ public class Rechnerzusammenstellen extends JFrame {
 					.addGroup(gl_panel_2.createParallelGroup(Alignment.BASELINE)
 						.addComponent(RechnungLabel)
 						.addComponent(SummeLabel))
-					.addPreferredGap(ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+					.addGroup(gl_panel_2.createParallelGroup(Alignment.BASELINE)
+						.addComponent(kundeBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblKunde))
+					.addGap(18)
 					.addGroup(gl_panel_2.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnAuftragAnlegen)
 						.addComponent(btnZurueck2))
 					.addContainerGap())
 		);
-		
-//		Komponente.getKomponentenliste().add(new Komponente("CPU", 12, "Ryzon 12", "12ram", "Gut", 12.2));
-//
-//		Komponente.getKomponentenliste().add(new Komponente("CPU", 12, "Apple 04", "12ram", "Gut", 22.2));
-//
-//		Komponente.getKomponentenliste().add(new Komponente("RAM", 12, "Apple 444", "12ram", "Gut", 32.2));
 
 		for (int i = 0, b = 0; i < KomponentenListe.getKomponentenListe().size(); i++) {
 			if (KomponentenListe.getKomponentenListe().get(i).getArt().equals(Komponente.ART_CPU)) {
@@ -478,17 +493,17 @@ public class Rechnerzusammenstellen extends JFrame {
 		}
 		
 		for (int i = 0 , b = 0; i < KomponentenListe.getKomponentenListe().size(); i++) {
-			if (KomponentenListe.getKomponentenListe().get(i).getArt().equals(Komponente.ART_SSD)) {
-				ssdBox.insertItemAt(KomponentenListe.getKomponentenListe().get(i).getName(), b);
+			if (KomponentenListe.getKomponentenListe().get(i).getArt().equals(Komponente.ART_SSD) || KomponentenListe.getKomponentenListe().get(i).getArt().equals(Komponente.ART_HDD)) {
+				fp1Box.insertItemAt(KomponentenListe.getKomponentenListe().get(i).getName(), b);
 				b++;
 				
-				ssdBox.addItemListener(new ItemListener() {
+				fp1Box.addItemListener(new ItemListener() {
 					public void itemStateChanged(ItemEvent e) {
 						if (e.getStateChange() == ItemEvent.SELECTED) {
-							if(!ssdBox.getSelectedItem().toString().equals("")) {
-								SsdWahlLabel.setText(ssdBox.getSelectedItem().toString());
+							if(!fp1Box.getSelectedItem().toString().equals("")) {
+								SsdWahlLabel.setText(fp1Box.getSelectedItem().toString());
 								for (int i = 0, b = 0; i < KomponentenListe.getKomponentenListe().size(); i++) {
-									if(KomponentenListe.getKomponentenListe().get(i).getName().equals(ssdBox.getSelectedItem().toString())) {
+									if(KomponentenListe.getKomponentenListe().get(i).getName().equals(fp1Box.getSelectedItem().toString())) {
 										SsdPreisLabel.setText(setPreisText(i));
 										fp1 = KomponentenListe.getKomponentenListe().get(i);
 									}
@@ -501,17 +516,19 @@ public class Rechnerzusammenstellen extends JFrame {
 		}
 		
 		for (int i = 0, b = 0; i < KomponentenListe.getKomponentenListe().size(); i++) {
-			if (KomponentenListe.getKomponentenListe().get(i).getArt().equals(Komponente.ART_HDD)) {
-				hddBox.insertItemAt(KomponentenListe.getKomponentenListe().get(i).getName(), b);
+			if (KomponentenListe.getKomponentenListe().get(i).getArt().equals(Komponente.ART_HDD) 
+					|| KomponentenListe.getKomponentenListe().get(i).getArt().equals(Komponente.ART_SSD)
+					|| KomponentenListe.getKomponentenListe().get(i).getArt().equals(Komponente.ART_KEINEAUSWAHL)) {
+				fp2Box.insertItemAt(KomponentenListe.getKomponentenListe().get(i).getName(), b);
 				b++;
 				
-				hddBox.addItemListener(new ItemListener() {
+				fp2Box.addItemListener(new ItemListener() {
 					public void itemStateChanged(ItemEvent e) {
 						if (e.getStateChange() == ItemEvent.SELECTED) {
-							if(!hddBox.getSelectedItem().toString().equals("")) {
-								HddWahlLabel.setText(hddBox.getSelectedItem().toString());
+							if(!fp2Box.getSelectedItem().toString().equals("")) {
+								HddWahlLabel.setText(fp2Box.getSelectedItem().toString());
 								for (int i = 0, b = 0; i < KomponentenListe.getKomponentenListe().size(); i++) {
-									if(KomponentenListe.getKomponentenListe().get(i).getName().equals(hddBox.getSelectedItem().toString())) {
+									if(KomponentenListe.getKomponentenListe().get(i).getName().equals(fp2Box.getSelectedItem().toString())) {
 										HddPreisLabel.setText(setPreisText(i));
 										fp2 = KomponentenListe.getKomponentenListe().get(i);
 									}
@@ -550,16 +567,16 @@ public class Rechnerzusammenstellen extends JFrame {
 		
 		for (int i = 0, b = 0; i < KomponentenListe.getKomponentenListe().size(); i++) {
 			if (KomponentenListe.getKomponentenListe().get(i).getArt().equals(Komponente.ART_KUEHLER)) {
-				prozesslufterBox.insertItemAt(KomponentenListe.getKomponentenListe().get(i).getName(), b);
+				kuehlerBox.insertItemAt(KomponentenListe.getKomponentenListe().get(i).getName(), b);
 				b++;
 				
-				prozesslufterBox.addItemListener(new ItemListener() {
+				kuehlerBox.addItemListener(new ItemListener() {
 					public void itemStateChanged(ItemEvent e) {
 						if (e.getStateChange() == ItemEvent.SELECTED) {
-							if(!prozesslufterBox.getSelectedItem().toString().equals("")) {
-								ProzesslufterWahlLabel.setText(prozesslufterBox.getSelectedItem().toString());
+							if(!kuehlerBox.getSelectedItem().toString().equals("")) {
+								ProzesslufterWahlLabel.setText(kuehlerBox.getSelectedItem().toString());
 								for (int i = 0, b = 0; i < KomponentenListe.getKomponentenListe().size(); i++) {
-									if(KomponentenListe.getKomponentenListe().get(i).getName().equals(prozesslufterBox.getSelectedItem().toString())) {
+									if(KomponentenListe.getKomponentenListe().get(i).getName().equals(kuehlerBox.getSelectedItem().toString())) {
 										ProzesslufterPreisLabel.setText(setPreisText(i));
 										kuehler = KomponentenListe.getKomponentenListe().get(i);
 									}
@@ -616,6 +633,21 @@ public class Rechnerzusammenstellen extends JFrame {
 				});
 			}
 		}
+		
+		if(!kunden.isEmpty()) {
+			for(int i = 0; i < kunden.size(); i++) {
+				kundeBox.insertItemAt(kunden.get(i).toString(), i);
+			}
+		}
+		
+		kundeBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				kundennummer = Kunde.getKunden().get(kundeBox.getSelectedIndex()).getKundenNummer();
+				
+			}
+		});
+		
 		buttonWeiter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				tabbedPane.setSelectedIndex (1);
@@ -625,23 +657,43 @@ public class Rechnerzusammenstellen extends JFrame {
 	}
 	
 	Komponente cpu,ram, fp1, fp2, grafikkarte, kuehler, netzteil, gehaeuse; 
+	String kundennummer = "";
 	
 	private void auftragAnlegen() {
 		
-		Rechner rechner;
-		if(fp2 != null) {
+		if(!istInputKorrekt()) 
+		{
+			JOptionPane.showMessageDialog(null, "Ein oder mehr Felder wurden nicht ausgewählt.\nBitte wählen Sie alle Felder aus.");
+			return;
+		}
+		
+		Rechner rechner = new Rechner(cpu,ram, fp1, fp2, grafikkarte, kuehler, netzteil, gehaeuse);
+		
+		/*
+		if(fp2 != null || !fp2.getArtikelnummer().equals("000000")) {
 			rechner = new Rechner(cpu,ram, fp1, fp2, grafikkarte, kuehler, netzteil, gehaeuse);
 		}else {
 			rechner = new Rechner(cpu,ram, fp1, grafikkarte, kuehler, netzteil, gehaeuse);
-		}
+		}*/
 		
-		Kunde kunde = Kunde.getKunden().get(0);
+		DBRechner.uploadRechner(rechner);
+		
+		Kunde kunde = Kunde.getKunde(kundennummer);
 		
 		Auftrag auftrag = new Auftrag(rechner, kunde, Auftrag.STATUS_ANGELEGT);
 		
 		auftrag.addAuftragUpload(auftrag);
 		
+		JOptionPane.showMessageDialog(null, "Der Auftrag " + auftrag + " wurde erstellt");
+		
 		//TODO: Popup Auftrag wurde angelegt und zurück
+	}
+	
+	private boolean istInputKorrekt() {
+		if(cpu == null || ram == null || fp1 == null || fp2 == null || grafikkarte == null || kuehler == null || netzteil == null || gehaeuse == null 
+				|| kundennummer.isBlank() || kundennummer == null) 
+		{return false;}
+		else return true;
 	}
 	
 	private void resetKomponenten() {
