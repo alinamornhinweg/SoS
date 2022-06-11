@@ -3,18 +3,36 @@ package daten;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Diese Klasse verwaltet alle Mitarbeiter-Objekte.
+ * @author julianraubald
+ *
+ */
 public class MitarbeiterVerwaltung {
 	
 	private static List<Mitarbeiter> mitarbeiterListe = new ArrayList<Mitarbeiter>();
 
+	/**
+	 * Fügt einen Mitarbeiter der Mitarbeiterliste hinzu (lokal)
+	 * @param mitarbeiter
+	 */
 	public static void addMitarbeiter(Mitarbeiter mitarbeiter) {
 		mitarbeiterListe.add(mitarbeiter);
 	}
 	
+	/**
+	 * 
+	 * @return List<Mitarbeiter> aller Mitarbeiter
+	 */
 	public static List<Mitarbeiter> getMitarbeiterListe() {
 		return mitarbeiterListe;
 	}
 	
+	/**
+	 * Sortiert alle Mitarbeiter entweder nach 'id', 'vorname', oder 'nachname'.
+	 * @param sortMethode 'id', 'vorname', oder 'nachname'
+	 * @return @mitarbeiterListe im sortierten Zustand
+	 */
 	public static List<Mitarbeiter> sortMitarbeiterListe(String sortMethode){
 		
 		switch(sortMethode) {
@@ -32,6 +50,12 @@ public class MitarbeiterVerwaltung {
 		return mitarbeiterListe;
 	}
 	
+	/**
+	 * Gibt an ob der Login erfolgreich ist
+	 * @param id Eingabefeld id im Login-Bildschirm
+	 * @param pw Eingabefeld passwort im Ligin-Bildschirm
+	 * @return @true wenn die Login-Daten korrekt sind. @false wenn Login-Daten nicht korrekt sind.
+	 */
 	public static boolean isLoginSuccesfull(int id, String pw) {
 		
 		for(int i = 0; i < mitarbeiterListe.size(); i++) {

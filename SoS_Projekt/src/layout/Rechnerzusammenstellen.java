@@ -37,17 +37,13 @@ import java.text.NumberFormat;
 import java.awt.event.ItemEvent;
 import java.awt.Font;
 
+/**
+ * Diese Klasse enthält die GUI in der man einen @Rechner mithilfe der @Komponente erstellt.
+ * Nach Auswahl des @Kunde kann man einen @Auftrag im System anlegen.
+ * @author munirarami & julianraubald
+ *
+ */
 public class Rechnerzusammenstellen extends JFrame {
-
-//	public ArrayList<Komponente> rechner = new ArrayList<>();
-//
-//	public Rechnerzusammenstellen(Komponente... rechner) {
-//
-//		for (Komponente komponent : rechner) {
-//			this.rechner.add(komponent);
-//		}
-//
-//	}
 
 	private List<Kunde> kunden = daten.Kunde.getKunden();
 	private JPanel contentPane;
@@ -660,6 +656,9 @@ public class Rechnerzusammenstellen extends JFrame {
 	Komponente cpu,ram, fp1, fp2, grafikkarte, kuehler, netzteil, gehaeuse; 
 	String kundennummer = "";
 	
+	/**
+	 * Legt einen neuen Auftrag an, falls @istInputKorrekt = @true ist.
+	 */
 	private void auftragAnlegen() {
 		
 		if(!istInputKorrekt()) 
@@ -690,6 +689,10 @@ public class Rechnerzusammenstellen extends JFrame {
 		//TODO: Popup Auftrag wurde angelegt und zurück
 	}
 	
+	/**
+	 * Gibt an ob die ausgewählten @Komponente und der @Kunde korrekt sind
+	 * @return @true falls alle Angaben korrekt sind, sonst @false
+	 */
 	private boolean istInputKorrekt() {
 		if(cpu == null || ram == null || fp1 == null || fp2 == null || grafikkarte == null || kuehler == null || netzteil == null || gehaeuse == null 
 				|| kundennummer.isBlank() || kundennummer == null) 
@@ -697,10 +700,16 @@ public class Rechnerzusammenstellen extends JFrame {
 		else return true;
 	}
 	
+	/**
+	 * Setzt die Auswahl der @Komponente in den Dropdowns zurück.
+	 */
 	private void resetKomponenten() {
 		cpu = ram = fp1 = fp2 = grafikkarte = kuehler = netzteil = gehaeuse = null;
 	}
 	
+	/**
+	 * Berechnet den Gesamtpreis des @Rechner und gibt diesen über ein Label aus.
+	 */
 	private void berechnePreis() {
 		try {
 			//Komponente kom = new Komponente(cpuBox.getSelectedItem().toString(), ALLBITS, getName(), getWarningString(), getName(), ABORT);

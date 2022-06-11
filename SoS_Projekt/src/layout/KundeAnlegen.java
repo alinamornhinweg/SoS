@@ -33,6 +33,11 @@ import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 
+/**
+ * Diese Klasse enthält die GUI um einen neuen Kunden anzulegen.
+ * @author julianraubald
+ *
+ */
 public class KundeAnlegen extends JFrame {
 
 	private JPanel contentPane;
@@ -307,8 +312,10 @@ public class KundeAnlegen extends JFrame {
 		contentPane.add(lblGeburtstag, gbc_lblGeburtstag);
 
 		textFieldGeburtstag = new JFormattedTextField();
-		textFieldGeburtstag.setToolTipText("TT.MM.JJJJ");
+		textFieldGeburtstag.setText("yyyy-mm-dd");
+		textFieldGeburtstag.setToolTipText("yyyy-mm-dd");
 		GridBagConstraints gbc_textFieldGeburtstag = new GridBagConstraints();
+		gbc_textFieldGeburtstag.gridwidth = 2;
 		gbc_textFieldGeburtstag.insets = new Insets(0, 0, 5, 5);
 		gbc_textFieldGeburtstag.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textFieldGeburtstag.gridx = 1;
@@ -341,6 +348,9 @@ public class KundeAnlegen extends JFrame {
 		zumHauptmenu();
 	}
 
+	/**
+	 * Prüft die Eingaben auf korrektheit und erstellt einen neuen Kunden (Lokal und DB) falls alle Eingaben gültig sind.
+	 */
 	private void onButtonSpeichern() {
 		System.out.println("Kunde Anlegen -> Speichern");
 		String fehlerFeld = "";
@@ -393,6 +403,7 @@ public class KundeAnlegen extends JFrame {
 
 			fehlerFeld = "Geburtstag";
 			SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-mm-dd");
+			
 			Date geburtstagDate = simpleDateFormat.parse(textFieldGeburtstag.getText());
 			String geburtstag = textFieldGeburtstag.getText();// geburtstagDate.toString();
 
@@ -439,6 +450,9 @@ public class KundeAnlegen extends JFrame {
 		zumHauptmenu();
 	}
 
+	/**
+	 * Anwendung kerht zum Hauptmenü zurück.
+	 */
 	private void zumHauptmenu() {
 
 		System.out.println("Schliesse das Fenster und starte Hauptmenu");

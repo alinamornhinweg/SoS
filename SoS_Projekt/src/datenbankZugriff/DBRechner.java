@@ -12,9 +12,17 @@ import daten.Komponente;
 import daten.KomponentenListe;
 import daten.Rechner;
 
-
+/**
+ * Diese Klasse ist für Datenbankzugriffe mit der Klasse @Rechner zuständig.
+ * 
+ * @author julianraubald
+ *
+ */
 public class DBRechner {
 	
+	/**
+	 * lädt alle Rechner Objekte aus der Datenbank table rechner herunter und erstellt Rechner-Objekte 
+	 */
 	public static void loadRechner() {
 
 		Connection connect = null;
@@ -78,7 +86,10 @@ public class DBRechner {
 		}
 	}
 	
-	
+	/**
+	 * Lädt einen @Rechner in die Datenbank hoch.
+	 * @param @Rechner rechner
+	 */
 	public static void uploadRechner(Rechner rechner) {
 
 		Connection connect = null;
@@ -106,25 +117,6 @@ public class DBRechner {
 			
 			Statement stm = connect.createStatement();
 			String query;
-			/*
-			if(rechner.getFestplatte2() != null) {
-				query = "INSERT INTO `db3`.`rechner` (`id`, `cpu`, `ram`, `festplatte1`, `festplatte2`, `grafikkarte`, `kuehlung`, `netzteil`, `gehaeuse`) VALUES ('"
-						+ rechner.getId() + "','" 
-						+ rechner.getCpu() + "','" 
-						+ rechner.getRam() + "','" 
-						+ rechner.getFestplatte1() + "','"
-						+ rechner.getFestplatte2() + "','"
-						+ rechner.getKuehlung() + "','" 
-						+ rechner.getNetzteil() + "','" 
-						+ rechner.getGehaeuse() + "')";
-			}else {query = "INSERT INTO `db3`.`rechner` (`id`, `cpu`, `ram`, `festplatte1`, `grafikkarte`, `kuehlung`, `netzteil`, `gehaeuse`) VALUES ('"
-					+ rechner.getId() + "','" 
-					+ rechner.getCpu() + "','" 
-					+ rechner.getRam() + "','" 
-					+ rechner.getFestplatte1() + "','"
-					+ rechner.getKuehlung() + "','" 
-					+ rechner.getNetzteil() + "','" 
-					+ rechner.getGehaeuse() + "')";}*/
 			
 			query = "INSERT INTO `db3`.`rechner` (`id`, `cpu`, `ram`, `festplatte1`, `festplatte2`, `grafikkarte`, `kuehlung`, `netzteil`, `gehaeuse`) VALUES ('"
 					+ rechner.getId() + "','" 

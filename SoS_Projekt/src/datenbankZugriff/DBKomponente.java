@@ -14,8 +14,16 @@ import java.util.Properties;
 import daten.Auftrag;
 import daten.Komponente;
 
+/**
+ * Diese Klasse ist für Datenbankzugriffe mit der Klasse @Komponente zuständig.
+ * @author julianraubald
+ *
+ */
 public class DBKomponente {
 
+	/**
+	 * Lädt alle @Komponente aus der Datenbank herunter und fügt sie der @Daten.KomponentenListe hinzu.
+	 */
 	public static void loadKomponenten() {
 
 		Connection connect = null;
@@ -70,6 +78,10 @@ public class DBKomponente {
 		}
 	}
 	
+	/**
+	 * Lädt das @Komponente Objekt in die Datenbank table komöonenten hoch.
+	 * @param @Komponente komponente
+	 */
 	public static void uploadKomponente(Komponente komponente) {
 		
 		Connection connect = null;
@@ -115,6 +127,13 @@ public class DBKomponente {
 		}
 	}
 	
+	/**
+	 * Löscht die komponente mit der entsprechenden @artikelnummer
+	 * @param artikelnummer
+	 * @throws SQLException
+	 * @throws ClassNotFoundException
+	 * @throws IOException
+	 */
 	public static void deleteKomponente(String artikelnummer ) throws SQLException, ClassNotFoundException, IOException {
 
 		// Properties-Datei einlesen

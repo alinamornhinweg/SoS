@@ -11,9 +11,17 @@ import java.util.Properties;
 import daten.Mitarbeiter;
 import daten.MitarbeiterVerwaltung;
 
+/**
+ * Diese Klasse ist für Datenbankzugriffe mit der Klasse @Mitarbeiter zuständig.
+ * @author julianraubald
+ *
+ */
 public class DBMitarbeiter {
 	
 	
+	/**
+	 * Lädt alle @Mitarbeiter aus der Datenbank und fügt sie der @MitarbeiterVerwaltung hinzu.
+	 */
 public static void loadMitarbeiter() {
 		
 		Connection connect = null;

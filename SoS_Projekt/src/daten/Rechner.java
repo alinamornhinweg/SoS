@@ -196,28 +196,6 @@ public class Rechner {
 	public void setName(String name) {
 		this.id = name;
 	}
-	
-/*
-	private ArrayList<Komponente> komponenten = new ArrayList<>();
-
-	public ArrayList<Komponente> getKomponenten() {
-		return komponenten;
-	}
-
-	public void setKomponenten(ArrayList<Komponente> komponenten) {
-		this.komponenten = komponenten;
-	}
-
-	
-	public Rechner(Komponente... komponenten) {
-
-		for (Komponente komponent : komponenten) {
-			this.komponenten.add(komponent);
-		}
-		
-		
-
-	}*/
 	}
 
 

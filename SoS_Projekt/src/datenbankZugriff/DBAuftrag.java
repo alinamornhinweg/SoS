@@ -13,9 +13,16 @@ import daten.Auftrag;
 import daten.Kunde;
 import daten.Rechner;
 
-
+/**
+ * Diese Klasse ist für Datenbankzugriffe mit der Klasse @Auftrag zuständig.
+ * @author julianraubald
+ *
+ */
 public class DBAuftrag {
 	
+	/**
+	 * Lädt alle @Auftrag Objekte aus der Datenbank herunter und fügt der @Daten.Auftrag.auftraege Liste hinzu.
+	 */
 public static void loadAuftraege() {
 		
 		Connection connect = null;
@@ -65,6 +72,10 @@ public static void loadAuftraege() {
 		}
 	}
 
+/**
+ * Lädt das @Auftrag Objekt in die Datenbank table auftraege hoch.
+ * @param @Auftrag auftrag
+ */
 public static void uploadAuftrag(Auftrag auftrag) {
 	
 	Connection connect = null;

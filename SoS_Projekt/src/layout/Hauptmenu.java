@@ -19,7 +19,11 @@ import java.awt.event.ActionListener;
 import java.text.ParseException;
 import java.awt.event.ActionEvent;
 
-
+/**
+ * Hauptmenü in dem zwischen den einzelnen Bereichen der GUI navigiert werden kann.
+ * @author julianraubald
+ *
+ */
 public class Hauptmenu extends JFrame {
 
 	private JPanel contentPane;

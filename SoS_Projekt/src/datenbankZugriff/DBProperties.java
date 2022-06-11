@@ -9,8 +9,17 @@ import java.sql.Statement;
 import java.util.InputMismatchException;
 import java.util.Properties;
 
+/**
+ * Diese Klasse ist für Datenbankzugriffe mit der properties table zuständig.
+ * Hier werden wichtige Informationen abgespeichert, welche keine eigenen Tabellen in der DB besitzen.
+ * @author julianraubald
+ *
+ */
 public class DBProperties {
 
+	/**
+	 * Lädt alle properties als key value paare herunter und fügt sie an den entsprechenden Stellen ein.
+	 */
 	public static void loadMetaDaten() {
 
 		Connection connect = null;
@@ -76,6 +85,9 @@ public class DBProperties {
 		}
 	}
 
+	/**
+	 * Lädt die @Daten.Komponenten.NextNumber in die properties table hoch.
+	 */
 	public static void uploadKomponteNextNumber() {
 		// Hier Code
 
@@ -115,6 +127,9 @@ public class DBProperties {
 			e.printStackTrace();
 		}}
 		
+	/**
+	 * Lädt die @Daten.Rechner.NextNumber in die properties table hoch.
+	 */
 		public static void uploadRechnerNextNumber() {
 			// Hier Code
 
@@ -154,6 +169,9 @@ public class DBProperties {
 			}
 	}
 		
+		/**
+		 * Lädt die @Daten.Auftrag.NextNumber in die properties table hoch.
+		 */
 		public static void uploadAuftragNextNumber() {
 			// Hier Code
 
