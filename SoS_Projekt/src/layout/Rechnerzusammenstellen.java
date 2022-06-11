@@ -33,6 +33,7 @@ import javax.swing.JComboBox;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ItemListener;
+import java.text.NumberFormat;
 import java.awt.event.ItemEvent;
 import java.awt.Font;
 
@@ -708,6 +709,8 @@ public class Rechnerzusammenstellen extends JFrame {
 				double cpu,ram, fp1, fp2, grafikkarte, kuehler, netzteil, gehaeuse; 
 				cpu = ram = fp1 = fp2 = grafikkarte = kuehler = netzteil = gehaeuse = 0.0;
 				
+				NumberFormat formatter = NumberFormat.getCurrencyInstance();
+				
 				cpu = setPrice(CpuPreisLabel.getText());
 				ram = setPrice(RamPreisLabel.getText());
 				fp1 = setPrice(SsdPreisLabel.getText());
@@ -718,9 +721,11 @@ public class Rechnerzusammenstellen extends JFrame {
 				gehaeuse = setPrice(GehausePreisLabel.getText());
 				
 				double summe = cpu + ram + fp1 + fp2 + grafikkarte + kuehler + netzteil + gehaeuse;
-				String s = String.valueOf(summe);
-				
-				RechnungLabel.setText(s);
+				//String s = String.valueOf(summe);
+			    
+			    //System.out.println("Summe: " + formatter.format(summe));
+			    ;
+				RechnungLabel.setText(formatter.format(summe));
 //			------------------------------------	
 			
 		}catch(NullPointerException e1) {
