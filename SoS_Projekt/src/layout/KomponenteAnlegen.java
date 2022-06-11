@@ -49,8 +49,8 @@ public class KomponenteAnlegen extends JFrame {
 	private JLabel lblBeschreibung;
 	private JTextField txtName;
 	private JTextField txtHersteller;
-	private JTextField txtPreis;
 	private JTextField txtAnzahl;
+	private JTextField txtPreis;
 	private JTextField txtBeschreibung;
 	
 	DefaultTableModel model;
@@ -150,14 +150,14 @@ public class KomponenteAnlegen extends JFrame {
 		gbc_lblPreis.gridy = 1;
 		panel_2.add(lblPreis, gbc_lblPreis);
 		
-		txtAnzahl = new JTextField();
-		GridBagConstraints gbc_txtAnzahl = new GridBagConstraints();
-		gbc_txtAnzahl.insets = new Insets(0, 0, 5, 5);
-		gbc_txtAnzahl.fill = GridBagConstraints.HORIZONTAL;
-		gbc_txtAnzahl.gridx = 5;
-		gbc_txtAnzahl.gridy = 1;
-		panel_2.add(txtAnzahl, gbc_txtAnzahl);
-		txtAnzahl.setColumns(10);
+		txtPreis = new JTextField();
+		GridBagConstraints gbc_txtPreis = new GridBagConstraints();
+		gbc_txtPreis.insets = new Insets(0, 0, 5, 5);
+		gbc_txtPreis.fill = GridBagConstraints.HORIZONTAL;
+		gbc_txtPreis.gridx = 5;
+		gbc_txtPreis.gridy = 1;
+		panel_2.add(txtPreis, gbc_txtPreis);
+		txtPreis.setColumns(10);
 		
 		lblEUR = new JLabel("EUR");
 		GridBagConstraints gbc_lblEUR = new GridBagConstraints();
@@ -193,14 +193,14 @@ public class KomponenteAnlegen extends JFrame {
 		gbc_lblAnzahl.gridy = 2;
 		panel_2.add(lblAnzahl, gbc_lblAnzahl);
 		
-		txtPreis = new JTextField();
-		GridBagConstraints gbc_txtPreis = new GridBagConstraints();
-		gbc_txtPreis.insets = new Insets(0, 0, 5, 5);
-		gbc_txtPreis.fill = GridBagConstraints.HORIZONTAL;
-		gbc_txtPreis.gridx = 5;
-		gbc_txtPreis.gridy = 2;
-		panel_2.add(txtPreis, gbc_txtPreis);
-		txtPreis.setColumns(10);
+		txtAnzahl = new JTextField();
+		GridBagConstraints gbc_txtAnzahl = new GridBagConstraints();
+		gbc_txtAnzahl.insets = new Insets(0, 0, 5, 5);
+		gbc_txtAnzahl.fill = GridBagConstraints.HORIZONTAL;
+		gbc_txtAnzahl.gridx = 5;
+		gbc_txtAnzahl.gridy = 2;
+		panel_2.add(txtAnzahl, gbc_txtAnzahl);
+		txtAnzahl.setColumns(10);
 		
 		lblArt = new JLabel("Art:");
 		GridBagConstraints gbc_lblArt = new GridBagConstraints();
@@ -273,7 +273,8 @@ public class KomponenteAnlegen extends JFrame {
 		panel_1.add(btnBack, gbc_btnBack);
 		
 		btnApply = new JButton("Hinzufügen");
-		btnApply.addActionListener(e -> onButtonSpeichern());
+		btnApply.addActionListener(e ->	onButtonSpeichern()
+				);
 
 		GridBagConstraints gbc_btnApply = new GridBagConstraints();
 		gbc_btnApply.anchor = GridBagConstraints.EAST;
@@ -291,12 +292,12 @@ public class KomponenteAnlegen extends JFrame {
 		try {
 			fehlerFeld = "Name";
 			String name = txtName.getText();
-			if(name.isEmpty() || !name.matches("[a-zA-Z -]+"))
+			if(name.isEmpty())
 				return;
 			
 			fehlerFeld = "Hersteller";
 			String hersteller = txtHersteller.getText();
-			if(hersteller.isEmpty() || !hersteller.matches("[a-zA-Z -]+"))
+			if(hersteller.isEmpty())
 				return;
 			
 			fehlerFeld = "Art";
@@ -306,7 +307,7 @@ public class KomponenteAnlegen extends JFrame {
 			
 			fehlerFeld = "Preis";
 			Double preis = Double.parseDouble(txtPreis.getText());
-			if(txtPreis.getText().isEmpty())
+			if(txtPreis.getText().isEmpty() || !txtPreis.getText().matches("\\d{1,10}\\.\\d{2}"))
 				return;
 			
 			fehlerFeld = "Anzahl";
