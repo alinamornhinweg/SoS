@@ -82,7 +82,6 @@ public class Auftragsliste extends JFrame {
 				auftraege.setVisible(true);
 				dispose();
 				
-				
 			}
 		});
 		
@@ -157,6 +156,10 @@ public class Auftragsliste extends JFrame {
 	public static String getSelectedStatus() {
 		String status = (String) table.getValueAt(table.getSelectedRow(), 4);
 		return status;
+	}
+	public static String getSelectedAuftragsnummer() {
+		String auftragsnummer = (String) table.getValueAt(table.getSelectedRow(), 0);
+		return auftragsnummer;
 	}
 }
 

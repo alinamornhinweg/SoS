@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import daten.Auftrag;
 import daten.KomponentenListe;
 import daten.Kunde;
 import daten.Rechner;
@@ -19,6 +20,7 @@ import javax.swing.JComboBox;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.awt.event.ActionEvent;
 
@@ -30,9 +32,10 @@ public class AuftragAnlegen extends JFrame {
 	private List<String> statusListe = daten.Auftrag.getStatusListe();
 	private JComboBox dropRechner;
 	
-	private String[] kundennummer = {layout.Auftragsliste.getSelectedKunde()};
-	private String[] rechnernummer = {layout.Auftragsliste.getSelectedRechner()};
-	private String[] statusSelected = {layout.Auftragsliste.getSelectedStatus()};
+	private String kundennummer = layout.Auftragsliste.getSelectedKunde();
+	private String rechnernummer = layout.Auftragsliste.getSelectedRechner();
+	private String statusSelected = layout.Auftragsliste.getSelectedStatus();
+	private String auftragsnummer = layout.Auftragsliste.getSelectedAuftragsnummer();
 
 	/**
 	 * Launch the application.
@@ -74,7 +77,7 @@ public class AuftragAnlegen extends JFrame {
 		gbc_lblKunde.gridy = 1;
 		contentPane.add(lblKunde, gbc_lblKunde);
 		
-		JComboBox dropKunde = new JComboBox(kundennummer);
+		JComboBox dropKunde = new JComboBox();
 		GridBagConstraints gbc_dropKunde = new GridBagConstraints();
 		gbc_dropKunde.insets = new Insets(0, 0, 5, 5);
 		gbc_dropKunde.fill = GridBagConstraints.HORIZONTAL;
@@ -90,7 +93,7 @@ public class AuftragAnlegen extends JFrame {
 		gbc_lblRechner.gridy = 3;
 		contentPane.add(lblRechner, gbc_lblRechner);
 		
-		JComboBox dropRechner = new JComboBox(rechnernummer);
+		JComboBox dropRechner = new JComboBox();
 		GridBagConstraints gbc_dropRechner = new GridBagConstraints();
 		gbc_dropRechner.insets = new Insets(0, 0, 5, 5);
 		gbc_dropRechner.fill = GridBagConstraints.HORIZONTAL;
@@ -106,7 +109,7 @@ public class AuftragAnlegen extends JFrame {
 		gbc_lblStatus.gridy = 5;
 		contentPane.add(lblStatus, gbc_lblStatus);
 		
-		JComboBox dropStatus = new JComboBox(statusSelected);
+		JComboBox dropStatus = new JComboBox();
 		GridBagConstraints gbc_dropStatus = new GridBagConstraints();
 		gbc_dropStatus.insets = new Insets(0, 0, 5, 5);
 		gbc_dropStatus.fill = GridBagConstraints.HORIZONTAL;
@@ -135,6 +138,7 @@ public class AuftragAnlegen extends JFrame {
 				Auftragsliste aL = new Auftragsliste();
 				aL.setVisible(true);
 				dispose();
+				
 			}
 		});
 		GridBagConstraints gbc_btnBack = new GridBagConstraints();
@@ -157,18 +161,33 @@ public class AuftragAnlegen extends JFrame {
 			for(int i = 0; i < rechnerListe.size();i++ ) {
 				dropRechner.insertItemAt(rechnerListe.get(i).getId(), i);
 			}
+			dropRechner.setSelectedItem(rechnernummer);
 		}
 		
 		if(!kunden.isEmpty()) {
 			for(int i = 0; i < kunden.size(); i++) {
-				dropKunde.insertItemAt(kunden.get(i).toString(), i);
+				dropKunde.insertItemAt(kunden.get(i).getKundenNummer(), i);
 			}
+			dropKunde.setSelectedItem(kundennummer);
 		}
 		if(!statusListe.isEmpty()) {
 			for(int i = 0; i < statusListe.size(); i++) {
 				dropStatus.insertItemAt(statusListe.get(i), i);
 			}
+			dropStatus.setSelectedItem(statusSelected);
 		}
+		
+		
+		String newRechnernummer = (String) dropRechner.getSelectedItem();		
+		Rechner newRechner = daten.Rechner.getRechner(newRechnernummer);
+		
+		String newKundennummer = (String) dropKunde.getSelectedItem();
+		Kunde newKunde = daten.Kunde.getKunde(newKundennummer);
+		
+		String newStatus = (String) dropStatus.getSelectedItem();
+		
+		Auftrag auftrag = new Auftrag(newRechner, newKunde, auftragsnummer, newStatus);
+		Auftrag.addAuftrag(auftrag);
 	}
 	
 	
