@@ -180,7 +180,9 @@ public class AuftragAnlegen extends JFrame {
 		
 		String newRechnernummer = (String) dropRechner.getSelectedItem();		
 		Rechner newRechner = daten.Rechner.getRechner(newRechnernummer);
-		
+//		public String getNewRechnernummer() {
+//			return newRechnernummer;
+//		}
 		String newKundennummer = (String) dropKunde.getSelectedItem();
 		Kunde newKunde = daten.Kunde.getKunde(newKundennummer);
 		

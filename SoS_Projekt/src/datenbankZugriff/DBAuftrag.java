@@ -23,6 +23,9 @@ public class DBAuftrag {
 	/**
 	 * Lädt alle @Auftrag Objekte aus der Datenbank herunter und fügt der @Daten.Auftrag.auftraege Liste hinzu.
 	 */
+	
+	private static String auftragsnummer = layout.Auftragsliste.getSelectedAuftragsnummer();
+	
 public static void loadAuftraege() {
 		
 		Connection connect = null;
@@ -115,4 +118,45 @@ public static void uploadAuftrag(Auftrag auftrag) {
 		e.printStackTrace();
 	}
 }
+public static void updateAuftraege() {
+	// Hier Code
+
+	Connection connect = null;
+	
+
+	try {
+
+		// Properties-Datei einlesen
+		File propertiesFile = new File("props.properties");
+		FileInputStream in = new FileInputStream(propertiesFile);
+		Properties properties = new Properties();
+		properties.load(in);
+		in.close();
+
+		// Properties uebertragen
+		String url = properties.getProperty("db.url");
+		String dbName = properties.getProperty("db.dbName");
+		String userName = properties.getProperty("db.userName");
+		String driver = properties.getProperty("db.driver");
+		String password = properties.getProperty("db.password");
+
+		// mysql-connector-java-8.0.19.jar über Project —> Properties —> Java Build
+		// Spatz —> Libaries —> Add External Jars einbinden
+		Class.forName(driver);
+		connect = DriverManager.getConnection(url + dbName, userName, password);
+		System.out.println("Connected to the database\n");
+
+		// Upload
+		Statement stm = connect.createStatement();
+		
+		//muss noch geschrieben werden, Problem Strings aus AuftragAnlegen holen und 
+		//SQL-Anweisung richtig schreiben:
+		String update = "UPDATE `db3`.`auftraege` SET `rechner` = '" + daten.Komponente.getNextNum() +"' WHERE (`auftragsNummer` = '" + auftragsnummer;
+		stm.execute(update);
+
+		connect.close();
+		System.out.println("\nDisconnected from database");
+	} catch (Exception e) {
+		e.printStackTrace();
+	}}
 }
