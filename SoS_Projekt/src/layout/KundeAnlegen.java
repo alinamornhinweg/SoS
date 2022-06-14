@@ -32,6 +32,7 @@ import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
+import java.awt.event.ActionListener;
 
 /**
  * Diese Klasse enthält die GUI um einen neuen Kunden anzulegen.
@@ -323,14 +324,15 @@ public class KundeAnlegen extends JFrame {
 		contentPane.add(textFieldGeburtstag, gbc_textFieldGeburtstag);
 		textFieldGeburtstag.setColumns(10);
 
-		btnAbbruch = new JButton("Abbruch");
+		btnAbbruch = new JButton("Zurueck");
+		btnAbbruch.addActionListener(e -> onButtonZurueck());
 		GridBagConstraints gbc_btnAbbruch = new GridBagConstraints();
 		gbc_btnAbbruch.insets = new Insets(0, 0, 5, 5);
 		gbc_btnAbbruch.gridx = 7;
 		gbc_btnAbbruch.gridy = 9;
 		contentPane.add(btnAbbruch, gbc_btnAbbruch);
 
-		btnAbbruch.addActionListener(e -> onButtonAbbruch());
+		btnAbbruch.addActionListener(e -> onButtonZurueck());
 
 		btnSpeichern = new JButton("Speichern");
 		GridBagConstraints gbc_btnSpeichern = new GridBagConstraints();
@@ -342,7 +344,7 @@ public class KundeAnlegen extends JFrame {
 		btnSpeichern.addActionListener(e -> onButtonSpeichern());
 	}
 
-	private void onButtonAbbruch() {
+	private void onButtonZurueck() {
 		System.out.println("Kunde Anlegen -> Abbruch");
 
 		zumHauptmenu();
