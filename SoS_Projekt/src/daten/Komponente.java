@@ -205,13 +205,15 @@ public class Komponente extends AbstractTableModel{
 		return KomponentenListe.getKomponentenListe().size();
 	}
 	
-	public static void removeRow(int row) {
+	public void removeRow(int row) {
 		KomponentenListe.getKomponentenListe().remove(row);
+		fireTableDataChanged();
 		
 	}
 
 
 	public Object getValueAt(int row, int column) {
+		System.out.println(row + " " + column);
 		Komponente kom = KomponentenListe.getKomponentenListe().get(row);
 		if (column == 0) return kom.getArtikelnummer();
 		if (column == 1) return kom.getArt();
@@ -229,12 +231,13 @@ public class Komponente extends AbstractTableModel{
 		DBKomponente.uploadKomponente(kom);
 	}
 	
-	public static void removeKomponente(String artikelnummer) throws ClassNotFoundException, SQLException, IOException {
+	public void removeKomponente(String artikelnummer) throws ClassNotFoundException, SQLException, IOException {
 		for(int i = 0; i < komponentenListe.size(); i++) {
 			if(komponentenListe.get(i).getArtikelnummer().equals(artikelnummer)) {
 				komponentenListe.remove(i);
 			}
 		}
+		fireTableDataChanged();
 		DBKomponente.deleteKomponente(artikelnummer);
 		
 	}

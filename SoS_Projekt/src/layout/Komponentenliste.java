@@ -86,15 +86,28 @@ public class Komponentenliste extends JFrame {
 		btnLoeschen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			
-				
+				System.out.println("TEST");
 				
 				String artikelnummer =
 				(String) table.getValueAt(table.getSelectedRow(), 0);
 				
 				if(!komponentenListe.isEmpty()) {
+					System.out.println("Anfang:" + komponentenListe.size());
 						try {
-							daten.Komponente.removeKomponente(artikelnummer);
-							daten.Komponente.removeRow(table.getSelectedRow());
+							for(Komponente komponente : komponentenListe) {
+								if(komponente.getArtikelnummer().equals(artikelnummer)) {
+									System.out.println("Artikelnummer:" + artikelnummer);
+									System.out.println("Komponen Artikelnummer:" + komponente.getArtikelnummer());
+									komponente.removeKomponente(artikelnummer);									//komponente.removeRow(table.getSelectedRow());
+									System.out.println("Ende:" + komponentenListe.size());
+									System.out.println(table.getRowCount());
+									table.removeRowSelectionInterval(table.getRowCount() -1, table.getRowCount() -1);
+									break;
+								}
+								
+							}
+//							daten.Komponente.removeKomponente(artikelnummer);
+//							daten.Komponente.removeRow(table.getSelectedRow());
 						} catch (ClassNotFoundException e1) {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
@@ -110,6 +123,7 @@ public class Komponentenliste extends JFrame {
 				}
 				
 				DBKomponente.loadKomponenten();
+				
 				
 				
 			}
@@ -170,6 +184,7 @@ public class Komponentenliste extends JFrame {
 		table.setRowSorter(myTableRowSorter2);
 		scrollPane.setViewportView(table);
 		contentPane.setLayout(gl_contentPane);
+		
 		
 	}
 }
