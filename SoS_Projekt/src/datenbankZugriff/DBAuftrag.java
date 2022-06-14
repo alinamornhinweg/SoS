@@ -81,6 +81,9 @@ public static void loadAuftraege() {
  */
 public static void uploadAuftrag(Auftrag auftrag) {
 	
+	//erstmal Aufträge löschen
+	daten.Auftrag.clearAuftragsListe();
+	
 	Connection connect = null;
 
 	try {

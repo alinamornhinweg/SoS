@@ -23,6 +23,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.InputMismatchException;
+import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
@@ -394,7 +395,8 @@ public class KundeAnlegen extends JFrame {
 				return;
 
 			fehlerFeld = "Postleitzahl";
-			String plz = String.valueOf(textFieldPLZ.getText());
+			int plzN = Integer.valueOf(textFieldPLZ.getText());
+			String plz = String.valueOf(plzN);
 			if (textFieldPLZ.getText().length() != 5 && !plz.matches("[0-9]+"))
 				return;
 
@@ -404,10 +406,11 @@ public class KundeAnlegen extends JFrame {
 				return;
 
 			fehlerFeld = "Geburtstag";
-			SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-mm-dd");
+
 			
-			Date geburtstagDate = simpleDateFormat.parse(textFieldGeburtstag.getText());
-			String geburtstag = textFieldGeburtstag.getText();// geburtstagDate.toString();
+			String geburtstag = textFieldGeburtstag.getText();
+			if (geburtstag.isEmpty() || geburtstag.length() > 10)
+				return;
 
 			fehlerFeld = "";
 
@@ -428,7 +431,7 @@ public class KundeAnlegen extends JFrame {
 
 			// Kunde in entsprechender Klasse anlegen
 
-		} catch (InputMismatchException | NumberFormatException | PatternSyntaxException | ParseException e) {
+		} catch (InputMismatchException | NumberFormatException | PatternSyntaxException e) {
 			System.err.println("Wrong format with input");
 
 			// JOptionPane.showMessageDialog(null, "Das Feld " + fehlerFeld + " wurde nicht

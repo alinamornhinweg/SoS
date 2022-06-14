@@ -26,6 +26,9 @@ public class DBKomponente {
 	 */
 	public static void loadKomponenten() {
 
+		//Erst Komponentenliste löschen
+		daten.KomponentenListe.clearKomponentenListe();
+		
 		Connection connect = null;
 
 		try {

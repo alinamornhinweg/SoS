@@ -53,7 +53,9 @@ public class Auftrag extends AbstractTableModel{
 		return statusListe;
 	}
 
-
+	public static void clearAuftragsListe() {
+		auftraege.clear();
+	}
 
 
 	public static void addAuftrag(Auftrag auftrag) {

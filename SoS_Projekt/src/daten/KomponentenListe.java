@@ -25,4 +25,8 @@ public class KomponentenListe {
 		}
 		return null;
 	}	
+	
+	public static void clearKomponentenListe() {
+		komponentenListe.clear();
+	}
 }

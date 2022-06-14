@@ -207,6 +207,7 @@ public class Komponente extends AbstractTableModel{
 	
 	public static void removeRow(int row) {
 		KomponentenListe.getKomponentenListe().remove(row);
+		
 	}
 
 
