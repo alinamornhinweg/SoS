@@ -24,7 +24,7 @@ public class DBAuftrag {
 	 * Lädt alle @Auftrag Objekte aus der Datenbank herunter und fügt der @Daten.Auftrag.auftraege Liste hinzu.
 	 */
 	
-	private static String auftragsnummer = layout.Auftragsliste.getSelectedAuftragsnummer();
+	//private static String auftragsnummer = layout.Auftragsliste.getSelectedAuftragsnummer();
 	
 public static void loadAuftraege() {
 		
@@ -151,8 +151,14 @@ public static void updateAuftraege() {
 		
 		//muss noch geschrieben werden, Problem Strings aus AuftragAnlegen holen und 
 		//SQL-Anweisung richtig schreiben:
-		String update = "UPDATE `db3`.`auftraege` SET `rechner` = '" + daten.Komponente.getNextNum() +"' WHERE (`auftragsNummer` = '" + auftragsnummer;
+	//	String update = "UPDATE `db3`.`auftraege` SET `rechner` = '" + layout.AuftragAnlegen.getNewRechnernummer() +"' WHERE (`auftragsNummer` = '" + layout.Auftragsliste.getSelectedAuftragsnummer();
+		
+		layout.AuftragAnlegen.getUpdateAuftrag();
+		String update = "UPDATE `db3`.`auftraege` SET `rechner` = '" + layout.AuftragAnlegen.getNewRechnernummer() + "', `kunde` = '"+ layout.AuftragAnlegen.getNewKundennummer() + "', `status` = '"+layout.AuftragAnlegen.getNewStatus()+"' WHERE (`auftragsNummer` = '"+ layout.Auftragsliste.getSelectedAuftragsnummer()+"')";
+		System.out.println(layout.AuftragAnlegen.getNewRechnernummer() + layout.AuftragAnlegen.getNewKundennummer() + layout.AuftragAnlegen.getNewStatus() );
 		stm.execute(update);
+		
+	
 
 		connect.close();
 		System.out.println("\nDisconnected from database");

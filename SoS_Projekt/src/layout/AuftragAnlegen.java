@@ -30,7 +30,12 @@ public class AuftragAnlegen extends JFrame {
 	private List<Rechner> rechnerListe = daten.Rechner.getRechnerListe();
 	private List<Kunde> kunden = daten.Kunde.getKunden();
 	private List<String> statusListe = daten.Auftrag.getStatusListe();
-	private JComboBox dropRechner;
+	private static JComboBox dropRechner;
+	private static JComboBox dropKunde;
+	private static JComboBox dropStatus;
+	private static String newRechnernummer;
+	private static String newKundennummer;
+	private static String newStatus;
 	
 	private String kundennummer = layout.Auftragsliste.getSelectedKunde();
 	private String rechnernummer = layout.Auftragsliste.getSelectedRechner();
@@ -77,7 +82,7 @@ public class AuftragAnlegen extends JFrame {
 		gbc_lblKunde.gridy = 1;
 		contentPane.add(lblKunde, gbc_lblKunde);
 		
-		JComboBox dropKunde = new JComboBox();
+		dropKunde = new JComboBox();
 		GridBagConstraints gbc_dropKunde = new GridBagConstraints();
 		gbc_dropKunde.insets = new Insets(0, 0, 5, 5);
 		gbc_dropKunde.fill = GridBagConstraints.HORIZONTAL;
@@ -93,7 +98,7 @@ public class AuftragAnlegen extends JFrame {
 		gbc_lblRechner.gridy = 3;
 		contentPane.add(lblRechner, gbc_lblRechner);
 		
-		JComboBox dropRechner = new JComboBox();
+		dropRechner = new JComboBox();
 		GridBagConstraints gbc_dropRechner = new GridBagConstraints();
 		gbc_dropRechner.insets = new Insets(0, 0, 5, 5);
 		gbc_dropRechner.fill = GridBagConstraints.HORIZONTAL;
@@ -109,7 +114,7 @@ public class AuftragAnlegen extends JFrame {
 		gbc_lblStatus.gridy = 5;
 		contentPane.add(lblStatus, gbc_lblStatus);
 		
-		JComboBox dropStatus = new JComboBox();
+		dropStatus = new JComboBox();
 		GridBagConstraints gbc_dropStatus = new GridBagConstraints();
 		gbc_dropStatus.insets = new Insets(0, 0, 5, 5);
 		gbc_dropStatus.fill = GridBagConstraints.HORIZONTAL;
@@ -150,6 +155,7 @@ public class AuftragAnlegen extends JFrame {
 		JButton btnSpeichern = new JButton("Speichern");
 		btnSpeichern.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				datenbankZugriff.DBAuftrag.updateAuftraege();
 			}
 		});
 		GridBagConstraints gbc_btnSpeichern = new GridBagConstraints();
@@ -178,18 +184,35 @@ public class AuftragAnlegen extends JFrame {
 		}
 		
 		
-		String newRechnernummer = (String) dropRechner.getSelectedItem();		
+		
+	}
+	
+	public static void getUpdateAuftrag() {
+		newRechnernummer = (String) dropRechner.getSelectedItem();		
 		Rechner newRechner = daten.Rechner.getRechner(newRechnernummer);
-//		public String getNewRechnernummer() {
-//			return newRechnernummer;
-//		}
-		String newKundennummer = (String) dropKunde.getSelectedItem();
+		
+		
+		newKundennummer = (String) dropKunde.getSelectedItem();
 		Kunde newKunde = daten.Kunde.getKunde(newKundennummer);
 		
-		String newStatus = (String) dropStatus.getSelectedItem();
+		newStatus = (String) dropStatus.getSelectedItem();
 		
-		Auftrag auftrag = new Auftrag(newRechner, newKunde, auftragsnummer, newStatus);
-		Auftrag.addAuftrag(auftrag);
+		
+		
+//		Auftrag auftrag = new Auftrag(newRechner, newKunde, auftragsnummer, newStatus);
+//		Auftrag.addAuftrag(auftrag);
+	}
+
+	public static String getNewRechnernummer() {
+		return newRechnernummer;
+	}
+
+	public static String getNewKundennummer() {
+		return newKundennummer;
+	}
+
+	public static String getNewStatus() {
+		return newStatus;
 	}
 	
 	
