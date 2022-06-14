@@ -236,6 +236,7 @@ public class Komponente extends AbstractTableModel{
 			}
 		}
 		DBKomponente.deleteKomponente(artikelnummer);
+		
 	}
 
 	
