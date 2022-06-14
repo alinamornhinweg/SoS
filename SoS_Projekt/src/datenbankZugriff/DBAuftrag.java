@@ -156,9 +156,9 @@ public static void updateAuftraege() {
 		//SQL-Anweisung richtig schreiben:
 	//	String update = "UPDATE `db3`.`auftraege` SET `rechner` = '" + layout.AuftragAnlegen.getNewRechnernummer() +"' WHERE (`auftragsNummer` = '" + layout.Auftragsliste.getSelectedAuftragsnummer();
 		
-		layout.AuftragAnlegen.getUpdateAuftrag();
-		String update = "UPDATE `db3`.`auftraege` SET `rechner` = '" + layout.AuftragAnlegen.getNewRechnernummer() + "', `kunde` = '"+ layout.AuftragAnlegen.getNewKundennummer() + "', `status` = '"+layout.AuftragAnlegen.getNewStatus()+"' WHERE (`auftragsNummer` = '"+ layout.Auftragsliste.getSelectedAuftragsnummer()+"')";
-		System.out.println(layout.AuftragAnlegen.getNewRechnernummer() + layout.AuftragAnlegen.getNewKundennummer() + layout.AuftragAnlegen.getNewStatus() );
+		layout.AuftragBearbeiten.getUpdateAuftrag();
+		String update = "UPDATE `db3`.`auftraege` SET `rechner` = '" + layout.AuftragBearbeiten.getNewRechnernummer() + "', `kunde` = '"+ layout.AuftragBearbeiten.getNewKundennummer() + "', `status` = '"+layout.AuftragBearbeiten.getNewStatus()+"' WHERE (`auftragsNummer` = '"+ layout.Auftragsliste.getSelectedAuftragsnummer()+"')";
+		System.out.println(layout.AuftragBearbeiten.getNewRechnernummer() + layout.AuftragBearbeiten.getNewKundennummer() + layout.AuftragBearbeiten.getNewStatus() );
 		stm.execute(update);
 		
 	

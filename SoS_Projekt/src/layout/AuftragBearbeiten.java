@@ -24,7 +24,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.awt.event.ActionEvent;
 
-public class AuftragAnlegen extends JFrame {
+public class AuftragBearbeiten extends JFrame {
 
 	private JPanel contentPane;
 	private List<Rechner> rechnerListe = daten.Rechner.getRechnerListe();
@@ -49,7 +49,7 @@ public class AuftragAnlegen extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					AuftragAnlegen frame = new AuftragAnlegen();
+					AuftragBearbeiten frame = new AuftragBearbeiten();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -61,7 +61,7 @@ public class AuftragAnlegen extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public AuftragAnlegen() {
+	public AuftragBearbeiten() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();

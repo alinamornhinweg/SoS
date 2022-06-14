@@ -49,6 +49,14 @@ public class Auftrag extends AbstractTableModel{
 //		return statusListe;
 //	}
 
+	@Override
+	public String toString() {
+		return "Auftrag  mit der Auftragsnummer " + auftragsNummer + " für den Kunden " + kunde.getName();
+	}
+
+
+
+
 	public static ArrayList<String> getStatusListe() {
 		return statusListe;
 	}

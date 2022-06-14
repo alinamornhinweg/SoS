@@ -78,7 +78,7 @@ public class Auftragsliste extends JFrame {
 		JButton btn_bearbeiten = new JButton("Bearbeiten");
 		btn_bearbeiten.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				AuftragAnlegen auftraege = new AuftragAnlegen();
+				AuftragBearbeiten auftraege = new AuftragBearbeiten();
 				auftraege.setVisible(true);
 				dispose();
 				

@@ -3,6 +3,8 @@ package daten;
 import java.util.ArrayList;
 import java.util.List;
 
+import datenbankZugriff.DBProperties;
+
 public class Rechner {
 	
 	private String id;
@@ -34,8 +36,7 @@ public class Rechner {
 	public Rechner(Komponente cpu, Komponente ram, Komponente festplatte1, Komponente festplatte2,
 			Komponente grafikkarte, Komponente kuehlung, Komponente netzteil, Komponente gehaeuse) {
 		super();
-		this.id = "R" + rechnerNextNumber;
-		rechnerNextNumber++;
+		this.id = "R" + setRechnerNumber();
 		this.cpu = cpu;
 		this.ram = ram;
 		this.festplatte1 = festplatte1;
@@ -63,8 +64,7 @@ public class Rechner {
 	public Rechner(Komponente cpu, Komponente ram, Komponente festplatte1,
 			Komponente grafikkarte, Komponente kuehlung, Komponente netzteil, Komponente gehaeuse) {
 		super();
-		this.id = "R" + rechnerNextNumber;
-		rechnerNextNumber++;
+		this.id = "R" + setRechnerNumber();
 		this.cpu = cpu;
 		this.ram = ram;
 		this.festplatte1 = festplatte1;
@@ -108,6 +108,13 @@ public class Rechner {
 		return rechnerNextNumber;
 	}
 
+	public static int setRechnerNumber() {
+		int number = Rechner.rechnerNextNumber;
+		rechnerNextNumber++;
+		DBProperties.uploadRechnerNextNumber();
+		return number;
+	}
+	
 	public static void setRechnerNextNumber(int rechnerNextNumber) {
 		Rechner.rechnerNextNumber = rechnerNextNumber;
 	}

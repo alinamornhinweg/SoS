@@ -131,7 +131,7 @@ public class Hauptmenu extends JFrame {
 		RechnerZusammenstellen_panel.add(RechnerZusammenstellenButton);
 		RechnerZusammenstellenButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Rechnerzusammenstellen rechnerzusammenstellen = new Rechnerzusammenstellen();
+				RechnerKonfigurieren rechnerzusammenstellen = new RechnerKonfigurieren();
 				rechnerzusammenstellen.setVisible(true);
 				//frame.setVisible(false);
 				dispose();

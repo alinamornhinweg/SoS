@@ -43,7 +43,7 @@ import java.awt.Font;
  * @author munirarami & julianraubald
  *
  */
-public class Rechnerzusammenstellen extends JFrame {
+public class RechnerKonfigurieren extends JFrame {
 
 	private List<Kunde> kunden = daten.Kunde.getKunden();
 	private JPanel contentPane;
@@ -75,7 +75,7 @@ public class Rechnerzusammenstellen extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Rechnerzusammenstellen frame = new Rechnerzusammenstellen();
+					RechnerKonfigurieren frame = new RechnerKonfigurieren();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -87,7 +87,7 @@ public class Rechnerzusammenstellen extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Rechnerzusammenstellen() {
+	public RechnerKonfigurieren() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 610, 438);
 		contentPane = new JPanel();
@@ -684,7 +684,7 @@ public class Rechnerzusammenstellen extends JFrame {
 		
 		auftrag.addAuftragUpload(auftrag);
 		
-		JOptionPane.showMessageDialog(null, "Der Auftrag " + auftrag + " wurde erstellt");
+		JOptionPane.showMessageDialog(null, "Der " + auftrag + " wurde erstellt");
 		
 		//TODO: Popup Auftrag wurde angelegt und zurück
 	}
