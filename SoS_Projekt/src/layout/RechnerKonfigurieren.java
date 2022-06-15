@@ -43,10 +43,9 @@ import java.awt.Font;
  * @author munirarami & julianraubald
  *
  */
-public class RechnerKonfigurieren extends JFrame {
+public class RechnerKonfigurieren extends JPanel {
 
 	private List<Kunde> kunden = daten.Kunde.getKunden();
-	private JPanel contentPane;
 	
 	JLabel GehausePreisLabel;
 	
@@ -88,15 +87,15 @@ public class RechnerKonfigurieren extends JFrame {
 	 * Create the frame.
 	 */
 	public RechnerKonfigurieren() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 610, 438);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(new BorderLayout(0, 0));
+//		contentPane = new JPanel();
+		setBorder(new EmptyBorder(5, 5, 5, 5));
+//		setContentPane(contentPane);
+		setLayout(new BorderLayout(0, 0));
 
 		JPanel panel = new JPanel();
-		contentPane.add(panel, BorderLayout.NORTH);
+		add(panel, BorderLayout.NORTH);
 
 		JLabel Labeluberschrift = new JLabel("Rechner zusammenstellen");
 		Labeluberschrift.setFont(new Font("Tahoma", Font.BOLD, 12));
@@ -108,7 +107,7 @@ public class RechnerKonfigurieren extends JFrame {
 		panel.setLayout(gl_panel);
 
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		contentPane.add(tabbedPane, BorderLayout.CENTER);
+		add(tabbedPane, BorderLayout.CENTER);
 
 		JPanel panel_1 = new JPanel();
 		tabbedPane.addTab("Komponenten", null, panel_1, null);
@@ -157,7 +156,7 @@ public class RechnerKonfigurieren extends JFrame {
 				Hauptmenu menu = new Hauptmenu();
 				menu.setVisible(true);
 				//frame.setVisible(false);
-				dispose();
+//				dispose();
 			}
 		});
 

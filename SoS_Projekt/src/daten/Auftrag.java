@@ -5,12 +5,13 @@ package daten;
 import java.util.ArrayList;
 
 import javax.swing.table.AbstractTableModel;
+import javax.swing.table.DefaultTableModel;
 
 import datenbankZugriff.DBAuftrag;
 
 
 
-public class Auftrag extends AbstractTableModel{
+public class Auftrag extends DefaultTableModel{
 	
 	
 	private Rechner rechner;

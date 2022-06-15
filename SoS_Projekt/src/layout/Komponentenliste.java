@@ -41,8 +41,7 @@ import java.awt.Color;
 import javax.swing.JTable;
 import java.awt.SystemColor;
 
-public class Komponentenliste extends JFrame {
-	private JPanel contentPane;
+public class Komponentenliste extends JPanel {
 	private JTable table;
 	
 	static ArrayList<Komponente> komponentenListe = (ArrayList<Komponente>) KomponentenListe.getKomponentenListe();
@@ -61,11 +60,11 @@ public class Komponentenliste extends JFrame {
 	}
 	
 	public Komponentenliste() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 642, 423);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
+//		contentPane = new JPanel();
+		setBorder(new EmptyBorder(5, 5, 5, 5));
+//		setContentPane(contentPane);
 		
 		JLabel lbl_auftrag = new JLabel("Komponeten");
 		lbl_auftrag.setFont(new Font("Lucida Grande", Font.BOLD, 18));
@@ -78,7 +77,7 @@ public class Komponentenliste extends JFrame {
 				Hauptmenu menu = new Hauptmenu();
 				menu.setVisible(true);
 				//frame.setVisible(false);
-				dispose();
+//				dispose();
 			}
 		});
 		
@@ -121,12 +120,12 @@ public class Komponentenliste extends JFrame {
 				KomponenteAnlegen komponenteAnlegen = new KomponenteAnlegen();
 				komponenteAnlegen.setVisible(true);
 				//frame.setVisible(false);
-				dispose();
+//				dispose();
 			}
 		});
 		
 		
-		GroupLayout gl_contentPane = new GroupLayout(contentPane);
+		GroupLayout gl_contentPane = new GroupLayout(this);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
@@ -169,7 +168,7 @@ public class Komponentenliste extends JFrame {
 		table.setModel((TableModel) Komponente);
 		table.setRowSorter(myTableRowSorter2);
 		scrollPane.setViewportView(table);
-		contentPane.setLayout(gl_contentPane);
+		setLayout(gl_contentPane);
 		
 	}
 }

@@ -40,9 +40,8 @@ import java.awt.event.ActionListener;
  * @author julianraubald
  *
  */
-public class KundeAnlegen extends JFrame {
+public class KundeAnlegen extends JPanel {
 
-	private JPanel contentPane;
 	private JFormattedTextField textFieldVorname;
 	private JFormattedTextField textFieldNachname;
 	private JLabel lblAdresse;
@@ -94,12 +93,12 @@ public class KundeAnlegen extends JFrame {
 	 */
 	public KundeAnlegen() {
 
-		setTitle("Kunde anlegen");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		setTitle("Kunde anlegen");
+//		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 649, 329);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
+//		contentPane = new JPanel();
+		setBorder(new EmptyBorder(5, 5, 5, 5));
+//		setContentPane(contentPane);
 		GridBagLayout gbl_contentPane = new GridBagLayout();
 		gbl_contentPane.columnWidths = new int[] { 95, 84, 65, 39, 44, 42, 0, 0, 163, 0, 0 };
 		gbl_contentPane.rowHeights = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0 };
@@ -107,7 +106,7 @@ public class KundeAnlegen extends JFrame {
 				Double.MIN_VALUE };
 		gbl_contentPane.rowWeights = new double[] { 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0,
 				Double.MIN_VALUE };
-		contentPane.setLayout(gbl_contentPane);
+		setLayout(gbl_contentPane);
 
 		MaskFormatter mfBuchstaben;
 		try {
@@ -124,7 +123,7 @@ public class KundeAnlegen extends JFrame {
 		gbc_lblVorname.insets = new Insets(0, 0, 5, 5);
 		gbc_lblVorname.gridx = 0;
 		gbc_lblVorname.gridy = 1;
-		contentPane.add(lblVorname, gbc_lblVorname);
+		add(lblVorname, gbc_lblVorname);
 
 		textFieldVorname = new JFormattedTextField();
 		GridBagConstraints gbc_textFieldVorname = new GridBagConstraints();
@@ -133,7 +132,7 @@ public class KundeAnlegen extends JFrame {
 		gbc_textFieldVorname.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textFieldVorname.gridx = 1;
 		gbc_textFieldVorname.gridy = 1;
-		contentPane.add(textFieldVorname, gbc_textFieldVorname);
+		add(textFieldVorname, gbc_textFieldVorname);
 		textFieldVorname.setColumns(10);
 
 		lblEmail = new JLabel("Email:");
@@ -142,7 +141,7 @@ public class KundeAnlegen extends JFrame {
 		gbc_lblEmail.insets = new Insets(0, 0, 5, 5);
 		gbc_lblEmail.gridx = 7;
 		gbc_lblEmail.gridy = 1;
-		contentPane.add(lblEmail, gbc_lblEmail);
+		add(lblEmail, gbc_lblEmail);
 
 		textFieldEmail = new JFormattedTextField();
 		GridBagConstraints gbc_textFieldEmail = new GridBagConstraints();
@@ -150,7 +149,7 @@ public class KundeAnlegen extends JFrame {
 		gbc_textFieldEmail.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textFieldEmail.gridx = 8;
 		gbc_textFieldEmail.gridy = 1;
-		contentPane.add(textFieldEmail, gbc_textFieldEmail);
+		add(textFieldEmail, gbc_textFieldEmail);
 		textFieldEmail.setColumns(10);
 
 		JLabel lblNachname = new JLabel("Nachname:");
@@ -159,7 +158,7 @@ public class KundeAnlegen extends JFrame {
 		gbc_lblNachname.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNachname.gridx = 0;
 		gbc_lblNachname.gridy = 2;
-		contentPane.add(lblNachname, gbc_lblNachname);
+		add(lblNachname, gbc_lblNachname);
 
 		textFieldNachname = new JFormattedTextField();
 		GridBagConstraints gbc_textFieldNachname = new GridBagConstraints();
@@ -168,7 +167,7 @@ public class KundeAnlegen extends JFrame {
 		gbc_textFieldNachname.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textFieldNachname.gridx = 1;
 		gbc_textFieldNachname.gridy = 2;
-		contentPane.add(textFieldNachname, gbc_textFieldNachname);
+		add(textFieldNachname, gbc_textFieldNachname);
 		textFieldNachname.setColumns(10);
 
 		lblTelefon = new JLabel("Telefon:");
@@ -177,7 +176,7 @@ public class KundeAnlegen extends JFrame {
 		gbc_lblTelefon.insets = new Insets(0, 0, 5, 5);
 		gbc_lblTelefon.gridx = 7;
 		gbc_lblTelefon.gridy = 2;
-		contentPane.add(lblTelefon, gbc_lblTelefon);
+		add(lblTelefon, gbc_lblTelefon);
 
 		textFieldTelefon = new JFormattedTextField();
 		GridBagConstraints gbc_textFieldTelefon = new GridBagConstraints();
@@ -185,7 +184,7 @@ public class KundeAnlegen extends JFrame {
 		gbc_textFieldTelefon.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textFieldTelefon.gridx = 8;
 		gbc_textFieldTelefon.gridy = 2;
-		contentPane.add(textFieldTelefon, gbc_textFieldTelefon);
+		add(textFieldTelefon, gbc_textFieldTelefon);
 		textFieldTelefon.setColumns(10);
 
 		lblAdresse = new JLabel("Adresse");
@@ -194,7 +193,7 @@ public class KundeAnlegen extends JFrame {
 		gbc_lblAdresse.insets = new Insets(0, 0, 5, 5);
 		gbc_lblAdresse.gridx = 0;
 		gbc_lblAdresse.gridy = 4;
-		contentPane.add(lblAdresse, gbc_lblAdresse);
+		add(lblAdresse, gbc_lblAdresse);
 
 		lblBezahloption = new JLabel("Bezahloption:");
 		GridBagConstraints gbc_lblBezahloption = new GridBagConstraints();
@@ -202,7 +201,7 @@ public class KundeAnlegen extends JFrame {
 		gbc_lblBezahloption.insets = new Insets(0, 0, 5, 5);
 		gbc_lblBezahloption.gridx = 7;
 		gbc_lblBezahloption.gridy = 4;
-		contentPane.add(lblBezahloption, gbc_lblBezahloption);
+		add(lblBezahloption, gbc_lblBezahloption);
 
 		rdbtnLastschrift = new JRadioButton("Lastschrift");
 		rdbtnLastschrift.setSelected(true);
@@ -212,7 +211,7 @@ public class KundeAnlegen extends JFrame {
 		gbc_rdbtnLastschrift.insets = new Insets(0, 0, 5, 5);
 		gbc_rdbtnLastschrift.gridx = 8;
 		gbc_rdbtnLastschrift.gridy = 4;
-		contentPane.add(rdbtnLastschrift, gbc_rdbtnLastschrift);
+		add(rdbtnLastschrift, gbc_rdbtnLastschrift);
 
 		lblStrasse = new JLabel("Strasse:");
 		GridBagConstraints gbc_lblStrasse = new GridBagConstraints();
@@ -221,7 +220,7 @@ public class KundeAnlegen extends JFrame {
 		gbc_lblStrasse.insets = new Insets(0, 0, 5, 5);
 		gbc_lblStrasse.gridx = 0;
 		gbc_lblStrasse.gridy = 5;
-		contentPane.add(lblStrasse, gbc_lblStrasse);
+		add(lblStrasse, gbc_lblStrasse);
 
 		textFieldStrasse = new JFormattedTextField();
 		GridBagConstraints gbc_textFieldStrasse = new GridBagConstraints();
@@ -230,7 +229,7 @@ public class KundeAnlegen extends JFrame {
 		gbc_textFieldStrasse.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textFieldStrasse.gridx = 1;
 		gbc_textFieldStrasse.gridy = 5;
-		contentPane.add(textFieldStrasse, gbc_textFieldStrasse);
+		add(textFieldStrasse, gbc_textFieldStrasse);
 		textFieldStrasse.setColumns(10);
 
 		lblNr = new JLabel("Nr.:");
@@ -239,7 +238,7 @@ public class KundeAnlegen extends JFrame {
 		gbc_lblNr.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNr.gridx = 3;
 		gbc_lblNr.gridy = 5;
-		contentPane.add(lblNr, gbc_lblNr);
+		add(lblNr, gbc_lblNr);
 
 		textFieldNr = new JFormattedTextField();
 		GridBagConstraints gbc_textFieldNr = new GridBagConstraints();
@@ -248,7 +247,7 @@ public class KundeAnlegen extends JFrame {
 		gbc_textFieldNr.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textFieldNr.gridx = 4;
 		gbc_textFieldNr.gridy = 5;
-		contentPane.add(textFieldNr, gbc_textFieldNr);
+		add(textFieldNr, gbc_textFieldNr);
 		textFieldNr.setColumns(10);
 
 		rdbtnPaypal = new JRadioButton("Paypal");
@@ -258,7 +257,7 @@ public class KundeAnlegen extends JFrame {
 		gbc_rdbtnPaypal.insets = new Insets(0, 0, 5, 5);
 		gbc_rdbtnPaypal.gridx = 8;
 		gbc_rdbtnPaypal.gridy = 5;
-		contentPane.add(rdbtnPaypal, gbc_rdbtnPaypal);
+		add(rdbtnPaypal, gbc_rdbtnPaypal);
 
 		lblPLZ = new JLabel("PLZ:");
 		GridBagConstraints gbc_lblPLZ = new GridBagConstraints();
@@ -267,7 +266,7 @@ public class KundeAnlegen extends JFrame {
 		gbc_lblPLZ.insets = new Insets(0, 0, 5, 5);
 		gbc_lblPLZ.gridx = 0;
 		gbc_lblPLZ.gridy = 6;
-		contentPane.add(lblPLZ, gbc_lblPLZ);
+		add(lblPLZ, gbc_lblPLZ);
 
 		textFieldPLZ = new JFormattedTextField();
 		GridBagConstraints gbc_textFieldPLZ = new GridBagConstraints();
@@ -275,7 +274,7 @@ public class KundeAnlegen extends JFrame {
 		gbc_textFieldPLZ.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textFieldPLZ.gridx = 1;
 		gbc_textFieldPLZ.gridy = 6;
-		contentPane.add(textFieldPLZ, gbc_textFieldPLZ);
+		add(textFieldPLZ, gbc_textFieldPLZ);
 		textFieldPLZ.setColumns(10);
 
 		lblOrt = new JLabel("Ort:");
@@ -284,7 +283,7 @@ public class KundeAnlegen extends JFrame {
 		gbc_lblOrt.insets = new Insets(0, 0, 5, 5);
 		gbc_lblOrt.gridx = 3;
 		gbc_lblOrt.gridy = 6;
-		contentPane.add(lblOrt, gbc_lblOrt);
+		add(lblOrt, gbc_lblOrt);
 
 		textFieldOrt = new JFormattedTextField();
 		GridBagConstraints gbc_textFieldOrt = new GridBagConstraints();
@@ -293,7 +292,7 @@ public class KundeAnlegen extends JFrame {
 		gbc_textFieldOrt.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textFieldOrt.gridx = 4;
 		gbc_textFieldOrt.gridy = 6;
-		contentPane.add(textFieldOrt, gbc_textFieldOrt);
+		add(textFieldOrt, gbc_textFieldOrt);
 		textFieldOrt.setColumns(10);
 
 		rdbtnRechnung = new JRadioButton("Rechnung");
@@ -303,7 +302,7 @@ public class KundeAnlegen extends JFrame {
 		gbc_rdbtnRechnung.insets = new Insets(0, 0, 5, 5);
 		gbc_rdbtnRechnung.gridx = 8;
 		gbc_rdbtnRechnung.gridy = 6;
-		contentPane.add(rdbtnRechnung, gbc_rdbtnRechnung);
+		add(rdbtnRechnung, gbc_rdbtnRechnung);
 
 		lblGeburtstag = new JLabel("Geburtstag:");
 		GridBagConstraints gbc_lblGeburtstag = new GridBagConstraints();
@@ -311,7 +310,7 @@ public class KundeAnlegen extends JFrame {
 		gbc_lblGeburtstag.insets = new Insets(0, 0, 5, 5);
 		gbc_lblGeburtstag.gridx = 0;
 		gbc_lblGeburtstag.gridy = 7;
-		contentPane.add(lblGeburtstag, gbc_lblGeburtstag);
+		add(lblGeburtstag, gbc_lblGeburtstag);
 
 		textFieldGeburtstag = new JFormattedTextField();
 		textFieldGeburtstag.setText("yyyy-mm-dd");
@@ -322,7 +321,7 @@ public class KundeAnlegen extends JFrame {
 		gbc_textFieldGeburtstag.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textFieldGeburtstag.gridx = 1;
 		gbc_textFieldGeburtstag.gridy = 7;
-		contentPane.add(textFieldGeburtstag, gbc_textFieldGeburtstag);
+		add(textFieldGeburtstag, gbc_textFieldGeburtstag);
 		textFieldGeburtstag.setColumns(10);
 
 		btnAbbruch = new JButton("Zurueck");
@@ -331,7 +330,7 @@ public class KundeAnlegen extends JFrame {
 		gbc_btnAbbruch.insets = new Insets(0, 0, 5, 5);
 		gbc_btnAbbruch.gridx = 7;
 		gbc_btnAbbruch.gridy = 9;
-		contentPane.add(btnAbbruch, gbc_btnAbbruch);
+		add(btnAbbruch, gbc_btnAbbruch);
 
 		btnAbbruch.addActionListener(e -> onButtonZurueck());
 
@@ -340,7 +339,7 @@ public class KundeAnlegen extends JFrame {
 		gbc_btnSpeichern.insets = new Insets(0, 0, 5, 5);
 		gbc_btnSpeichern.gridx = 8;
 		gbc_btnSpeichern.gridy = 9;
-		contentPane.add(btnSpeichern, gbc_btnSpeichern);
+		add(btnSpeichern, gbc_btnSpeichern);
 
 		btnSpeichern.addActionListener(e -> onButtonSpeichern());
 	}
@@ -464,7 +463,7 @@ public class KundeAnlegen extends JFrame {
 		Hauptmenu menu = new Hauptmenu();
 		menu.setVisible(true);
 		// frame.setVisible(false);
-		frame.dispose();
+//		dispose();
 	}
 
 }
