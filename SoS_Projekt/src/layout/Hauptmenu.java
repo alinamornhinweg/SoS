@@ -37,6 +37,11 @@ public class Hauptmenu extends JFrame {
 	Icon icon1;
 	static Hauptmenu frame = new Hauptmenu();
 	public static JPanel auftragslistePanel, rechnerkonfigPanel, kundeAnlegenPanel, komponentePanel,start;
+	
+	
+	
+//	Image imgStart = new ImageIcon(this.getClass().getResource("/transparent.png")).getImage().getScaledInstance(300,
+//			300, Image.SCALE_AREA_AVERAGING);
 
 	/**
 	 * Launch the application.
@@ -47,6 +52,7 @@ public class Hauptmenu extends JFrame {
 				try {
 					frame = new Hauptmenu();
 					frame.setVisible(true);
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -58,6 +64,11 @@ public class Hauptmenu extends JFrame {
 	 * Create the frame.
 	 */
 	public Hauptmenu() {
+		Image imgStart3 = new ImageIcon(this.getClass().getResource("/Logo_start.jpeg")).getImage().getScaledInstance(400,
+			400, Image.SCALE_AREA_AVERAGING);
+		setIconImage(imgStart3);
+		
+		setResizable(false);
 		
 		
 		setBackground(new Color(204, 204, 153));
@@ -82,7 +93,7 @@ public class Hauptmenu extends JFrame {
 		contentPane.add(Kunden_panel);
 
 		JButton KundenButton = new JButton("Kunden");
-		KundenButton.setBackground(Color.ORANGE);
+		KundenButton.setBackground(Color.WHITE);
 		KundenButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -103,7 +114,7 @@ public class Hauptmenu extends JFrame {
 		contentPane.add(AuftreagePanel);
 
 		JButton AuftreageButton = new JButton("Auftreage");
-		AuftreageButton.setBackground(Color.ORANGE);
+		AuftreageButton.setBackground(Color.WHITE);
 		AuftreagePanel.add(AuftreageButton);
 		AuftreageButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -125,21 +136,6 @@ public class Hauptmenu extends JFrame {
 		Komponenten_panel.setBounds(0, 262, 271, 35);
 		contentPane.add(Komponenten_panel);
 
-		JButton KomponentenButton = new JButton("Komponenten");
-		KomponentenButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				closePanel();
-				komponentePanel.setVisible(true);
-
-//				Komponentenliste komponentenListe = new Komponentenliste();
-//				komponentenListe.setVisible(true);
-//				frame.setVisible(false);
-//				dispose();
-			}
-		});
-		KomponentenButton.setBackground(Color.ORANGE);
-		Komponenten_panel.add(KomponentenButton);
-
 		JPanel RechnerZusammenstellen_panel = new JPanel();
 		RechnerZusammenstellen_panel.setBorder(new LineBorder(Color.WHITE));
 		RechnerZusammenstellen_panel.setBackground(new Color(204, 204, 153));
@@ -147,11 +143,14 @@ public class Hauptmenu extends JFrame {
 		contentPane.add(RechnerZusammenstellen_panel);
 
 		JButton RechnerZusammenstellenButton = new JButton("Rechner Konfigurieren");
+		RechnerZusammenstellenButton.setBackground(Color.WHITE);
 		RechnerZusammenstellen_panel.add(RechnerZusammenstellenButton);
 		RechnerZusammenstellenButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				
 				closePanel();
-				RechnerZusammenstellen_panel.setVisible(true);;
+				rechnerkonfigPanel.setVisible(true);;
 				
 				
 
@@ -161,8 +160,22 @@ public class Hauptmenu extends JFrame {
 //				dispose();
 			}
 		});
-		KomponentenButton.setBackground(Color.ORANGE);
-		Komponenten_panel.add(KomponentenButton);
+		
+		JButton KomponentenButton1 = new JButton("Komponenten");
+		KomponentenButton1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				closePanel();
+				komponentePanel.setVisible(true);
+
+//				Komponentenliste komponentenListe = new Komponentenliste();
+//				komponentenListe.setVisible(true);
+//				frame.setVisible(false);
+//				dispose();
+			}
+		});
+		KomponentenButton1.setBackground(Color.WHITE);
+		Komponenten_panel.add(KomponentenButton1);
 
 		JPanel Abmelden_panel = new JPanel();
 		Abmelden_panel.setBorder(new LineBorder(Color.WHITE));
@@ -171,7 +184,7 @@ public class Hauptmenu extends JFrame {
 		contentPane.add(Abmelden_panel);
 
 		JButton AbmeldenButton = new JButton("Abmelden");
-		AbmeldenButton.setBackground(Color.ORANGE);
+		AbmeldenButton.setBackground(Color.WHITE);
 		AbmeldenButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -193,7 +206,7 @@ public class Hauptmenu extends JFrame {
 		contentPane.add(lblNewLabel_5);
 
 		JLabel logoNew = new JLabel("");
-		logoNew.setBounds(10, 22, 249, 126);
+		logoNew.setBounds(57, 10, 160, 126);
 		logoNew.setIcon(new ImageIcon(img));
 		contentPane.add(logoNew);
 
