@@ -71,6 +71,7 @@ public class Hauptmenu extends JFrame {
 		setResizable(false);
 		
 		
+		
 		setBackground(new Color(204, 204, 153));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 918, 472);
