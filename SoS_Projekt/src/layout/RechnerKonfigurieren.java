@@ -122,11 +122,11 @@ public class RechnerKonfigurieren extends JPanel {
 
 		JLabel LabelGrafikkarte = new JLabel("Grafikkarte");
 
-		JLabel LabelProzessluefter = new JLabel("Kühlung");
+		JLabel LabelProzessluefter = new JLabel("K\u00fchlung");
 
 		JLabel LabelNetzteil = new JLabel("Netzteil");
 
-		JLabel LabelGeheuse = new JLabel("Geh\u00E4use");
+		JLabel LabelGeheuse = new JLabel("Geh\u00e4use");
 
 		JComboBox ramBox = new JComboBox();
 
@@ -150,7 +150,7 @@ public class RechnerKonfigurieren extends JPanel {
 		
 		JLabel lblKunde = new JLabel("Kunde:");
 		
-		JButton btnZurueck = new JButton("Zurueck");
+		JButton btnZurueck = new JButton("Zur\u00fcck");
 		btnZurueck.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Hauptmenu menu = new Hauptmenu();
@@ -261,11 +261,11 @@ public class RechnerKonfigurieren extends JPanel {
 		
 		JLabel GrafikkarteLabel = new JLabel("Grafikkarte :");
 		
-		JLabel ProzesslufterLabel = new JLabel("K\u00FChlung :");
+		JLabel ProzesslufterLabel = new JLabel("K\u00fchlung :");
 		
 		JLabel NetzteilLabel = new JLabel("Netzteil :");
 		
-		JLabel GehauseLabel = new JLabel("Geh\u00E4use :");
+		JLabel GehauseLabel = new JLabel("Geh\u00e4use :"); 
 		
 		JLabel ProzesslufterWahlLabel = new JLabel("");
 		
@@ -300,7 +300,7 @@ public class RechnerKonfigurieren extends JPanel {
 		
 		 CpuPreisLabel = new JLabel("");
 		
-		 RechnungLabel = new JLabel("€");
+		 RechnungLabel = new JLabel("0.00");
 		
 		
 
@@ -314,7 +314,7 @@ public class RechnerKonfigurieren extends JPanel {
 			}
 		});
 		
-		JButton btnZurueck2 = new JButton("Zurueck");
+		JButton btnZurueck2 = new JButton("Zur\u00fcck");
 		btnZurueck2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				tabbedPane.setSelectedIndex (0);
@@ -358,7 +358,7 @@ public class RechnerKonfigurieren extends JPanel {
 											.addComponent(lblKunde)
 											.addGap(18)
 											.addComponent(kundeBox, GroupLayout.PREFERRED_SIZE, 229, GroupLayout.PREFERRED_SIZE)))
-									.addPreferredGap(ComponentPlacement.RELATED, 173, Short.MAX_VALUE))
+									.addPreferredGap(ComponentPlacement.RELATED, 178, Short.MAX_VALUE))
 								.addGroup(gl_panel_2.createSequentialGroup()
 									.addComponent(SummeLabel)
 									.addGap(107)))
@@ -372,13 +372,13 @@ public class RechnerKonfigurieren extends JPanel {
 								.addComponent(RamPreisLabel)
 								.addComponent(CpuPreisLabel)
 								.addComponent(RechnungLabel))
-							.addContainerGap(102, Short.MAX_VALUE))
+							.addContainerGap(108, Short.MAX_VALUE))
 						.addGroup(gl_panel_2.createSequentialGroup()
 							.addComponent(LabelRechnung)
-							.addContainerGap(511, Short.MAX_VALUE))
+							.addContainerGap(540, Short.MAX_VALUE))
 						.addGroup(gl_panel_2.createSequentialGroup()
 							.addComponent(btnZurueck2)
-							.addPreferredGap(ComponentPlacement.RELATED, 328, Short.MAX_VALUE)
+							.addPreferredGap(ComponentPlacement.RELATED, 407, Short.MAX_VALUE)
 							.addComponent(btnAuftragAnlegen)
 							.addContainerGap())))
 		);
@@ -431,7 +431,7 @@ public class RechnerKonfigurieren extends JPanel {
 					.addGroup(gl_panel_2.createParallelGroup(Alignment.BASELINE)
 						.addComponent(RechnungLabel)
 						.addComponent(SummeLabel))
-					.addPreferredGap(ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
 					.addGroup(gl_panel_2.createParallelGroup(Alignment.BASELINE)
 						.addComponent(kundeBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblKunde))
@@ -662,7 +662,7 @@ public class RechnerKonfigurieren extends JPanel {
 		
 		if(!istInputKorrekt()) 
 		{
-			JOptionPane.showMessageDialog(null, "Ein oder mehr Felder wurden nicht ausgewählt.\nBitte wählen Sie alle Felder aus.");
+			JOptionPane.showMessageDialog(null, "Ein oder mehr Felder wurden nicht ausgew\u00e4hlt.\nBitte wählen Sie alle Felder aus.");
 			return;
 		}
 		
@@ -737,7 +737,7 @@ public class RechnerKonfigurieren extends JPanel {
 //			------------------------------------	
 			
 		}catch(NullPointerException e1) {
-			JOptionPane.showMessageDialog(null, "Ein oder mehr Felder wurden nicht ausgewählt.\nBitte wählen Sie alle Felder aus.");
+			JOptionPane.showMessageDialog(null, "Ein oder mehr Felder wurden nicht ausgew\u00e4hlt.\nBitte wählen Sie alle Felder aus.");
 			
 		}
 	}

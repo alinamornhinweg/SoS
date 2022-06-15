@@ -141,7 +141,7 @@ public class LogIn extends JFrame {
 				return;
 			}
 		}
-			JOptionPane.showMessageDialog(null, "Die eingegebenen Daten sind ungültig. Bitte versuchen Sie es noch einmal.", "Anmeldung", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Die eingegebenen Daten sind ung\u00fcltig. Bitte versuchen Sie es noch einmal.", "Anmeldung", JOptionPane.ERROR_MESSAGE);
 		
 	}
 }

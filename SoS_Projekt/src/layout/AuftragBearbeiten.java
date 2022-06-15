@@ -137,7 +137,7 @@ public class AuftragBearbeiten extends JFrame {
 		gbl_panel.rowWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
 		panel.setLayout(gbl_panel);
 		
-		JButton btnBack = new JButton("Zurück");
+		JButton btnBack = new JButton("Zur\u00fcck");
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Auftragsliste aL = new Auftragsliste();
