@@ -43,7 +43,7 @@ import java.awt.SystemColor;
 
 public class Komponentenliste extends JFrame {
 	private JPanel contentPane;
-	private JTable table;
+	private static JTable table;
 	
 	static ArrayList<Komponente> komponentenListe = (ArrayList<Komponente>) KomponentenListe.getKomponentenListe();
 
@@ -83,8 +83,7 @@ public class Komponentenliste extends JFrame {
 		});
 		
 		JButton btnLoeschen = new JButton("Löschen");
-		btnLoeschen.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		btnLoeschen.addActionListener(e -> {
 			
 				System.out.println("TEST");
 				
@@ -127,7 +126,7 @@ public class Komponentenliste extends JFrame {
 				
 				
 			}
-		});
+		);
 		
 		JButton btnHinzufuegen = new JButton("Hinzufügen");
 		btnHinzufuegen.addActionListener(new ActionListener() {
@@ -186,6 +185,10 @@ public class Komponentenliste extends JFrame {
 		contentPane.setLayout(gl_contentPane);
 		
 		
+	}
+	
+	public static JTable getTable() {
+		return table;
 	}
 }
 

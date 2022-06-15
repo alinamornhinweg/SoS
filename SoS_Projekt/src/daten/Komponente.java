@@ -5,9 +5,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.swing.table.AbstractTableModel;
+import javax.swing.table.DefaultTableModel;
 
 import datenbankZugriff.DBKomponente;
 import datenbankZugriff.DBProperties;
+import layout.Komponentenliste;
 
 public class Komponente extends AbstractTableModel{
 	
@@ -207,11 +209,13 @@ public class Komponente extends AbstractTableModel{
 	
 	public void removeRow(int row) {
 		KomponentenListe.getKomponentenListe().remove(row);
+		DefaultTableModel tbl = (DefaultTableModel) Komponentenliste.getTable().getModel();
+		tbl.removeRow(row);
 		fireTableDataChanged();
 		
 	}
 
-
+	@Override
 	public Object getValueAt(int row, int column) {
 		System.out.println(row + " " + column);
 		Komponente kom = KomponentenListe.getKomponentenListe().get(row);
