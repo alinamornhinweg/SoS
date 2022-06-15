@@ -42,7 +42,7 @@ import javax.swing.JTable;
 import java.awt.SystemColor;
 
 public class Komponentenliste extends JPanel {
-	private JTable table;
+	private static JTable table;
 	
 	static ArrayList<Komponente> komponentenListe = (ArrayList<Komponente>) KomponentenListe.getKomponentenListe();
 
@@ -82,18 +82,30 @@ public class Komponentenliste extends JPanel {
 		});
 		
 		JButton btnLoeschen = new JButton("Löschen");
-		btnLoeschen.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		btnLoeschen.addActionListener(e -> {
 			
-				
+				System.out.println("TEST");
 				
 				String artikelnummer =
 				(String) table.getValueAt(table.getSelectedRow(), 0);
 				
 				if(!komponentenListe.isEmpty()) {
+					System.out.println("Anfang:" + komponentenListe.size());
 						try {
-							daten.Komponente.removeKomponente(artikelnummer);
-							daten.Komponente.removeRow(table.getSelectedRow());
+							for(Komponente komponente : komponentenListe) {
+								if(komponente.getArtikelnummer().equals(artikelnummer)) {
+									System.out.println("Artikelnummer:" + artikelnummer);
+									System.out.println("Komponen Artikelnummer:" + komponente.getArtikelnummer());
+									komponente.removeKomponente(artikelnummer);									//komponente.removeRow(table.getSelectedRow());
+									System.out.println("Ende:" + komponentenListe.size());
+									System.out.println(table.getRowCount());
+									table.removeRowSelectionInterval(table.getRowCount() -1, table.getRowCount() -1);
+									break;
+								}
+								
+							}
+//							daten.Komponente.removeKomponente(artikelnummer);
+//							daten.Komponente.removeRow(table.getSelectedRow());
 						} catch (ClassNotFoundException e1) {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
@@ -111,8 +123,9 @@ public class Komponentenliste extends JPanel {
 				DBKomponente.loadKomponenten();
 				
 				
+				
 			}
-		});
+		);
 		
 		JButton btnHinzufuegen = new JButton("Hinzufügen");
 		btnHinzufuegen.addActionListener(new ActionListener() {
@@ -170,6 +183,11 @@ public class Komponentenliste extends JPanel {
 		scrollPane.setViewportView(table);
 		setLayout(gl_contentPane);
 		
+		
+	}
+	
+	public static JTable getTable() {
+		return table;
 	}
 }
 
