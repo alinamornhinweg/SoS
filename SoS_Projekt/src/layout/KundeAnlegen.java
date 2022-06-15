@@ -64,7 +64,6 @@ public class KundeAnlegen extends JPanel {
 	private JRadioButton rdbtnPaypal;
 	private JRadioButton rdbtnRechnung;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
-	private JButton btnAbbruch;
 	private JButton btnSpeichern;
 
 	/**
@@ -323,16 +322,6 @@ public class KundeAnlegen extends JPanel {
 		gbc_textFieldGeburtstag.gridy = 7;
 		add(textFieldGeburtstag, gbc_textFieldGeburtstag);
 		textFieldGeburtstag.setColumns(10);
-
-		btnAbbruch = new JButton("Zur\u00fcck");
-		btnAbbruch.addActionListener(e -> onButtonZurueck());
-		GridBagConstraints gbc_btnAbbruch = new GridBagConstraints();
-		gbc_btnAbbruch.insets = new Insets(0, 0, 5, 5);
-		gbc_btnAbbruch.gridx = 7;
-		gbc_btnAbbruch.gridy = 9;
-		add(btnAbbruch, gbc_btnAbbruch);
-
-		btnAbbruch.addActionListener(e -> onButtonZurueck());
 
 		btnSpeichern = new JButton("Speichern");
 		GridBagConstraints gbc_btnSpeichern = new GridBagConstraints();

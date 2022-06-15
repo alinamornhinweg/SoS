@@ -143,7 +143,7 @@ public class Hauptmenu extends JFrame {
 		RechnerZusammenstellen_panel.setBounds(0, 224, 271, 35);
 		contentPane.add(RechnerZusammenstellen_panel);
 
-		JButton RechnerZusammenstellenButton = new JButton("Rechner Konfigurieren");
+		JButton RechnerZusammenstellenButton = new JButton("Rechner konfigurieren");
 		RechnerZusammenstellenButton.setBackground(Color.WHITE);
 		RechnerZusammenstellen_panel.add(RechnerZusammenstellenButton);
 		RechnerZusammenstellenButton.addActionListener(new ActionListener() {

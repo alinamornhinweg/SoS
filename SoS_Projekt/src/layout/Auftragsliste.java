@@ -17,6 +17,7 @@ import daten.Rechner;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JTable;
@@ -61,48 +62,46 @@ public class Auftragsliste extends JPanel {
 
 		JScrollPane scrollPane = new JScrollPane();
 
-		JButton btn_zurueck = new JButton("Zur\u00fcck");
-		btn_zurueck.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Hauptmenu menu = new Hauptmenu();
-				menu.setVisible(true);
-				// frame.setVisible(false);
-
-			}
-		});
-
-		JButton btn_ansicht = new JButton("Ansicht");
-
 		JButton btn_bearbeiten = new JButton("Bearbeiten");
-		btn_bearbeiten.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		btn_bearbeiten.addActionListener(e -> {
+			if(table.getSelectionModel().isSelectionEmpty()) {
+				JOptionPane.showMessageDialog(null, "Bitte w\u00e4hlen Sie einen Auftrag aus.");
+			}else {
 				AuftragBearbeiten auftraege = new AuftragBearbeiten();
 				auftraege.setVisible(true);
-
 			}
-		});
+				
+				
+			});
 
 		GroupLayout gl_contentPane = new GroupLayout(this);
-		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(gl_contentPane
-				.createSequentialGroup()
-				.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createSequentialGroup().addContainerGap().addComponent(lbl_auftrag))
-						.addGroup(gl_contentPane.createSequentialGroup().addGap(26).addGroup(gl_contentPane
-								.createParallelGroup(Alignment.LEADING, false)
+		gl_contentPane.setHorizontalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(lbl_auftrag))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(26)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 								.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 591, GroupLayout.PREFERRED_SIZE)
-								.addGroup(gl_contentPane.createSequentialGroup().addComponent(btn_zurueck)
-										.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE,
-												Short.MAX_VALUE)
-										.addComponent(btn_bearbeiten).addPreferredGap(ComponentPlacement.RELATED)
-										.addComponent(btn_ansicht)))))
-				.addContainerGap(15, Short.MAX_VALUE)));
-		gl_contentPane.setVerticalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup().addContainerGap().addComponent(lbl_auftrag)
-						.addPreferredGap(ComponentPlacement.RELATED)
-						.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE).addGap(18)
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE).addComponent(btn_zurueck)
-								.addComponent(btn_ansicht).addComponent(btn_bearbeiten))
-						.addGap(23)));
+								.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+									.addComponent(btn_bearbeiten)
+									.addGap(72)))))
+					.addContainerGap(124, Short.MAX_VALUE))
+		);
+		gl_contentPane.setVerticalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(lbl_auftrag)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addGap(18)
+					.addComponent(btn_bearbeiten)
+					.addGap(23))
+		);
 
 		/*
 		 * Rechner rechner = new Rechner(); rechner.getKomponenten().add(new

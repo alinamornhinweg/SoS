@@ -11,7 +11,7 @@ import datenbankZugriff.DBKomponente;
 import datenbankZugriff.DBProperties;
 import layout.Komponentenliste;
 
-public class Komponente extends AbstractTableModel{
+public class Komponente extends DefaultTableModel{
 	
 	static ArrayList<Komponente> komponentenListe= (ArrayList<Komponente>) KomponentenListe.getKomponentenListe();
 
@@ -217,7 +217,6 @@ public class Komponente extends AbstractTableModel{
 
 	@Override
 	public Object getValueAt(int row, int column) {
-		System.out.println(row + " " + column);
 		Komponente kom = KomponentenListe.getKomponentenListe().get(row);
 		if (column == 0) return kom.getArtikelnummer();
 		if (column == 1) return kom.getArt();
@@ -241,6 +240,8 @@ public class Komponente extends AbstractTableModel{
 				komponentenListe.remove(i);
 			}
 		}
+		DefaultTableModel tbl = (DefaultTableModel) Komponentenliste.getTable().getModel();
+		//tbl.setRowCount(KomponentenListe.getKomponentenListe().size());
 		fireTableDataChanged();
 		DBKomponente.deleteKomponente(artikelnummer);
 		

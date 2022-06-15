@@ -149,16 +149,6 @@ public class RechnerKonfigurieren extends JPanel {
 		kundeBox = new JComboBox();
 		
 		JLabel lblKunde = new JLabel("Kunde:");
-		
-		JButton btnZurueck = new JButton("Zur\u00fcck");
-		btnZurueck.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Hauptmenu menu = new Hauptmenu();
-				menu.setVisible(true);
-				//frame.setVisible(false);
-//				dispose();
-			}
-		});
 
 		
 		
@@ -168,10 +158,7 @@ public class RechnerKonfigurieren extends JPanel {
 				.addGroup(gl_panel_1.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(gl_panel_1.createParallelGroup(Alignment.TRAILING)
-						.addGroup(gl_panel_1.createSequentialGroup()
-							.addComponent(btnZurueck)
-							.addPreferredGap(ComponentPlacement.RELATED, 330, Short.MAX_VALUE)
-							.addComponent(buttonWeiter))
+						.addComponent(buttonWeiter)
 						.addGroup(gl_panel_1.createSequentialGroup()
 							.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
 								.addComponent(LabelCPU)
@@ -184,14 +171,14 @@ public class RechnerKonfigurieren extends JPanel {
 								.addComponent(LabelGeheuse))
 							.addGap(10)
 							.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
-								.addComponent(cpuBox, 0, 460, Short.MAX_VALUE)
-								.addComponent(fp2Box, 0, 460, Short.MAX_VALUE)
-								.addComponent(fp1Box, 0, 460, Short.MAX_VALUE)
-								.addComponent(ramBox, 0, 460, Short.MAX_VALUE)
-								.addComponent(grafikkarteBox, 0, 460, Short.MAX_VALUE)
-								.addComponent(kuehlerBox, 0, 460, Short.MAX_VALUE)
-								.addComponent(netzteilBox, 0, 460, Short.MAX_VALUE)
-								.addComponent(gehauseBox, 0, 460, Short.MAX_VALUE))))
+								.addComponent(cpuBox, 0, 497, Short.MAX_VALUE)
+								.addComponent(fp2Box, 0, 497, Short.MAX_VALUE)
+								.addComponent(fp1Box, 0, 497, Short.MAX_VALUE)
+								.addComponent(ramBox, 0, 497, Short.MAX_VALUE)
+								.addComponent(grafikkarteBox, 0, 497, Short.MAX_VALUE)
+								.addComponent(kuehlerBox, 0, 497, Short.MAX_VALUE)
+								.addComponent(netzteilBox, 0, 497, Short.MAX_VALUE)
+								.addComponent(gehauseBox, 0, 497, Short.MAX_VALUE))))
 					.addGap(21))
 		);
 		gl_panel_1.setVerticalGroup(
@@ -229,10 +216,8 @@ public class RechnerKonfigurieren extends JPanel {
 					.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
 						.addComponent(gehauseBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(LabelGeheuse))
-					.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-					.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
-						.addComponent(buttonWeiter)
-						.addComponent(btnZurueck))
+					.addPreferredGap(ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
+					.addComponent(buttonWeiter)
 					.addContainerGap())
 		);
 
