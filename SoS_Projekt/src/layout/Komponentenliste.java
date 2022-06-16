@@ -71,7 +71,7 @@ public class Komponentenliste extends JPanel {
 		
 		JScrollPane scrollPane = new JScrollPane();
 		
-		JButton btn_zurueck = new JButton("Zurück");
+		JButton btn_zurueck = new JButton("Zur\u00fcck");
 		btn_zurueck.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Hauptmenu menu = new Hauptmenu();
@@ -81,7 +81,7 @@ public class Komponentenliste extends JPanel {
 			}
 		});
 		
-		JButton btnLoeschen = new JButton("Löschen");
+		JButton btnLoeschen = new JButton("L\u00f6schen");
 		btnLoeschen.addActionListener(e -> {
 			
 				System.out.println("TEST");
@@ -121,7 +121,7 @@ public class Komponentenliste extends JPanel {
 							e1.printStackTrace();
 						}
 				}else {
-					JOptionPane.showMessageDialog(null, "Die ausgewählte Komponente existiert nicht.");
+					JOptionPane.showMessageDialog(null, "Die ausgew\u00e4hlte Komponente existiert nicht.");
 				}
 				
 				DBKomponente.loadKomponenten();
@@ -131,7 +131,7 @@ public class Komponentenliste extends JPanel {
 			}
 		);
 		
-		JButton btnHinzufuegen = new JButton("Hinzufügen");
+		JButton btnHinzufuegen = new JButton("Hinzuf\u00fcgen");
 		btnHinzufuegen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				KomponenteAnlegen komponenteAnlegen = new KomponenteAnlegen();

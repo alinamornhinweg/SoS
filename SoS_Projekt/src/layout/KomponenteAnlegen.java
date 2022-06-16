@@ -60,9 +60,9 @@ public class KomponenteAnlegen extends JFrame {
 	public final String ART_FESTPLATTE1 = "Festplatte 1";
 	public final String ART_FESTPLATTE2 = "Festplatte 2";
 	public final String ART_GRAFIKKARTE = "Grafikkarte";
-	public final String ART_KUEHLUNG = "Kühlung";
+	public final String ART_KUEHLUNG = "K\u00fchlung";
 	public final String ART_NETZTEIL = "Netzteil";
-	public final String ART_GEHAEUSE = "Gehäuse";
+	public final String ART_GEHAEUSE = "Geh\u00c4use";
 	
 	String[] arten = {ART_CPU, ART_RAM, ART_FESTPLATTE1, ART_FESTPLATTE2, 
 			ART_GRAFIKKARTE, ART_KUEHLUNG, ART_NETZTEIL, ART_GEHAEUSE};
@@ -84,7 +84,7 @@ public class KomponenteAnlegen extends JFrame {
 			public void run() {
 				try {
 					KomponenteAnlegen frame = new KomponenteAnlegen();
-					frame.setTitle("Komponenten hinzufügen");
+					frame.setTitle("Komponenten hinzuf\u00fcgen");
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -255,7 +255,7 @@ public class KomponenteAnlegen extends JFrame {
 		gbl_panel_1.rowWeights = new double[]{0.0, Double.MIN_VALUE};
 		panel_1.setLayout(gbl_panel_1);
 		
-		btnBack = new JButton("Zurück");
+		btnBack = new JButton("Zur\u00fcck");
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//Komponentenliste kL = new Komponentenliste();
@@ -272,7 +272,7 @@ public class KomponenteAnlegen extends JFrame {
 		gbc_btnBack.gridy = 0;
 		panel_1.add(btnBack, gbc_btnBack);
 		
-		btnApply = new JButton("Hinzufügen");
+		btnApply = new JButton("Hinzuf\u00fcgen");
 		btnApply.addActionListener(e ->	onButtonSpeichern()
 				);
 
@@ -336,7 +336,7 @@ public class KomponenteAnlegen extends JFrame {
 			return;
 		} finally {
 			if (!fehlerFeld.isEmpty()) {
-				JOptionPane.showMessageDialog(null, "Das Feld " + fehlerFeld + " wurde nicht richtig befüllt.");
+				JOptionPane.showMessageDialog(null, "Das Feld " + fehlerFeld + " wurde nicht richtig bef\u00fcllt.");
 				// return;
 			}
 		}

@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import datenbankZugriff.DBKunde;
+import datenbankZugriff.DBProperties;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -21,7 +22,11 @@ public class Kunde {
 	private Adresse adresse;
 	private String bezahlmethode, telefon, kundennummmer;
 	DBKunde dbKunde = new DBKunde();
-	private static String nextKundenNummer = "K1000";
+	private static String nextKundenNummer = "1000";
+
+	public static String getNextKundenNummer() {
+		return nextKundenNummer;
+	}
 
 	private static ArrayList<Kunde> kunden = new ArrayList<Kunde>();
 
@@ -45,7 +50,7 @@ public class Kunde {
 		this.adresse = adresse;
 		this.bezahlmethode = bezahlmethode;
 		this.geburtstag = geburtstag;
-		kundennummmer = this.nextKundenNummer;
+		kundennummmer =  "K" +this.nextKundenNummer;
 		this.nextKundenNummer = kundenummer(this.nextKundenNummer);
 	}
 
@@ -180,18 +185,12 @@ public class Kunde {
 	}
 
 	public static String kundenummer(String kennzahl) {
+		
+		int result =Integer.parseInt(Kunde.nextKundenNummer) +1;
+		DBProperties.uploadKundeNextNumber();
+		return Integer.toString(result);
 
-		String[] kennzahlenSplit = kennzahl.split("K");
-		String regex = "\\d+";
-		int result = 0;
-		for (int i = 0; i < kennzahlenSplit.length; i++) {
-			if (kennzahlenSplit[i].matches(regex)) {
-				result = Integer.parseInt(kennzahlenSplit[i]) + 1;
-			}
-
-		}
-
-		return "K" + Integer.toString(result);
+	
 
 	}
 

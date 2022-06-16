@@ -56,12 +56,12 @@ public class Auftragsliste extends JPanel {
 		setBorder(new EmptyBorder(5, 5, 5, 5));
 //		setContentPane(contentPane);
 
-		JLabel lbl_auftrag = new JLabel("Aufträge");
+		JLabel lbl_auftrag = new JLabel("Auftr\u00e4ge");
 		lbl_auftrag.setFont(new Font("Lucida Grande", Font.BOLD, 18));
 
 		JScrollPane scrollPane = new JScrollPane();
 
-		JButton btn_zurueck = new JButton("Zurück");
+		JButton btn_zurueck = new JButton("Zur\u00fcck");
 		btn_zurueck.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Hauptmenu menu = new Hauptmenu();

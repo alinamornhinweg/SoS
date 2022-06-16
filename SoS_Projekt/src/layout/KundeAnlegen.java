@@ -324,7 +324,7 @@ public class KundeAnlegen extends JPanel {
 		add(textFieldGeburtstag, gbc_textFieldGeburtstag);
 		textFieldGeburtstag.setColumns(10);
 
-		btnAbbruch = new JButton("Zurueck");
+		btnAbbruch = new JButton("Zur\u00fcck");
 		btnAbbruch.addActionListener(e -> onButtonZurueck());
 		GridBagConstraints gbc_btnAbbruch = new GridBagConstraints();
 		gbc_btnAbbruch.insets = new Insets(0, 0, 5, 5);

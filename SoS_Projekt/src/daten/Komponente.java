@@ -30,9 +30,9 @@ public class Komponente extends DefaultTableModel{
 	public final static String ART_SSD = "SSD";
 	public final static String ART_HDD = "HDD";
 	public final static String ART_GRAFIKKARTE = "Grafikkarte";
-	public final static String ART_KUEHLER = "Kuehler";
+	public final static String ART_KUEHLER = "K\u00fchler";
 	public final static String ART_NETZTEIL = "Netzteil";
-	public final static String ART_GEHAEUSE = "Gehäuse";
+	public final static String ART_GEHAEUSE = "Geh\u00e4use";
 	public final static String ART_SONSTIGES = "Sonstige";
 	public final static String ART_KEINEAUSWAHL = "Leer";
 
@@ -158,13 +158,13 @@ public class Komponente extends DefaultTableModel{
 		} else if (art.equals("Grafikkarte")) {
 			artikelnummer = "50" + nextNum;
 
-		} else if (art.equals("Prozesslüfter")) {
+		} else if (art.equals("Prozessl\u00fcfter")) {
 			artikelnummer = "60" + nextNum;
 
 		} else if (art.equals("Netzteil")) {
 			artikelnummer = "70" + nextNum;
 
-		} else if (art.equals("Gehäuse")) {
+		} else if (art.equals("Geh\u00e4use")) {
 			artikelnummer = "80" + nextNum;
 		} else {
 			artikelnummer = "90" + nextNum;

@@ -114,7 +114,7 @@ public class Hauptmenu extends JFrame {
 		AuftreagePanel.setBounds(0, 183, 271, 35);
 		contentPane.add(AuftreagePanel);
 
-		JButton AuftreageButton = new JButton("Auftreage");
+		JButton AuftreageButton = new JButton("Auftr\u00e4ge");
 		AuftreageButton.setBackground(Color.WHITE);
 		AuftreagePanel.add(AuftreageButton);
 		AuftreageButton.addActionListener(new ActionListener() {
