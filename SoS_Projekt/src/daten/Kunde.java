@@ -31,7 +31,7 @@ public class Kunde {
 	
 	/**
 	 * 
-	 * @return ID des nächsten Kunden das erstellt wird
+	 * @return ID des nï¿½chsten Kunden das erstellt wird
 	 */
 
 	public static String getNextKundenNummer() {
@@ -64,7 +64,7 @@ public class Kunde {
 		this.nextKundenNummer = kundenummer(this.nextKundenNummer);
 	}
 	
-	/**Prüft ob der Kunde ein neuer Kunde ist und speichert ihn ab Validierung ab
+	/**Prï¿½ft ob der Kunde ein neuer Kunde ist und speichert ihn ab Validierung ab
 	 * @param neuerKunde
 	 * 
 	 */
@@ -88,7 +88,7 @@ public class Kunde {
 
 	}
 	/**
-	 * verweist auf Methode in DBKunde.java um den Kunden zu löschen
+	 * verweist auf Methode in DBKunde.java um den Kunden zu lï¿½schen
 	 * 
 	 * @param kundenummer
 	 * @throws SQLException
@@ -171,11 +171,14 @@ public class Kunde {
 		return kundennummmer + ", " + name;
 	}
 	
-	/**
-	 * 
-	 * @return liste von Kunden
-	 */
 
+	public String getKundenRechnungsdaten() {
+		return name + "\n" + adresse;
+
+		/**
+		 * 
+		 * @return liste von Kunden
+		 */
 	public static ArrayList<Kunde> getKunden() {
 		return kunden;
 	}
@@ -190,7 +193,7 @@ public class Kunde {
 	}
 	
 	/**
-	 * Setzt eine Email für den Kunden fest
+	 * Setzt eine Email fï¿½r den Kunden fest
 	 * @param email
 	 */
 
@@ -208,7 +211,7 @@ public class Kunde {
 	}
 
 	/**
-	 * Setzt eine Telefonnummer für den Kunden fest
+	 * Setzt eine Telefonnummer fï¿½r den Kunden fest
 	 * @param telefon
 	 */
 	public void setTelefon(String telefon) {
@@ -225,7 +228,7 @@ public class Kunde {
 	}
 	
 	/**
-	 * Setzt eine Adresse für den Kunden fest
+	 * Setzt eine Adresse fï¿½r den Kunden fest
 	 * @param adresse
 	 */
 
@@ -241,7 +244,7 @@ public class Kunde {
 		return bezahlmethode;
 	}
 	/**
-	 * Setzt eine Bezahlmethode für den Kunden fest
+	 * Setzt eine Bezahlmethode fï¿½r den Kunden fest
 	 * @param bezahlmethode
 	 */
 
@@ -250,7 +253,7 @@ public class Kunde {
 	}
 	
 	/**
-	 * Setzt eine Name für den Kunden fest
+	 * Setzt eine Name fï¿½r den Kunden fest
 	 * @param name
 	 */
 	public void setName(String name) {
@@ -284,7 +287,7 @@ public class Kunde {
 	
 
 	/**
-	 * Setzt eine Kundennumer für den nächsten Kunden fest
+	 * Setzt eine Kundennumer fï¿½r den nï¿½chsten Kunden fest
 	 * @param nextKundenNummer
 	 */
 
@@ -308,7 +311,7 @@ public class Kunde {
 		return null;
 	}
 	/**
-	 * Kundennummer wird hier hochgezählt und in die DatenBank hochgeladen
+	 * Kundennummer wird hier hochgezï¿½hlt und in die DatenBank hochgeladen
 	 * @param kennzahl
 	 * @return kundenummer
 	 */

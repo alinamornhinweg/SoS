@@ -103,6 +103,32 @@ public class Rechner {
 				+ festplatte2 + ", grafikkarte=" + grafikkarte + ", kuehlung=" + kuehlung + ", netzteil=" + netzteil
 				+ ", gehaeuse=" + gehaeuse + "]";
 	}
+	
+	public String getRchnerRechnung() {
+		String rechnung = "Rechner " + id
+					+ cpu.getRechnungsDaten()
+					+ ram.getRechnungsDaten()
+					+ festplatte1.getRechnungsDaten();
+		if(festplatte2 != null) rechnung += festplatte2.getRechnungsDaten();
+				rechnung += "" + grafikkarte.getRechnungsDaten()
+						+ kuehlung.getRechnungsDaten()
+						+ netzteil.getRechnungsDaten()
+						+ gehaeuse.getRechnungsDaten()
+		+ "\n\n------------------------------------------------"
+		+ "\n                           Gesamtpreis:" + getGesamtPreis() + "€";
+				return rechnung;
+	}
+	
+	public double getGesamtPreis() {
+		double preis = cpu.getPreis()
+				+ ram.getPreis()
+				+ festplatte1.getPreis();
+		if(festplatte2 != null) preis += festplatte2.getPreis();
+		
+		preis += kuehlung.getPreis() + netzteil.getPreis() + gehaeuse.getPreis();
+		return preis;
+		
+	}
 
 	public static int getRechnerNextNumber() {
 		return rechnerNextNumber;

@@ -2,6 +2,10 @@ package daten;
 
 
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.table.AbstractTableModel;
@@ -116,10 +120,6 @@ public class Auftrag extends DefaultTableModel{
 		throw new IllegalStateException();
 	}
 
-
-	
-	//public Auftrag() {};
-
 	public Auftrag(Rechner rechner, Kunde kunde, String auftragsNummer, String status) {
 		this.rechner=rechner;
 		this.kunde = kunde;
@@ -146,6 +146,25 @@ public class Auftrag extends DefaultTableModel{
 			}
 		}
 		return null;
+	}
+	
+	public String getAuftragsRechnung() {
+		String rechnung = "Auftragsrechnung " + auftragsNummer + "\n\n";
+		rechnung += kunde.getKundenRechnungsdaten();
+		rechnung += "\n\n------------------------------------------\n\n\n";
+		rechnung += rechner.getRchnerRechnung();
+		return rechnung;
+	}
+	
+	public void AuftragsRechnungSpeichern() {
+		
+		try (BufferedWriter writer = new BufferedWriter(new FileWriter(new File(auftragsNummer + ".txt")))) {
+				writer.write(getAuftragsRechnung());
+			
+		} catch(IOException e) {
+			System.out.println("Es gab einen Fehler beim speichern der Daten.\n");
+		}
+		//System.out.println("Das Speichern war erfolgreich!\n");
 	}
 	
 	public String getKundeName() {

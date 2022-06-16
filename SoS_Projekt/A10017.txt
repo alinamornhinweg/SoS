@@ -1,0 +1,21 @@
+Auftragsrechnung A10017
+
+Emre Tester
+fgds 1
+11111 Berlin
+
+------------------------------------------
+
+
+Rechner R10008
+     101001 CPU Intel Core i7-12700K Preis: 423.64€
+     201076 RAM Corsair Vengeance RGB Pro 32GB DDR4 Preis: 82.99€
+     301016 SSD Samsung 970 Evo Plus Preis: 189.0€
+     301016 SSD Samsung 970 Evo Plus Preis: 189.0€
+     501027 Grafikkarte NVIDIA GeForce RTX 3070 Preis: 749.0€
+     601033 Kühler be quiet! Pure Rock CPU-Kühler Preis: 77.99€
+     701040 Netzteil Thermaltake WD0393RE Preis: 63.9€
+     801045 Gehäuse Talius Cronos Tower Preis: 139.99€
+
+------------------------------------------------
+                           Gesamtpreis:1166.51€

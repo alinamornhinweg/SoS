@@ -5,6 +5,10 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import daten.Mitarbeiter;
+import daten.MitarbeiterVerwaltung;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.ImageIcon;
@@ -146,6 +150,7 @@ public class LogIn extends JFrame {
 
 			if (daten.MitarbeiterVerwaltung.isLoginSuccesfull(Integer.parseInt(idTextFeld.getText()), String.valueOf(passwortTextFeld.getPassword()))) {
 				//JOptionPane.showMessageDialog(null, "Anmeldung erfolgreich.", "Anmeldung", JOptionPane.INFORMATION_MESSAGE);
+				MitarbeiterVerwaltung.setEingeloggterMA(Integer.parseInt(idTextFeld.getText()));
 				Hauptmenu menu = new Hauptmenu();
 				menu.setVisible(true);
 				dispose();

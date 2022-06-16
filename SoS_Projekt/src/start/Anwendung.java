@@ -1,5 +1,6 @@
 package start;
 
+import daten.Auftrag;
 import datenbankZugriff.DBAuftrag;
 import datenbankZugriff.DBKunde;
 import datenbankZugriff.DBProperties;
@@ -35,6 +36,9 @@ public class Anwendung {
 		}else {
 			LogIn.startLogInScreen();
 		}
+		
+		//System.out.println(Auftrag.getAuftraege().get(0).getAuftragsRechnung());
+		Auftrag.getAuftraege().get(0).AuftragsRechnungSpeichern();
 	}
 	
 }
