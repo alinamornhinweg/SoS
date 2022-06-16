@@ -27,7 +27,7 @@ public class DBKomponente {
 	public static void loadKomponenten() {
 
 		//Erst Komponentenliste löschen
-		daten.KomponentenListe.clearKomponentenListe();
+		daten.KomponentenVerwaltung.clearKomponentenListe();
 		
 		Connection connect = null;
 
@@ -68,7 +68,7 @@ public class DBKomponente {
 				Komponente k = new Komponente(artikelnummer, art, anzahl, name, hersteller, beschreibung, preis);
 				//Komponente.artikelnummerGenerate(k);
 				
-				daten.KomponentenListe.addKomponente(k);;
+				daten.KomponentenVerwaltung.addKomponente(k);;
 				//LinkedList<Komponente> komponentenliste = new LinkedList<>();
 
 			}

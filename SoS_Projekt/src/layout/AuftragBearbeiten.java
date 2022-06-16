@@ -7,7 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import daten.Auftrag;
-import daten.KomponentenListe;
+import daten.KomponentenVerwaltung;
 import daten.Kunde;
 import daten.Rechner;
 

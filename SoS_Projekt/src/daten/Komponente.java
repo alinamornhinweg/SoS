@@ -11,9 +11,9 @@ import datenbankZugriff.DBKomponente;
 import datenbankZugriff.DBProperties;
 import layout.Komponentenliste;
 
-public class Komponente extends AbstractTableModel{
+public class Komponente extends DefaultTableModel{
 	
-	static ArrayList<Komponente> komponentenListe= (ArrayList<Komponente>) KomponentenListe.getKomponentenListe();
+	static ArrayList<Komponente> komponentenListe= (ArrayList<Komponente>) KomponentenVerwaltung.getKomponentenListe();
 
 	private static int nextNum;
 
@@ -204,21 +204,22 @@ public class Komponente extends AbstractTableModel{
 	
 
 	public int getRowCount() {
-		return KomponentenListe.getKomponentenListe().size();
+		return KomponentenVerwaltung.getKomponentenListe().size();
 	}
 	
+	/*
 	public void removeRow(int row) {
 		KomponentenListe.getKomponentenListe().remove(row);
 		DefaultTableModel tbl = (DefaultTableModel) Komponentenliste.getTable().getModel();
 		tbl.removeRow(row);
 		fireTableDataChanged();
 		
-	}
+	}*/
 
 	@Override
 	public Object getValueAt(int row, int column) {
 		System.out.println(row + " " + column);
-		Komponente kom = KomponentenListe.getKomponentenListe().get(row);
+		Komponente kom = KomponentenVerwaltung.getKomponentenListe().get(row);
 		if (column == 0) return kom.getArtikelnummer();
 		if (column == 1) return kom.getArt();
 		if (column == 2) return kom.getAnzahl();
@@ -230,7 +231,7 @@ public class Komponente extends AbstractTableModel{
 	}
 	
 	public void addKomponente(Komponente kom) {
-		KomponentenListe.getKomponentenListe().add(kom);
+		KomponentenVerwaltung.getKomponentenListe().add(kom);
 		fireTableDataChanged();
 		DBKomponente.uploadKomponente(kom);
 	}
@@ -241,7 +242,10 @@ public class Komponente extends AbstractTableModel{
 				komponentenListe.remove(i);
 			}
 		}
+		
+		DefaultTableModel tbl = (DefaultTableModel) Komponentenliste.getTable().getModel();
 		fireTableDataChanged();
+		tbl.setRowCount(KomponentenVerwaltung.getKomponentenListe().size() -1);
 		DBKomponente.deleteKomponente(artikelnummer);
 		
 	}

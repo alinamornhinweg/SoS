@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-public class KomponentenListe {
+public class KomponentenVerwaltung {
 	
 	private static List<Komponente> komponentenListe = new ArrayList<Komponente>();
 

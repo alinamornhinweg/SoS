@@ -32,7 +32,7 @@ import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
 import daten.Komponente;
-import daten.KomponentenListe;
+import daten.KomponentenVerwaltung;
 import datenbankZugriff.DBKomponente;
 
 import javax.swing.event.ListSelectionEvent;
@@ -44,7 +44,7 @@ import java.awt.SystemColor;
 public class Komponentenliste extends JPanel {
 	private static JTable table;
 	
-	static ArrayList<Komponente> komponentenListe = (ArrayList<Komponente>) KomponentenListe.getKomponentenListe();
+	static ArrayList<Komponente> komponentenListe = (ArrayList<Komponente>) KomponentenVerwaltung.getKomponentenListe();
 
 	public static void startKomponentenliste(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -85,6 +85,10 @@ public class Komponentenliste extends JPanel {
 		btnLoeschen.addActionListener(e -> {
 			
 				System.out.println("TEST");
+				if(table.getSelectionModel().isSelectionEmpty()) {
+					JOptionPane.showMessageDialog(null, "Sie haben keine Komponente ausgewählt.");
+					return;
+				}
 				
 				String artikelnummer =
 				(String) table.getValueAt(table.getSelectedRow(), 0);

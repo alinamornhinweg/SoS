@@ -67,7 +67,7 @@ public class KomponenteAnlegen extends JFrame {
 	String[] arten = {ART_CPU, ART_RAM, ART_FESTPLATTE1, ART_FESTPLATTE2, 
 			ART_GRAFIKKARTE, ART_KUEHLUNG, ART_NETZTEIL, ART_GEHAEUSE};
 
-	List<Komponente> komponentenliste = daten.KomponentenListe.getKomponentenListe();
+	List<Komponente> komponentenliste = daten.KomponentenVerwaltung.getKomponentenListe();
 	
 	static KomponenteAnlegen frame = new KomponenteAnlegen();
 	private JPanel panel_1;
@@ -258,8 +258,8 @@ public class KomponenteAnlegen extends JFrame {
 		btnBack = new JButton("Zurück");
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Komponentenliste kL = new Komponentenliste();
-				kL.setVisible(true);
+				//Komponentenliste kL = new Komponentenliste();
+				//kL.setVisible(true);
 				dispose();
 				
 				DBKomponente.loadKomponenten();

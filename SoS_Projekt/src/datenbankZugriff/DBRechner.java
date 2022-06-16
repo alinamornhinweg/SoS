@@ -9,7 +9,7 @@ import java.sql.Statement;
 import java.util.Properties;
 
 import daten.Komponente;
-import daten.KomponentenListe;
+import daten.KomponentenVerwaltung;
 import daten.Rechner;
 
 /**
@@ -56,19 +56,19 @@ public class DBRechner {
 				boolean isFestplatte2 = result.getString("festplatte2") != null || result.getString("festplatte2").isEmpty();
 				
 				String id = result.getString("id");
-				Komponente cpu = KomponentenListe.getKomponente(result.getString("cpu"));
-				Komponente ram = KomponentenListe.getKomponente(result.getString("ram"));
-				Komponente festplatte1 = KomponentenListe.getKomponente(result.getString("festplatte1"));
+				Komponente cpu = KomponentenVerwaltung.getKomponente(result.getString("cpu"));
+				Komponente ram = KomponentenVerwaltung.getKomponente(result.getString("ram"));
+				Komponente festplatte1 = KomponentenVerwaltung.getKomponente(result.getString("festplatte1"));
 				Komponente festplatte2;
-				Komponente grafikkarte = KomponentenListe.getKomponente(result.getString("grafikkarte"));
-				Komponente kuehlung = KomponentenListe.getKomponente(result.getString("kuehlung"));
-				Komponente netzteil = KomponentenListe.getKomponente(result.getString("netzteil"));
-				Komponente gehaeuse = KomponentenListe.getKomponente(result.getString("gehaeuse"));
+				Komponente grafikkarte = KomponentenVerwaltung.getKomponente(result.getString("grafikkarte"));
+				Komponente kuehlung = KomponentenVerwaltung.getKomponente(result.getString("kuehlung"));
+				Komponente netzteil = KomponentenVerwaltung.getKomponente(result.getString("netzteil"));
+				Komponente gehaeuse = KomponentenVerwaltung.getKomponente(result.getString("gehaeuse"));
 				
 				Rechner rechner;
 				
 				if(isFestplatte2) {
-					festplatte2 = KomponentenListe.getKomponente(result.getString("festplatte2"));
+					festplatte2 = KomponentenVerwaltung.getKomponente(result.getString("festplatte2"));
 					rechner = new Rechner(id, cpu, ram, festplatte1, festplatte2, grafikkarte, kuehlung, netzteil, gehaeuse);
 				}else {
 					rechner = new Rechner(id, cpu, ram, festplatte1, grafikkarte, kuehlung, netzteil, gehaeuse);
