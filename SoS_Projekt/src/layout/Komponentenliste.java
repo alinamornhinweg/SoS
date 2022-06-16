@@ -71,16 +71,6 @@ public class Komponentenliste extends JPanel {
 		
 		JScrollPane scrollPane = new JScrollPane();
 		
-		JButton btn_zurueck = new JButton("Zur\u00fcck");
-		btn_zurueck.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Hauptmenu menu = new Hauptmenu();
-				menu.setVisible(true);
-				//frame.setVisible(false);
-//				dispose();
-			}
-		});
-		
 		JButton btnLoeschen = new JButton("L\u00f6schen");
 		btnLoeschen.addActionListener(e -> {
 			
@@ -152,11 +142,9 @@ public class Komponentenliste extends JPanel {
 							.addComponent(lbl_auftrag))
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(26)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 								.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 591, GroupLayout.PREFERRED_SIZE)
-								.addGroup(gl_contentPane.createSequentialGroup()
-									.addComponent(btn_zurueck)
-									.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
 									.addComponent(btnHinzufuegen)
 									.addPreferredGap(ComponentPlacement.RELATED)
 									.addComponent(btnLoeschen)))))
@@ -168,10 +156,9 @@ public class Komponentenliste extends JPanel {
 					.addContainerGap()
 					.addComponent(lbl_auftrag)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
+					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 308, Short.MAX_VALUE)
 					.addGap(18)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(btn_zurueck)
 						.addComponent(btnLoeschen)
 						.addComponent(btnHinzufuegen))
 					.addGap(23))
