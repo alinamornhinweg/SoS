@@ -15,9 +15,18 @@ import java.util.Properties;
 import daten.Adresse;
 import daten.Kunde;
 
+/**
+ * Diese Klasse ist für Datenbankzugriffe mit der Klasse @Kunde zuständig.
+ * @author emreekinci
+ *
+ */
 public class DBKunde {
 
 	Connection connect = null;
+	
+	/**
+	 * LÃ¤dt alle @Kunden aus der Datenbank und fügt sie in die Liste in @Kunde hinzu.
+	 */
 
 	public static void loadKunden() {
 
@@ -78,6 +87,13 @@ public class DBKunde {
 		}
 	}
 
+	/**
+	 * Lädt alle kundenspezifische Informationen erneut in die Datenbank hoch und aktualisiert ggf. die Information
+	 * @param kunde
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 * @throws IOException
+	 */
 	public void kundenEdit(Kunde kunde) throws ClassNotFoundException, SQLException, IOException {
 
 		// Properties-Datei einlesen
@@ -107,6 +123,21 @@ public class DBKunde {
 		abfrageAnweisung.execute(update);
 		abfrageAnweisung.close();
 	}
+	
+	/**
+	 * Lädt einen neuen Kunden mit einer neuen Kundennummer in die Datenbank hoch
+	 * 
+	 * @param kundenNr
+	 * @param name
+	 * @param email
+	 * @param telefon
+	 * @param bezahlmethode
+	 * @param geburtstag
+	 * @param adresse
+	 * @throws SQLException
+	 * @throws ClassNotFoundException
+	 * @throws IOException
+	 */
 
 	public void kundeanlegen(String kundenNr, String name, String email, String telefon, String bezahlmethode,
 			String geburtstag, Adresse adresse) throws SQLException, ClassNotFoundException, IOException {
@@ -138,6 +169,16 @@ public class DBKunde {
 		abfrageAnweisung.execute(query);
 		abfrageAnweisung.close();
 	}
+	
+	/**
+	 * 
+	 * löscht Kunde mithilfe der Kundennummer aus der Datenbank
+	 * 
+	 * @param kundenummer
+	 * @throws SQLException
+	 * @throws ClassNotFoundException
+	 * @throws IOException
+	 */
 
 	public void kundeloeschen(String kundenummer) throws SQLException, ClassNotFoundException, IOException {
 

@@ -20,6 +20,13 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
 
+/**
+ * 
+ * Die Login Klasse um den Benutzer zu validieren
+ * @author emreekinci
+ *
+ */
+
 public class LogIn extends JFrame {
 
 	private JPanel contentPane;
@@ -128,6 +135,10 @@ public class LogIn extends JFrame {
 		);
 		contentPane.setLayout(gl_contentPane);
 	}
+	
+	/**
+	 * Prüft ob eingabe mit den Mitarbeiter spezifische Information übereinstimmt
+	 */
 	
 	public void logInButton() {
 		if (idTextFeld.getText().matches("[+-]?[0-9]+") && idTextFeld.getText().length() != 0
