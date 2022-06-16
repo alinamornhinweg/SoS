@@ -97,13 +97,23 @@ public class RechnerKonfigurieren extends JPanel {
 		JPanel panel = new JPanel();
 		add(panel, BorderLayout.NORTH);
 
-		JLabel Labeluberschrift = new JLabel("Rechner zusammenstellen");
+		JLabel Labeluberschrift = new JLabel("Rechner konfigurieren");
 		Labeluberschrift.setFont(new Font("Tahoma", Font.BOLD, 12));
 		GroupLayout gl_panel = new GroupLayout(panel);
-		gl_panel.setHorizontalGroup(gl_panel.createParallelGroup(Alignment.LEADING).addGroup(
-				gl_panel.createSequentialGroup().addContainerGap().addComponent(Labeluberschrift).addGap(375)));
-		gl_panel.setVerticalGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel.createSequentialGroup().addGap(6).addComponent(Labeluberschrift)));
+		gl_panel.setHorizontalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(Labeluberschrift, GroupLayout.PREFERRED_SIZE, 149, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(441, Short.MAX_VALUE))
+		);
+		gl_panel.setVerticalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGap(6)
+					.addComponent(Labeluberschrift)
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+		);
 		panel.setLayout(gl_panel);
 
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
@@ -149,16 +159,6 @@ public class RechnerKonfigurieren extends JPanel {
 		kundeBox = new JComboBox();
 		
 		JLabel lblKunde = new JLabel("Kunde:");
-		
-		JButton btnZurueck = new JButton("Zur\u00fcck");
-		btnZurueck.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Hauptmenu menu = new Hauptmenu();
-				menu.setVisible(true);
-				//frame.setVisible(false);
-//				dispose();
-			}
-		});
 
 		
 		
@@ -168,10 +168,7 @@ public class RechnerKonfigurieren extends JPanel {
 				.addGroup(gl_panel_1.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(gl_panel_1.createParallelGroup(Alignment.TRAILING)
-						.addGroup(gl_panel_1.createSequentialGroup()
-							.addComponent(btnZurueck)
-							.addPreferredGap(ComponentPlacement.RELATED, 330, Short.MAX_VALUE)
-							.addComponent(buttonWeiter))
+						.addComponent(buttonWeiter)
 						.addGroup(gl_panel_1.createSequentialGroup()
 							.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
 								.addComponent(LabelCPU)
@@ -184,14 +181,14 @@ public class RechnerKonfigurieren extends JPanel {
 								.addComponent(LabelGeheuse))
 							.addGap(10)
 							.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
-								.addComponent(cpuBox, 0, 460, Short.MAX_VALUE)
-								.addComponent(fp2Box, 0, 460, Short.MAX_VALUE)
-								.addComponent(fp1Box, 0, 460, Short.MAX_VALUE)
-								.addComponent(ramBox, 0, 460, Short.MAX_VALUE)
-								.addComponent(grafikkarteBox, 0, 460, Short.MAX_VALUE)
-								.addComponent(kuehlerBox, 0, 460, Short.MAX_VALUE)
-								.addComponent(netzteilBox, 0, 460, Short.MAX_VALUE)
-								.addComponent(gehauseBox, 0, 460, Short.MAX_VALUE))))
+								.addComponent(cpuBox, 0, 497, Short.MAX_VALUE)
+								.addComponent(fp2Box, 0, 497, Short.MAX_VALUE)
+								.addComponent(fp1Box, 0, 497, Short.MAX_VALUE)
+								.addComponent(ramBox, 0, 497, Short.MAX_VALUE)
+								.addComponent(grafikkarteBox, 0, 497, Short.MAX_VALUE)
+								.addComponent(kuehlerBox, 0, 497, Short.MAX_VALUE)
+								.addComponent(netzteilBox, 0, 497, Short.MAX_VALUE)
+								.addComponent(gehauseBox, 0, 497, Short.MAX_VALUE))))
 					.addGap(21))
 		);
 		gl_panel_1.setVerticalGroup(
@@ -229,10 +226,8 @@ public class RechnerKonfigurieren extends JPanel {
 					.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
 						.addComponent(gehauseBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(LabelGeheuse))
-					.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-					.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
-						.addComponent(buttonWeiter)
-						.addComponent(btnZurueck))
+					.addPreferredGap(ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
+					.addComponent(buttonWeiter)
 					.addContainerGap())
 		);
 

@@ -140,8 +140,6 @@ public class AuftragBearbeiten extends JFrame {
 		JButton btnBack = new JButton("Zur\u00fcck");
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Auftragsliste aL = new Auftragsliste();
-				aL.setVisible(true);
 				dispose();
 				
 			}
