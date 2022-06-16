@@ -9,6 +9,9 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.Color;
 import javax.swing.border.LineBorder;
+
+import daten.MitarbeiterVerwaltung;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.Image;
@@ -114,7 +117,7 @@ public class Hauptmenu extends JFrame {
 		AuftreagePanel.setBounds(0, 183, 271, 35);
 		contentPane.add(AuftreagePanel);
 
-		JButton AuftreageButton = new JButton("Auftr\u00e4ge");
+		JButton AuftreageButton = new JButton("Auftreage");
 		AuftreageButton.setBackground(Color.WHITE);
 		AuftreagePanel.add(AuftreageButton);
 		AuftreageButton.addActionListener(new ActionListener() {
@@ -203,7 +206,7 @@ public class Hauptmenu extends JFrame {
 		JLabel lblNewLabel_5 = new JLabel("Eingeloggt:");
 		lblNewLabel_5.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblNewLabel_5.setForeground(Color.WHITE);
-		lblNewLabel_5.setBounds(6, 360, 65, 16);
+		lblNewLabel_5.setBounds(16, 360, 65, 16);
 		contentPane.add(lblNewLabel_5);
 
 		JLabel logoNew = new JLabel("");
@@ -213,10 +216,10 @@ public class Hauptmenu extends JFrame {
 
 		JLabel eingeloggtLabel = new JLabel("");
 		eingeloggtLabel.setForeground(Color.WHITE);
-		eingeloggtLabel.setBounds(81, 363, 105, 13);
+		eingeloggtLabel.setBounds(16, 388, 241, 13);
 		contentPane.add(eingeloggtLabel);
 
-		eingeloggtLabel.setText("----------");
+		eingeloggtLabel.setText(MitarbeiterVerwaltung.getEingeloggterMA().toString());
 		mainPanel.setLayout(new CardLayout(0, 0));
 
 		auftragslistePanel = new Auftragsliste();

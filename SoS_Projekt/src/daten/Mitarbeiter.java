@@ -10,6 +10,8 @@ package daten;
  *
  */
 
+
+
 public class Mitarbeiter implements Comparable<Mitarbeiter>{
 
 	private int id;
@@ -17,6 +19,7 @@ public class Mitarbeiter implements Comparable<Mitarbeiter>{
 	private String nachname;
 	private String passwort;
 	
+
 	
 	
 	public Mitarbeiter(int id, String vorname, String nachname, String passwort) {
@@ -26,6 +29,8 @@ public class Mitarbeiter implements Comparable<Mitarbeiter>{
 		this.nachname = nachname;
 		this.passwort = passwort;
 	}
+	
+
 	
 	/**
 	 * Prüft ob der String das korrekte Passwort ist

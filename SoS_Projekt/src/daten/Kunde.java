@@ -113,6 +113,10 @@ public class Kunde {
 	public String toString() {
 		return kundennummmer + ", " + name;
 	}
+	
+	public String getKundenRechnungsdaten() {
+		return name + "\n" + adresse;
+	}
 
 	public static ArrayList<Kunde> getKunden() {
 		return kunden;

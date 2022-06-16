@@ -68,6 +68,21 @@ public class MitarbeiterVerwaltung {
 		return false;
 	}
 	
+	private static Mitarbeiter eingeloggterMA = new Mitarbeiter(0000,"Nicht Angemeldet" , "" , "pwtest");
+	
+	public static Mitarbeiter getEingeloggterMA() {
+		return eingeloggterMA;
+	}
+
+	public static Mitarbeiter setEingeloggterMA(int id) {
+		for(int i = 0; i < mitarbeiterListe.size(); i++) {
+			if(mitarbeiterListe.get(i).getId() == id) {
+				eingeloggterMA = mitarbeiterListe.get(i);
+			}
+		}
+		return eingeloggterMA;
+	}
+	
 	
 	
 

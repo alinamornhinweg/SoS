@@ -2,6 +2,11 @@ package daten;
 
 public class Adresse {
 
+	@Override
+	public String toString() {
+		return strasse + " " + nr + "\n" + plz + " " + ort;
+	}
+
 	private String strasse, ort,plz, nr;
 
 	public Adresse(String strasse, String ort, String plz, String nr) {

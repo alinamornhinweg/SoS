@@ -129,6 +129,10 @@ public class Komponente extends DefaultTableModel{
 		return "Komponente [artikelnummer=" + artikelnummer + ", art=" + art + ", anzahl=" + anzahl + ", name=" + name
 				+ ", beschreibung=" + beschreibung + ", preis=" + preis + "]";
 	}
+	
+	public String getRechnungsDaten() {
+		return "\n     " + artikelnummer + " " + art + " " + name + " Preis: " + preis + "€";
+	}
 
 	public static int getNextNum() {
 		return nextNum;
